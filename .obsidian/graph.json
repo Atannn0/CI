@@ -1,0 +1,86 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": true,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:\"01 Concepts\" OR path:\"02 Protocols\"",
+      "color": {
+        "a": 1,
+        "rgb": 34172
+      }
+    },
+    {
+      "query": "path:\"03 Frameworks\"",
+      "color": {
+        "a": 1,
+        "rgb": 5205432
+      }
+    },
+    {
+      "query": "path:\"04 Harness\" OR path:\"05 Build\"",
+      "color": {
+        "a": 1,
+        "rgb": 14721280
+      }
+    },
+    {
+      "query": "path:\"06 IDEs\" OR path:\"07 Instruction files\"",
+      "color": {
+        "a": 1,
+        "rgb": 9329589
+      }
+    },
+    {
+      "query": "path:\"08 Security\"",
+      "color": {
+        "a": 1,
+        "rgb": 13124668
+      }
+    },
+    {
+      "query": "path:\"09 Deployment\" OR path:\"10 Tips\" OR path:\"12 Project\"",
+      "color": {
+        "a": 1,
+        "rgb": 3055195
+      }
+    },
+    {
+      "query": "path:\"11 Tools\"",
+      "color": {
+        "a": 1,
+        "rgb": 10134950
+      }
+    },
+    {
+      "query": "path:\"99 Sources\"",
+      "color": {
+        "a": 1,
+        "rgb": 5990256
+      }
+    },
+    {
+      "query": "path:\"00 Index\" OR file:Home",
+      "color": {
+        "a": 1,
+        "rgb": 15420
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1.1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": false,
+  "centerStrength": 0.5,
+  "repelStrength": 12,
+  "linkStrength": 1,
+  "linkDistance": 180,
+  "scale": 0.34139086081080083,
+  "close": false
+}

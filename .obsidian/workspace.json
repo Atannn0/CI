@@ -1,0 +1,219 @@
+{
+  "main": {
+    "id": "54f1d2a07d02215d",
+    "type": "split",
+    "children": [
+      {
+        "id": "0175aa756c6563d7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0d2418fd8c71a15a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "07 Instruction files/AGENTS.md.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "AGENTS.md"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "88540b787c517206",
+    "type": "split",
+    "children": [
+      {
+        "id": "488e989d5622ed09",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e2bb9ff4d7d72f86",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "08ca31e6a7633579",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "61d2508e4bafb6ab",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f32ef2737cb22553",
+    "type": "split",
+    "children": [
+      {
+        "id": "088ccf1c81651599",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "154c68c2fbb3aa10",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "07f3ea3258cec3a7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "694949ff94fc88b3",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "ccfbdf092f97cadb",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "4a4df9840a373a15",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "e2bb9ff4d7d72f86",
+  "lastOpenFiles": [
+    "07 Instruction files/SKILL.md.md",
+    "07 Instruction files/Other instruction files.md",
+    "07 Instruction files/Instruction files overview.md",
+    "07 Instruction files/CLAUDE.md.md",
+    "07 Instruction files/AGENTS.md.md",
+    "00 Index/MOC Build.md",
+    "11 Tools/Tools - Agent frameworks and SDKs.md",
+    "MAS knowledge map.canvas",
+    "Pasted image 20261113090331.png",
+    "99 Sources/Bibliography.md",
+    "12 Project/Course project guide.md",
+    "99 Sources/items/S50 meta2025rule.md",
+    "10 Tips/Tips and tricks 2026.md",
+    "09 Deployment/Deployment checklist.md",
+    "07 Instruction files/Template - AGENTS.md.md",
+    "06 IDEs/Agentic IDEs and coding agents.md",
+    "05 Build/Prompting subagents.md",
+    "05 Build/Lab A - no-code paper MAS.md",
+    "05 Build/Build a MAS from scratch.md",
+    "04 Harness/What is a harness.md",
+    "04 Harness/Context engineering.md",
+    "04 Harness/Harness components.md",
+    "03 Frameworks/Vercel AI SDK.md",
+    "03 Frameworks/Mastra.md",
+    "03 Frameworks/LangGraph.md",
+    "03 Frameworks/CrewAI.md",
+    "01 Concepts/MAS relationships and topologies.md",
+    "01 Concepts/What is an agent.md"
+  ]
+}
