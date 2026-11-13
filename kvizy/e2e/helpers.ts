@@ -59,3 +59,19 @@ export async function openCreateQuiz(page: Page) {
   await page.getByTestId("add-menu").click();
   await page.getByRole("menuitem", { name: /Vytvořit kvíz|Create quiz/ }).click();
 }
+
+/** Toggle a catalog language chip, using Other language when the chip is collapsed. */
+export async function toggleCatalogLanguage(page: Page, label: string | RegExp) {
+  const region = page.getByRole("region", { name: /Filtry|Filters/ });
+  const chip = region.getByRole("button", { name: label, exact: typeof label === "string" });
+  if ((await chip.count()) > 0) {
+    await chip.click();
+    return;
+  }
+  await page.getByTestId("other-language").click();
+  const picker = page.getByRole("dialog");
+  const query = typeof label === "string" ? label.slice(0, 4) : "lang";
+  await picker.getByTestId("other-language-search").fill(query);
+  await picker.getByTestId("other-language-list").getByRole("button", { name: label }).click();
+  await picker.getByRole("button", { name: /Zrušit|Cancel/ }).click();
+}

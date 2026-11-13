@@ -54,6 +54,16 @@ export async function POST(request: Request) {
   try {
     const origin = await requestOrigin(request);
     const result = await createCustomQuiz(parsed.value, origin);
+    if (!result.ok) {
+      return Response.json(
+        {
+          error: "validation",
+          message: locale === "en" ? "An image is missing or invalid." : "Obrázek chybí nebo je neplatný.",
+          fields: { detail: locale === "en" ? "Re-upload the images." : "Nahraj obrázky znovu." },
+        },
+        { status: 422 },
+      );
+    }
     return Response.json({ quiz: result.quiz }, { status: 201 });
   } catch {
     return safeServerError("Uložení se nepovedlo. Zkus to znovu.");

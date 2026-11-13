@@ -2799,5 +2799,246 @@
       "result": "ověřeno subagentem",
       "checked_at": "2026-11-13"
     }
+  },
+  {
+    "title": "Test 16 types de personnalité",
+    "url": "https://prismatest.net/fr/tests/personality-test/",
+    "language": "fr",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description_cs": "Francouzský test 48 výroků určí čtyřpísmenný typ osobnosti.",
+    "description_en": "A French 48-statement test finds your four-letter personality type.",
+    "source": "PrismaTest",
+    "description": "Francouzský test 48 výroků určí čtyřpísmenný typ osobnosti.",
+    "migration": "011_seed_da_fr_it",
+    "verification": {
+      "collector": "fr-collector",
+      "result": "ověřeno (HTTP 200 + jazyk otázek)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Quiz de culture générale",
+    "url": "https://prismatest.net/fr/trivia/general-knowledge-quiz/",
+    "language": "fr",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "trivia",
+    "description_cs": "Dvacet francouzských otázek z vědy, historie a kultury.",
+    "description_en": "Twenty French general-knowledge questions with explanations.",
+    "source": "PrismaTest",
+    "description": "Dvacet francouzských otázek z vědy, historie a kultury.",
+    "migration": "011_seed_da_fr_it",
+    "verification": {
+      "collector": "fr-collector",
+      "result": "ověřeno (HTTP 200 + jazyk otázek)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Test de logique",
+    "url": "https://prismatest.net/fr/trivia/logic-test/",
+    "language": "fr",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": "logika",
+    "description_cs": "Dvanáct francouzských logických hádanek s vysvětlením.",
+    "description_en": "Twelve French logic puzzles with worked solutions.",
+    "source": "PrismaTest",
+    "description": "Dvanáct francouzských logických hádanek s vysvětlením.",
+    "migration": "011_seed_da_fr_it",
+    "verification": {
+      "collector": "fr-collector",
+      "result": "ověřeno (HTTP 200 + jazyk otázek)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Quiz de géographie",
+    "url": "https://prismatest.net/fr/trivia/geography-quiz/",
+    "language": "fr",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "geografie",
+    "description_cs": "Patnáct francouzských geografických otázek o světě.",
+    "description_en": "Fifteen French geography questions about the world.",
+    "source": "PrismaTest",
+    "description": "Patnáct francouzských geografických otázek o světě.",
+    "migration": "011_seed_da_fr_it",
+    "verification": {
+      "collector": "fr-collector",
+      "result": "ověřeno (HTTP 200 + jazyk otázek)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Test dei 16 Tipi di Personalità",
+    "url": "https://prismatest.net/it/tests/personality-test/",
+    "language": "it",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description_cs": "Italský test 48 výroků určí čtyřpísmenný typ osobnosti.",
+    "description_en": "An Italian 48-statement test finds your four-letter personality type.",
+    "source": "PrismaTest",
+    "description": "Italský test 48 výroků určí čtyřpísmenný typ osobnosti.",
+    "migration": "011_seed_da_fr_it",
+    "verification": {
+      "collector": "it-collector",
+      "result": "ověřeno (HTTP 200 + jazyk otázek)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Quiz di cultura generale",
+    "url": "https://prismatest.net/it/trivia/general-knowledge-quiz/",
+    "language": "it",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "trivia",
+    "description_cs": "Dvacet italských otázek z vědy, historie a kultury.",
+    "description_en": "Twenty Italian general-knowledge questions with explanations.",
+    "source": "PrismaTest",
+    "description": "Dvacet italských otázek z vědy, historie a kultury.",
+    "migration": "011_seed_da_fr_it",
+    "verification": {
+      "collector": "it-collector",
+      "result": "ověřeno (HTTP 200 + jazyk otázek)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Test di Logica",
+    "url": "https://prismatest.net/it/trivia/logic-test/",
+    "language": "it",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": "logika",
+    "description_cs": "Dvanáct italských logických hádanek s řešením.",
+    "description_en": "Twelve Italian logic puzzles with solutions.",
+    "source": "PrismaTest",
+    "description": "Dvanáct italských logických hádanek s řešením.",
+    "migration": "011_seed_da_fr_it",
+    "verification": {
+      "collector": "it-collector",
+      "result": "ověřeno (HTTP 200 + jazyk otázek)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Quiz di geografia",
+    "url": "https://prismatest.net/it/trivia/geography-quiz/",
+    "language": "it",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "geografie",
+    "description_cs": "Patnáct italských geografických otázek o světě.",
+    "description_en": "Fifteen Italian geography questions about the world.",
+    "source": "PrismaTest",
+    "description": "Patnáct italských geografických otázek o světě.",
+    "migration": "011_seed_da_fr_it",
+    "verification": {
+      "collector": "it-collector",
+      "result": "ověřeno (HTTP 200 + jazyk otázek)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Gratis personlighedstest (41Q)",
+    "url": "https://dk.41q.com/",
+    "language": "da",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description_cs": "Dánský 41položkový osobnostní test bez registrace.",
+    "description_en": "A Danish 41-item personality test with no sign-up.",
+    "source": "41Q",
+    "description": "Dánský 41položkový osobnostní test bez registrace.",
+    "migration": "011_seed_da_fr_it",
+    "verification": {
+      "collector": "da-collector",
+      "result": "ověřeno (HTTP 200 + jazyk otázek)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Personlighedstest (farvearketyper)",
+    "url": "https://www.colorpersonalitytest.org/da/personlighedstest/",
+    "language": "da",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description_cs": "Patnáct dánských situačních otázek určí osobnostní archetyp.",
+    "description_en": "Fifteen Danish situational questions reveal a personality archetype.",
+    "source": "ColorPersonalityTest",
+    "description": "Patnáct dánských situačních otázek určí osobnostní archetyp.",
+    "migration": "011_seed_da_fr_it",
+    "verification": {
+      "collector": "da-collector",
+      "result": "ověřeno (HTTP 200 + jazyk otázek)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Hvilken type humor har jeg?",
+    "url": "https://www.quizmig.dk/tests/hvilken-type-humor-har-jeg-tag-humor-testen-og-find-ud-af-det-her",
+    "language": "da",
+    "format": "text",
+    "types": [
+      "personality",
+      "preference"
+    ],
+    "topic": "humor",
+    "description_cs": "Deset dánských otázek o tom, jaký typ humoru máš.",
+    "description_en": "Ten Danish questions about your sense of humour.",
+    "source": "Quizmig",
+    "description": "Deset dánských otázek o tom, jaký typ humoru máš.",
+    "migration": "011_seed_da_fr_it",
+    "verification": {
+      "collector": "da-collector",
+      "result": "ověřeno (HTTP 200 + jazyk otázek)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Er jeg moden?",
+    "url": "https://www.quizmig.dk/tests/er-jeg-moden-tag-modenheds-testen-her-og-faa-svar-nu",
+    "language": "da",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description_cs": "Deset dánských otázek o zralosti a každodenním chování.",
+    "description_en": "Ten Danish questions about maturity and everyday behaviour.",
+    "source": "Quizmig",
+    "description": "Deset dánských otázek o zralosti a každodenním chování.",
+    "migration": "011_seed_da_fr_it",
+    "verification": {
+      "collector": "da-collector",
+      "result": "ověřeno (HTTP 200 + jazyk otázek)",
+      "checked_at": "2026-11-13"
+    }
   }
 ]
