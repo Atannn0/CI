@@ -53,10 +53,10 @@ test.describe("počítač", () => {
     await page.goto("/");
     const groups = await groupBoxes(page);
     expect(groups).toHaveLength(3);
-    for (const g of groups) {
-      expect(Math.abs(g.title.y - groups[0].title.y)).toBeLessThanOrEqual(1);
-      expect(Math.abs(g.chips[0].y - groups[0].chips[0].y)).toBeLessThanOrEqual(1);
-    }
+    // Format + type share the first row; language sits on its own full-width row below.
+    expect(Math.abs(groups[0].title.y - groups[1].title.y)).toBeLessThanOrEqual(1);
+    expect(Math.abs(groups[0].chips[0].y - groups[1].chips[0].y)).toBeLessThanOrEqual(1);
+    expect(groups[2].group.y).toBeGreaterThanOrEqual(groups[0].group.y + groups[0].group.height - 1);
     const heights = new Set((await boxes(page)).map((b) => Math.round(b.height)));
     expect([...heights]).toHaveLength(1);
 

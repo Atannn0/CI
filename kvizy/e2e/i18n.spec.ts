@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { cards, pickLanguage, stubExternalSites, uniqueSuffix } from "./helpers";
+import { cards, openAddLink, pickLanguage, stubExternalSites, uniqueSuffix } from "./helpers";
 
 test.beforeEach(async ({ context, baseURL }) => {
   await stubExternalSites(context, baseURL!);
@@ -8,7 +8,7 @@ test.beforeEach(async ({ context, baseURL }) => {
 test("přepínač CZ/EN přeloží UI a zachová filtry i rozepsaný formulář", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("region", { name: "Filtry" }).getByRole("button", { name: "Obrázkový" }).click();
-  await page.getByRole("button", { name: "Přidat kvíz" }).click();
+  await openAddLink(page);
   const dialog = page.getByRole("dialog");
   const draftTitle = `Draft ${uniqueSuffix()}`;
   await dialog.getByLabel(/Název/).fill(draftTitle);
@@ -18,7 +18,7 @@ test("přepínač CZ/EN přeloží UI a zachová filtry i rozepsaný formulář"
   await expect(dialog.getByLabel(/Title/)).toHaveValue(draftTitle);
   await page.keyboard.press("Escape");
 
-  await expect(page.getByRole("button", { name: "Add quiz" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Add to catalog" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Find a quiz for your crew" })).toBeVisible();
   await expect(page.getByRole("region", { name: "Filters" }).getByRole("button", { name: "Image" })).toHaveAttribute(
     "aria-pressed",
@@ -26,7 +26,7 @@ test("přepínač CZ/EN přeloží UI a zachová filtry i rozepsaný formulář"
   );
 
   await page.reload();
-  await expect(page.getByRole("button", { name: "Add quiz" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Add to catalog" })).toBeVisible();
 });
 
 test("vlajka nahlášení otevře dialog kliknutím i klávesnicí", async ({ page }) => {
@@ -48,7 +48,7 @@ test("vlajka nahlášení otevře dialog kliknutím i klávesnicí", async ({ pa
 test("přidání kvízu v němčině přes vyhledatelný seznam jazyků", async ({ page }) => {
   const tag = uniqueSuffix();
   await page.goto("/");
-  await page.getByRole("button", { name: "Přidat kvíz" }).click();
+  await openAddLink(page);
   const dialog = page.getByRole("dialog");
   await dialog.getByLabel(/Název/).fill(`Německý kvíz ${tag}`);
   await dialog.getByLabel(/Přímý odkaz/).fill(`https://example.com/de-quiz-${tag}`);
@@ -67,5 +67,5 @@ test("locale switch layout na mobilu", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByTestId("locale-switch")).toBeVisible();
   await page.getByTestId("locale-switch").getByRole("button", { name: "EN" }).click();
-  await expect(page.getByRole("button", { name: "Add quiz" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Add to catalog" })).toBeVisible();
 });

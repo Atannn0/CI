@@ -70,6 +70,8 @@ if (mergeSeed) {
       types: q.types,
       topic: q.topic ?? null,
       description: q.description ?? null,
+      description_cs: q.description_cs ?? q.description ?? `Kvíz o: ${q.title}`,
+      description_en: q.description_en ?? `Quiz about: ${q.title}`,
       source: q.source ?? null,
       migration: q.migration ?? "006_seed_idrlabs_ja_zh",
       verification: q.verification ?? { result: "import", checked_at: new Date().toISOString().slice(0, 10) },
@@ -103,12 +105,26 @@ try {
   let skipped = 0;
   for (const q of incoming) {
     const key = urlKey(q.url);
+    const descriptionCs = q.description_cs ?? q.description ?? `Kvíz o: ${q.title}`;
+    const descriptionEn = q.description_en ?? `Quiz about: ${q.title}`;
     const result = await client.query(
-      `insert into quizzes (title, url, url_key, description, language, format, types, topic, verified, is_collection, source)
-       values ($1,$2,$3,$4,$5,$6,$7,$8,true,false,$9)
+      `insert into quizzes (title, url, url_key, description, description_cs, description_en, language, format, types, topic, verified, is_collection, source)
+       values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,true,false,$11)
        on conflict (url_key) do nothing
        returning id`,
-      [q.title, q.url, key, q.description ?? null, q.language, q.format, q.types, q.topic ?? null, q.source ?? null],
+      [
+        q.title,
+        q.url,
+        key,
+        q.description ?? null,
+        descriptionCs,
+        descriptionEn,
+        q.language,
+        q.format,
+        q.types,
+        q.topic ?? null,
+        q.source ?? null,
+      ],
     );
     if (result.rowCount) inserted += 1;
     else skipped += 1;

@@ -47,3 +47,15 @@ export async function pickLanguage(dialog: Locator, query: string, label: RegExp
   await dialog.getByTestId("language-combobox-search").fill(query);
   await dialog.getByTestId("language-combobox-list").getByRole("button", { name: label }).click();
 }
+
+/** Open the catalog add menu and choose "Přidat odkaz" / "Add link". */
+export async function openAddLink(page: Page) {
+  await page.getByTestId("add-menu").click();
+  await page.getByRole("menuitem", { name: /Přidat odkaz|Add link/ }).click();
+}
+
+/** Open the catalog add menu and choose "Vytvořit kvíz" / "Create quiz". */
+export async function openCreateQuiz(page: Page) {
+  await page.getByTestId("add-menu").click();
+  await page.getByRole("menuitem", { name: /Vytvořit kvíz|Create quiz/ }).click();
+}

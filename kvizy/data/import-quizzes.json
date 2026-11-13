@@ -15,7 +15,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Anglický Big Five test s odkazy na sociální výzkum.",
+    "description_en": "A EN quiz (psychologie): Big Five Personality Test"
   },
   {
     "title": "Big Five Personality Test (30 Subscales)",
@@ -33,7 +35,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Podrobnější Big Five se skóre na 30 podškálách.",
+    "description_en": "A EN quiz (psychologie): Big Five Personality Test (30 Subscales)"
   },
   {
     "title": "HEXACO Personality Test",
@@ -51,7 +55,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Šestifaktorový HEXACO test včetně Honesty-Humility.",
+    "description_en": "A EN quiz (psychologie): HEXACO Personality Test"
   },
   {
     "title": "Jung Type Test",
@@ -69,7 +75,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Moderní Jungův typový test se čtyřmi dimenzemi.",
+    "description_en": "A EN quiz (psychologie): Jung Type Test"
   },
   {
     "title": "Personality Test (Jung / Briggs-Myers)",
@@ -87,7 +95,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "44položkový test čtyřpísmenného Jung/Myers-Briggs typu.",
+    "description_en": "44položkový test čtyřpísmenného Jung/Myers-Briggs typu."
   },
   {
     "title": "Cognitive Functions Test",
@@ -105,7 +115,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Osm jungovských kognitivních funkcí.",
+    "description_en": "A EN quiz (psychologie): Cognitive Functions Test"
   },
   {
     "title": "Personality Style Test",
@@ -123,7 +135,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Patnáct dynamických stylů osobnosti.",
+    "description_en": "A EN quiz (psychologie): Personality Style Test"
   },
   {
     "title": "Dark Triad Test",
@@ -141,7 +155,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Narcismus, makiavelismus a psychopatie.",
+    "description_en": "Narcismus, makiavelismus a psychopatie."
   },
   {
     "title": "Light/Dark Triad Test",
@@ -159,7 +175,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Light Triad a Dark Triad v jednom profilu.",
+    "description_en": "Light Triad a Dark Triad v jednom profilu."
   },
   {
     "title": "Dark Core Personality Test",
@@ -177,7 +195,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Společné dark core temných rysů.",
+    "description_en": "A EN quiz (psychologie): Dark Core Personality Test"
   },
   {
     "title": "Difficult Person Test",
@@ -195,7 +215,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Sedm dimenzí antagonismu — jak těžké je s tebou vyjít.",
+    "description_en": "A EN quiz (psychologie): Difficult Person Test"
   },
   {
     "title": "Narcissism Test (NPI)",
@@ -213,7 +235,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Klasický Narcissistic Personality Inventory.",
+    "description_en": "A EN quiz (psychologie): Narcissism Test (NPI)"
   },
   {
     "title": "Attachment Style Test",
@@ -231,7 +255,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Styl citové vazby (secure/anxious/avoidant/fearful).",
+    "description_en": "A EN quiz (vztahy): Attachment Style Test"
   },
   {
     "title": "Open Enneagram Test",
@@ -249,7 +275,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Datově podložený Enneagram test.",
+    "description_en": "A EN quiz (psychologie): Open Enneagram Test"
   },
   {
     "title": "DISC Test (Classic Version)",
@@ -267,7 +295,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Klasický DISC profil.",
+    "description_en": "A EN quiz (psychologie): DISC Test (Classic Version)"
   },
   {
     "title": "Team Role Test",
@@ -286,7 +316,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Týmové role, ve kterých nejlépe funguješ.",
+    "description_en": "A EN quiz (tým): Team Role Test"
   },
   {
     "title": "Grit Test",
@@ -304,7 +336,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Vytrvalost a vášeň pro dlouhodobé cíle.",
+    "description_en": "A EN quiz (psychologie): Grit Test"
   },
   {
     "title": "Highly Sensitive Person (HSP) Test",
@@ -322,7 +356,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Skríning sensory-processing sensitivity.",
+    "description_en": "A EN quiz (psychologie): Highly Sensitive Person (HSP) Test"
   },
   {
     "title": "EQ Test",
@@ -340,7 +376,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Osobnostní EQ napříč empatií a regulací emocí.",
+    "description_en": "A EN quiz (psychologie): EQ Test"
   },
   {
     "title": "Multiple Intelligences Test",
@@ -359,7 +397,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Devět typů inteligence podle Gardnera.",
+    "description_en": "A EN quiz (psychologie): Multiple Intelligences Test"
   },
   {
     "title": "Political Coordinates Test",
@@ -377,7 +417,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Politické souřadnice Left–Right × Communitarian–Liberal.",
+    "description_en": "A EN quiz (politika): Political Coordinates Test"
   },
   {
     "title": "8 Values Political Test",
@@ -395,7 +437,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Osm hodnotových os politických preferencí.",
+    "description_en": "A EN quiz (politika): 8 Values Political Test"
   },
   {
     "title": "Moral Foundations Test",
@@ -413,7 +457,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Šest morálních základů (Care, Fairness, Loyalty…).",
+    "description_en": "A EN quiz (morálka): Moral Foundations Test"
   },
   {
     "title": "Love Styles Test",
@@ -432,7 +478,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Jak dáváš a přijímáš lásku napříč styly.",
+    "description_en": "A EN quiz (vztahy): Love Styles Test"
   },
   {
     "title": "Face Preference Test",
@@ -450,7 +498,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Volba vůdců podle tváří.",
+    "description_en": "A EN quiz (preference): Face Preference Test"
   },
   {
     "title": "Rorschach Test",
@@ -468,7 +518,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Projektivní inkoustové skvrny.",
+    "description_en": "A EN quiz (projektivní): Rorschach Test"
   },
   {
     "title": "IQ Test",
@@ -487,7 +539,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Krátký IQ test (SAPA/ICAR).",
+    "description_en": "A EN quiz (IQ): IQ Test"
   },
   {
     "title": "Matrices IQ Test",
@@ -505,7 +559,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Časovaný maticový IQ test.",
+    "description_en": "A EN quiz (IQ): Matrices IQ Test"
   },
   {
     "title": "Jungian Typology Test",
@@ -523,7 +579,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Vědomostní kvíz o Jungově typologii.",
+    "description_en": "A EN quiz (psychologie): Jungian Typology Test"
   },
   {
     "title": "Pooh Pathology Test",
@@ -541,7 +599,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Zábavný match k postavám Medvídka Pú.",
+    "description_en": "A EN quiz (zábava): Pooh Pathology Test"
   },
   {
     "title": "Psychometric Hogwarts House Test",
@@ -559,7 +619,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Bradavice přes Big Five, HEXACO a Dark Triad.",
+    "description_en": "A EN quiz (filmy): Psychometric Hogwarts House Test"
   },
   {
     "title": "Moral Alignment Test",
@@ -578,7 +640,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Devět D&D morálních alignmentů.",
+    "description_en": "A EN quiz (zábava): Moral Alignment Test"
   },
   {
     "title": "Psychometric Moral Alignment Test",
@@ -597,7 +661,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Alignment chart s Light/Dark Triad a Moral Foundations.",
+    "description_en": "Alignment chart s Light/Dark Triad a Moral Foundations."
   },
   {
     "title": "Murderous Villain Test",
@@ -615,7 +681,9 @@
       "collector": "idrlabs-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Srovnání s historickými „villain“ postavami.",
+    "description_en": "A EN quiz (zábava): Murderous Villain Test"
   },
   {
     "title": "16タイプ性格診断",
@@ -633,7 +701,9 @@
       "collector": "ja-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "28 japonských otázek k 16 typům osobnosti; zdarma bez registrace.",
+    "description_en": "28 japonských otázek k 16 typům osobnosti; zdarma bez registrace."
   },
   {
     "title": "ソシオニクス診断テスト",
@@ -651,7 +721,9 @@
       "collector": "ja-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "60 japonských posuvníkových otázek socionics diagnostiky.",
+    "description_en": "60 japonských posuvníkových otázek socionics diagnostiky."
   },
   {
     "title": "歴史出来事クイズ",
@@ -669,7 +741,9 @@
       "collector": "ja-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Trojvýběrové kvízy o klíčových historických událostech v japonštině.",
+    "description_en": "A quiz on dějiny: 歴史出来事クイズ"
   },
   {
     "title": "一般常識クイズ",
@@ -687,7 +761,9 @@
       "collector": "ja-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Stovky japonských otázek z obecného přehledu.",
+    "description_en": "A JA quiz (trivia): 一般常識クイズ"
   },
   {
     "title": "なぞなぞ",
@@ -705,7 +781,9 @@
       "collector": "ja-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Kolo japonských hádanek se čtyřmi možnostmi.",
+    "description_en": "A JA quiz (hádanky): なぞなぞ"
   },
   {
     "title": "愛着スタイル診断",
@@ -724,7 +802,9 @@
       "collector": "ja-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "12 japonských otázek o stylu citové vazby.",
+    "description_en": "12 japonských otázek o stylu citové vazby."
   },
   {
     "title": "免费性格测试：41个问题",
@@ -742,7 +822,9 @@
       "collector": "zh-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "41 čínských otázek se dvěma volbami (Jung/MBTI-style); zdarma.",
+    "description_en": "41 čínských otázek se dvěma volbami (Jung/MBTI-style); zdarma."
   },
   {
     "title": "随机知识问答",
@@ -760,7 +842,9 @@
       "collector": "zh-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Čínský trivia kvíz (historie, geografie, věda).",
+    "description_en": "A ZH quiz (trivia): 随机知识问答"
   },
   {
     "title": "二选一游戏",
@@ -778,7 +862,9 @@
       "collector": "zh-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "Deset čínských this-or-that otázek z denních preferencí.",
+    "description_en": "A ZH quiz (preference): 二选一游戏"
   },
   {
     "title": "邏輯推理小測驗",
@@ -796,7 +882,9 @@
       "collector": "zh-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "10 argumentů — rozhodnout valid/invalid; tradiční čínština (HKU).",
+    "description_en": "10 argumentů — rozhodnout valid/invalid; tradiční čínština (HKU)."
   },
   {
     "title": "MBTI 测试（28题）",
@@ -814,7 +902,9 @@
       "collector": "zh-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
       "checked_at": "2026-11-13"
-    }
+    },
+    "description_cs": "28 čínských dichotomických otázek; výsledek lokálně bez účtu.",
+    "description_en": "A quiz on osobnost: MBTI 测试（28题）"
   },
   {
     "title": "你是哪种旅行搭子？",
@@ -832,6 +922,330 @@
     "verification": {
       "collector": "zh-subagent",
       "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    },
+    "description_cs": "16 situačních otázek o stylu cestování; čínsky, zdarma.",
+    "description_en": "A quiz on cestování: 你是哪种旅行搭子？"
+  },
+  {
+    "title": "16-Persönlichkeiten-Test",
+    "url": "https://prismatest.net/de/tests/personality-test/",
+    "language": "de",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description_cs": "Německý test 48 výroků určí čtyřpísmenný typ a skóre na čtyřech dimenzích.",
+    "description_en": "A German 48-statement test finds your four-letter type and scores on four dimensions.",
+    "source": "PrismaTest",
+    "description": "Německý test 48 výroků určí čtyřpísmenný typ a skóre na čtyřech dimenzích.",
+    "migration": "008_seed_de_ko_sv_es",
+    "verification": {
+      "collector": "de-subagent",
+      "result": "ověřeno subagentem",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Allgemeinwissen-Quiz",
+    "url": "https://prismatest.net/de/trivia/general-knowledge-quiz/",
+    "language": "de",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "trivia",
+    "description_cs": "Dvacet náhodných německých otázek z vědy, historie, geografie a kultury.",
+    "description_en": "Twenty random German trivia questions on science, history, geography, and culture.",
+    "source": "PrismaTest",
+    "description": "Dvacet náhodných německých otázek z vědy, historie, geografie a kultury.",
+    "migration": "008_seed_de_ko_sv_es",
+    "verification": {
+      "collector": "de-subagent",
+      "result": "ověřeno subagentem",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Erdkunde-Quiz",
+    "url": "https://prismatest.net/de/trivia/geography-quiz/",
+    "language": "de",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "geografie",
+    "description_cs": "Patnáct německých geografických otázek o zemích a hlavních městech.",
+    "description_en": "Fifteen German geography questions on countries and capitals.",
+    "source": "PrismaTest",
+    "description": "Patnáct německých geografických otázek o zemích a hlavních městech.",
+    "migration": "008_seed_de_ko_sv_es",
+    "verification": {
+      "collector": "de-subagent",
+      "result": "ověřeno subagentem",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Logiktest",
+    "url": "https://prismatest.net/de/trivia/logic-test/",
+    "language": "de",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": "logika",
+    "description_cs": "Dvanáct německých logických hádanek s řešením.",
+    "description_en": "Twelve German logic puzzles with solutions.",
+    "source": "PrismaTest",
+    "description": "Dvanáct německých logických hádanek s řešením.",
+    "migration": "008_seed_de_ko_sv_es",
+    "verification": {
+      "collector": "de-subagent",
+      "result": "ověřeno subagentem",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "16가지 성격 유형 테스트",
+    "url": "https://quizwonders.com/quiz/sixteen-types/",
+    "language": "ko",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description_cs": "Korejský 32položkový test odhalí typ a poměry na čtyřech dimenzích.",
+    "description_en": "A Korean 32-item test yields a type and ratios on four preference dimensions.",
+    "source": "QuizWonders",
+    "description": "Korejský 32položkový test odhalí typ a poměry na čtyřech dimenzích.",
+    "migration": "008_seed_de_ko_sv_es",
+    "verification": {
+      "collector": "ko-subagent",
+      "result": "ověřeno subagentem",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "동물 상식 퀴즈",
+    "url": "https://quizwonders.com/quiz/animal-trivia/",
+    "language": "ko",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "trivia",
+    "description_cs": "Deset korejských otázek o zvířatech s okamžitým vysvětlením.",
+    "description_en": "Ten Korean animal-trivia questions with instant explanations.",
+    "source": "QuizWonders",
+    "description": "Deset korejských otázek o zvířatech s okamžitým vysvětlením.",
+    "migration": "008_seed_de_ko_sv_es",
+    "verification": {
+      "collector": "ko-subagent",
+      "result": "ověřeno subagentem",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "나의 여행 스타일 테스트",
+    "url": "https://quizwonders.com/quiz/travel-style/",
+    "language": "ko",
+    "format": "text",
+    "types": [
+      "preference",
+      "personality"
+    ],
+    "topic": "cestování",
+    "description_cs": "Osm korejských cestovatelských situací určí styl cestování.",
+    "description_en": "Eight Korean travel scenarios map your travel style.",
+    "source": "QuizWonders",
+    "description": "Osm korejských cestovatelských situací určí styl cestování.",
+    "migration": "008_seed_de_ko_sv_es",
+    "verification": {
+      "collector": "ko-subagent",
+      "result": "ověřeno subagentem",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "일상 속 과학 상식 퀴즈",
+    "url": "https://quizwonders.com/quiz/science-trivia/",
+    "language": "ko",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "věda",
+    "description_cs": "Deset korejských otázek z každodenní vědy.",
+    "description_en": "Ten Korean everyday-science questions with short explanations.",
+    "source": "QuizWonders",
+    "description": "Deset korejských otázek z každodenní vědy.",
+    "migration": "008_seed_de_ko_sv_es",
+    "verification": {
+      "collector": "ko-subagent",
+      "result": "ověřeno subagentem",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Test för 16 personlighetstyper",
+    "url": "https://prismatest.net/sv/tests/personality-test/",
+    "language": "sv",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description_cs": "Švédský test 48 výroků určí čtyřpísmenný typ osobnosti.",
+    "description_en": "A Swedish 48-statement test finds your four-letter personality type.",
+    "source": "PrismaTest",
+    "description": "Švédský test 48 výroků určí čtyřpísmenný typ osobnosti.",
+    "migration": "008_seed_de_ko_sv_es",
+    "verification": {
+      "collector": "sv-subagent",
+      "result": "ověřeno subagentem",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Allmänbildningstest",
+    "url": "https://prismatest.net/sv/trivia/general-knowledge-quiz/",
+    "language": "sv",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "trivia",
+    "description_cs": "Dvacet švédských otázek z vědy, historie a kultury.",
+    "description_en": "Twenty Swedish general-knowledge questions with explanations.",
+    "source": "PrismaTest",
+    "description": "Dvacet švédských otázek z vědy, historie a kultury.",
+    "migration": "008_seed_de_ko_sv_es",
+    "verification": {
+      "collector": "sv-subagent",
+      "result": "ověřeno subagentem",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Logiktest (sv)",
+    "url": "https://prismatest.net/sv/trivia/logic-test/",
+    "language": "sv",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": "logika",
+    "description_cs": "Dvanáct švédských logických hádanek s vysvětlením.",
+    "description_en": "Twelve Swedish logic puzzles with worked solutions.",
+    "source": "PrismaTest",
+    "description": "Dvanáct švédských logických hádanek s vysvětlením.",
+    "migration": "008_seed_de_ko_sv_es",
+    "verification": {
+      "collector": "sv-subagent",
+      "result": "ověřeno subagentem",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Frågesport allmänbildning",
+    "url": "https://frgesport.se/quiz/allmanbildning/",
+    "language": "sv",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "trivia",
+    "description_cs": "Dvacet švédských otázek s třemi možnostmi a facitem.",
+    "description_en": "Twenty Swedish multiple-choice questions with answers on the page.",
+    "source": "Frågesport.se",
+    "description": "Dvacet švédských otázek s třemi možnostmi a facitem.",
+    "migration": "008_seed_de_ko_sv_es",
+    "verification": {
+      "collector": "sv-subagent",
+      "result": "ověřeno subagentem",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Test de personalidad Big Five (IPIP 50)",
+    "url": "https://cv.cm/es/tests/big-five/",
+    "language": "es",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description_cs": "Padesát španělských výroků IPIP změří pět velkých osobnostních rysů.",
+    "description_en": "Fifty Spanish IPIP statements score the five Big Five traits.",
+    "source": "cv.cm",
+    "description": "Padesát španělských výroků IPIP změří pět velkých osobnostních rysů.",
+    "migration": "008_seed_de_ko_sv_es",
+    "verification": {
+      "collector": "es-subagent",
+      "result": "ověřeno subagentem",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Test de los 16 tipos de personalidad",
+    "url": "https://cv.cm/es/tests/mbti/",
+    "language": "es",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description_cs": "Třicet dva španělských výroků určí čtyřpísmenný typ osobnosti.",
+    "description_en": "Thirty-two Spanish statements yield a four-letter personality type.",
+    "source": "cv.cm",
+    "description": "Třicet dva španělských výroků určí čtyřpísmenný typ osobnosti.",
+    "migration": "008_seed_de_ko_sv_es",
+    "verification": {
+      "collector": "es-subagent",
+      "result": "ověřeno subagentem",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Test de introvertido o extrovertido",
+    "url": "https://cv.cm/es/tests/introvert/",
+    "language": "es",
+    "format": "text",
+    "types": [
+      "personality",
+      "preference"
+    ],
+    "topic": "osobnost",
+    "description_cs": "Dvacet španělských položek IPIP na škále introverze–extroverze.",
+    "description_en": "Twenty Spanish IPIP items on the introversion–extraversion scale.",
+    "source": "cv.cm",
+    "description": "Dvacet španělských položek IPIP na škále introverze–extroverze.",
+    "migration": "008_seed_de_ko_sv_es",
+    "verification": {
+      "collector": "es-subagent",
+      "result": "ověřeno subagentem",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Preguntas de cultura general",
+    "url": "https://qimetria.com/es/preguntas-de-cultura-general",
+    "language": "es",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "trivia",
+    "description_cs": "Dvacet španělských otázek z historie, geografie a vědy.",
+    "description_en": "Twenty Spanish general-culture questions across several topics.",
+    "source": "Qimetria",
+    "description": "Dvacet španělských otázek z historie, geografie a vědy.",
+    "migration": "008_seed_de_ko_sv_es",
+    "verification": {
+      "collector": "es-subagent",
+      "result": "ověřeno subagentem",
       "checked_at": "2026-11-13"
     }
   }

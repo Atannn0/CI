@@ -1,14 +1,15 @@
 import { expect, firefox, test } from "@playwright/test";
-import { cards, expectCount, filterButton, pickLanguage, search, stubExternalSites, uniqueSuffix } from "./helpers";
+import { cards, expectCount, filterButton, openAddLink, pickLanguage, search, stubExternalSites, uniqueSuffix } from "./helpers";
 
 test.beforeEach(async ({ context, baseURL }) => {
   await stubExternalSites(context, baseURL!);
 });
 
-test("domovská stránka má hledání, Přidat kvíz, Populární kvízy a reálný katalog v CZ i EN", async ({ page, request }) => {
+test("domovská stránka má hledání, Přidat do katalogu, Populární kvízy a reálný katalog v CZ i EN", async ({ page, request }) => {
   await page.goto("/");
   await expect(page.getByLabel("Najdi kvíz pro svou partu")).toBeVisible();
-  await expect(page.getByRole("button", { name: "Přidat kvíz" })).toBeVisible();
+  await expect(page.getByTestId("add-menu")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Přidat do katalogu" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Populární kvízy" })).toBeVisible();
   await expect(page.getByRole("button", { name: /Obrázkové kvízy/ })).toHaveCount(0);
   await expect(filterButton(page, "Obrázkový")).toBeVisible();
@@ -121,7 +122,7 @@ test("Otevřít kvíz otevře původní web v nové záložce a započítá klik
 
 test("formulář ověří povinná pole a odkaz http/https", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: "Přidat kvíz" }).click();
+  await openAddLink(page);
   const dialog = page.getByRole("dialog");
   await dialog.getByRole("button", { name: "Uložit kvíz" }).click();
   await expect(dialog.getByText("Vyplň název kvízu.")).toBeVisible();
@@ -143,7 +144,7 @@ test("odmítnutí duplicitního odkazu (i s jiným zápisem URL)", async ({ page
   variant.hash = "nahoru";
 
   await page.goto("/");
-  await page.getByRole("button", { name: "Přidat kvíz" }).click();
+  await openAddLink(page);
   const dialog = page.getByRole("dialog");
   await dialog.getByLabel("Název *").fill("Kopie existujícího kvízu");
   await dialog.getByLabel("Přímý odkaz *").fill(variant.toString());
@@ -178,7 +179,7 @@ test("kvíz přidaný v jednom prohlížeči (Chromium) je po obnovení vidět i
   const title = `Hádej písničku podle emoji ${tag}`;
 
   await page.goto("/");
-  await page.getByRole("button", { name: "Přidat kvíz" }).click();
+  await openAddLink(page);
   const dialog = page.getByRole("dialog");
   await dialog.getByLabel("Název *").fill(title);
   await dialog.getByLabel("Přímý odkaz *").fill(`https://example.org/emoji-kviz-${tag}`);

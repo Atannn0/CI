@@ -25,9 +25,11 @@ const buckets = ((globalThis as typeof globalThis & { __kvizyRate?: Map<string, 
   new Map<string, Bucket>());
 
 /** Fixed-window quotas for public write endpoints (per IP, per process instance). */
+const e2e = process.env.KVIZY_E2E === "1";
 export const RATE_LIMITS = {
-  create: { limit: 10, windowMs: 60_000 },
-  click: { limit: 60, windowMs: 60_000 },
+  // E2E suite creates many quizzes in one worker; keep production burst brake tight.
+  create: { limit: e2e ? 80 : 10, windowMs: 60_000 },
+  click: { limit: e2e ? 200 : 60, windowMs: 60_000 },
   report: { limit: 10, windowMs: 10 * 60_000 },
   admin: { limit: 20, windowMs: 60_000 },
 } as const;

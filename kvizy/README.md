@@ -1,4 +1,4 @@
-# Kvízy pro partu
+# Kvízovna
 
 Česká webová aplikace: katalog online kvízů, ve kterém parta rychle najde kvíz podle nálady. Next.js 16 + TypeScript + Tailwind + shadcn/ui, sdílená databáze Postgres (na Vercelu Neon, lokálně PGlite v paměti).
 
@@ -33,7 +33,7 @@ Repozitář je připravený: `vercel.json` (region Frankfurt, build jen při zm�
 ### Ověření živého webu
 - Otevři produkční adresu z **Domains** (např. `https://kvizy-….vercel.app`): domovská stránka ukáže „Všechny kvízy 63 kvízů“.
 - `https://<doména>/api/quizzes` vrátí JSON s 63 kvízy (31 `cs`, 32 `en`).
-- Přidej testovací kvíz (**Přidat kvíz**), obnov stránku a otevři web v jiném prohlížeči nebo na mobilu: kvíz najdeš hledáním.
+- Přidej testovací kvíz (**Přidat do katalogu → Přidat odkaz**), obnov stránku a otevři web v jiném prohlížeči nebo na mobilu: kvíz najdeš hledáním.
 - Klikni na **Otevřít kvíz**: otevře se nová záložka a po obnovení je kvíz v sekci **Populární kvízy**.
 - Zkus přidat stejný odkaz znovu: formulář ho odmítne.
 - Po dalším automatickém commitu vaultu se v **Deployments** objeví nasazení ve stavu **Canceled** s hláškou `No changes in kvizy/ …: skipping the build.`
