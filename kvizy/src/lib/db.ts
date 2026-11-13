@@ -1,21 +1,32 @@
 import "server-only";
-import { readdir, readFile } from "node:fs/promises";
-import { PGlite } from "@electric-sql/pglite";
+import type { PGlite } from "@electric-sql/pglite";
+import { attachDatabasePool } from "@vercel/functions";
 import pg from "pg";
+import { applyMigrations, pooledDatabaseUrl, readMigrations } from "./migrate-core.mjs";
 
-const databaseUrl = process.env.DATABASE_URL?.trim() ?? "";
+const databaseUrl = pooledDatabaseUrl();
 
-// Next.js may load this module once per route bundle; keep one connection per process
-// so pages and API routes share the same in-memory PGlite during local development.
+// Next.js may load this module once per route bundle; keep one pool per process so pages and
+// API routes share it (and, locally, share the same in-memory PGlite).
 const store = globalThis as typeof globalThis & {
   __kvizyPool?: pg.Pool;
+  __kvizyReady?: Promise<void>;
   __kvizyLocal?: Promise<PGlite>;
 };
 
 export async function sql<T = Record<string, unknown>>(text: string, params: unknown[] = []): Promise<T[]> {
   if (databaseUrl !== "") {
-    store.__kvizyPool ??= new pg.Pool({ connectionString: databaseUrl, max: 5 });
-    return (await store.__kvizyPool.query(text, params)).rows as T[];
+    const pool = getPool();
+    store.__kvizyReady ??= migrate(pool).catch((error: unknown) => {
+      store.__kvizyReady = undefined;
+      throw error;
+    });
+    await store.__kvizyReady;
+    return (await pool.query(text, params)).rows as T[];
+  }
+  if (process.env.VERCEL) {
+    // On Vercel the in-memory fallback would silently lose every added quiz; fail visibly instead.
+    throw new Error("DATABASE_URL is not set: connect the Neon database to this Vercel project and redeploy.");
   }
   store.__kvizyLocal ??= startLocal().catch((error: unknown) => {
     store.__kvizyLocal = undefined;
@@ -24,11 +35,37 @@ export async function sql<T = Record<string, unknown>>(text: string, params: unk
   return (await (await store.__kvizyLocal).query<T>(text, params)).rows;
 }
 
+function getPool(): pg.Pool {
+  if (!store.__kvizyPool) {
+    // Serverless instances are short-lived: keep few connections and let idle ones go quickly.
+    const pool = new pg.Pool({
+      connectionString: databaseUrl,
+      max: 3,
+      idleTimeoutMillis: 5_000,
+      connectionTimeoutMillis: 10_000,
+    });
+    attachDatabasePool(pool);
+    store.__kvizyPool = pool;
+  }
+  return store.__kvizyPool;
+}
+
+/** Normally a no-op (the build already migrated); covers a database connected after the last build. */
+async function migrate(pool: pg.Pool): Promise<void> {
+  const migrations = await readMigrations();
+  const client = await pool.connect();
+  try {
+    await applyMigrations(client, migrations, console.log);
+  } finally {
+    client.release();
+  }
+}
+
 async function startLocal(): Promise<PGlite> {
+  const { PGlite } = await import("@electric-sql/pglite");
   const db = new PGlite();
-  const files = (await readdir("migrations").catch(() => [])).filter((f) => f.endsWith(".sql")).sort();
-  for (const file of files) {
-    await db.exec(await readFile(`migrations/${file}`, "utf8"));
+  for (const migration of await readMigrations()) {
+    await db.exec(migration.sql);
   }
   return db;
 }
