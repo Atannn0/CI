@@ -30,4 +30,4 @@ Všechny příkazy se spouštějí ve složce `kvizy/` (Node 22+).
 - Při zkracování kontextu zachovej seznam upravených souborů a testovací příkaz (`npm run check`).
 
 ## Ověření
-Změna je hotová, když `npm run check` projde. E2E pokrývá: hledání bez diakritiky, kombinaci všech tří filtrů, nulový výsledek, otevření odkazu v nové záložce s počítáním kliknutí, validaci formuláře, odmítnutí duplicity a přidání kvízu v Chromiu s dohledáním ve Firefoxu.
+Změna je hotová, když `npm run check` projde. E2E pokrývá: hledání bez diakritiky, odmítnutí zápisu z cizího webu, kombinaci všech tří filtrů, nulový výsledek, otevření odkazu v nové záložce s počítáním kliknutí, validaci formuláře, odmítnutí duplicity a přidání kvízu v Chromiu s dohledáním ve Firefoxu.

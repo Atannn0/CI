@@ -162,6 +162,16 @@ test("odmítnutí duplicitního odkazu (i s jiným zápisem URL)", async ({ page
   expect(after).toHaveLength(quizzes.length);
 });
 
+test("API odmítne zápis z cizího webu", async ({ request }) => {
+  const res = await request.post("/api/quizzes", {
+    headers: { Origin: "https://cizi-web.example" },
+    data: { title: "Cizí", url: "https://example.net/cizi", format: "text", language: "cs", types: ["knowledge"] },
+  });
+  expect(res.status()).toBe(403);
+  const click = await request.post("/api/quizzes/1/click", { headers: { Origin: "https://cizi-web.example" } });
+  expect(click.status()).toBe(403);
+});
+
 test("kvíz přidaný v jednom prohlížeči (Chromium) je po obnovení vidět i v jiném (Firefox)", async ({ page, baseURL }) => {
   const tag = uniqueSuffix();
   const title = `Hádej písničku podle emoji ${tag}`;
