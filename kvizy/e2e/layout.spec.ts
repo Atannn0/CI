@@ -53,16 +53,16 @@ test.describe("počítač", () => {
     await page.goto("/");
     const groups = await groupBoxes(page);
     expect(groups).toHaveLength(3);
-    // Format + type share the first row; language sits on its own full-width row below.
-    expect(Math.abs(groups[0].title.y - groups[1].title.y)).toBeLessThanOrEqual(1);
-    expect(Math.abs(groups[0].chips[0].y - groups[1].chips[0].y)).toBeLessThanOrEqual(1);
-    expect(groups[2].group.y).toBeGreaterThanOrEqual(groups[0].group.y + groups[0].group.height - 1);
+    // Language is first (full width); format + type share the row below.
+    expect(groups[1].group.y).toBeGreaterThanOrEqual(groups[0].group.y + groups[0].group.height - 1);
+    expect(Math.abs(groups[1].title.y - groups[2].title.y)).toBeLessThanOrEqual(1);
+    expect(Math.abs(groups[1].chips[0].y - groups[2].chips[0].y)).toBeLessThanOrEqual(1);
     const heights = new Set((await boxes(page)).map((b) => Math.round(b.height)));
     expect([...heights]).toHaveLength(1);
 
     for (const g of groups) expectWrappedRowsStartUnderFirst(g.chips);
     const logic = (await filterButton(page, "Logický a hádankový").boundingBox())!;
-    const types = groups[1].chips;
+    const types = groups[2].chips;
     if (logic.y > types[0].y + 1) expect(Math.abs(logic.x - types[0].x)).toBeLessThanOrEqual(1);
   });
 

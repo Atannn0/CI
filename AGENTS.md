@@ -26,7 +26,7 @@ Všechny příkazy se spouštějí ve složce `kvizy/` (Node 22+).
 - `kvizy/src/app/` stránka (`page.tsx`), hraní vlastního kvízu (`hrat/[slug]`), správa hlášení (`spravce/page.tsx`) a API: `api/quizzes`, `api/custom-quizzes` (+ `[slug]`, `submit`), click/report, `api/admin/reports`
 - `kvizy/src/components/` UI: `catalog.tsx`, `quiz-card.tsx` (sdílení / hrát), `add-quiz-dialog.tsx`, `create-quiz-dialog.tsx`, `play-quiz.tsx`, filtry, report, `ui/`
 - `kvizy/src/lib/` logika: `quiz.ts`, `descriptions.ts` (bilingvní popisy), `custom-quiz.ts` / `custom-quizzes-repo.ts`, `languages.ts`, `i18n/`, `filter.ts` (popular ≤ 6), `db.ts`, `guard.ts`, `quizzes-repo.ts`, …
-- `kvizy/migrations/` aditivní schéma a seed (`002`/`004`/`006` zmrazené; `007` description_cs/en + custom questions; `008` de/ko/sv/es; `009` bilingvní backfill)
+- `kvizy/migrations/` aditivní schéma a seed (`002`/`004`/`006`/`008`/`009` zmrazené; `007` description_cs/en + custom questions; `010` osobnostní výsledky + media; `011` da/fr/it)
 - `kvizy/data/seed-quizzes.json` ověřený katalog; `data/import-quizzes.json` opakovatelný import; `npm run seed:sql` generuje jen nezmrazené seed migrace
 - `kvizy/e2e/` Playwright testy, `kvizy/docs/` plán a protokol ověření odkazů, `kvizy/vercel.json` a `kvizy/scripts/` (migrace, generátor seedu, ignored build step)
 - Ostatní složky (`00 Index/` … `99 Sources/`) jsou poznámky vaultu, ne součást aplikace.

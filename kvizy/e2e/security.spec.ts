@@ -71,9 +71,11 @@ test("vložený HTML v názvu a popisu se vykreslí jako text, ne jako DOM", asy
 test("opakované přidávání kvízů narazí na rate limit", async ({ request }) => {
   const tag = uniqueSuffix();
   let limited = false;
-  // E2E raises the create ceiling so earlier tests can finish; still prove the brake fires.
+  // Isolated IP so earlier suite creates do not consume this window; E2E create limit is 80.
+  const headers = { "x-forwarded-for": `198.51.100.${(Date.now() % 200) + 1}` };
   for (let i = 0; i < 100; i++) {
     const res = await request.post("/api/quizzes", {
+      headers,
       data: validBody(`${tag}-${i}`),
     });
     if (res.status() === 429) {

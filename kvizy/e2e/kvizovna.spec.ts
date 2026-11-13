@@ -7,6 +7,7 @@ import {
   pickLanguage,
   search,
   stubExternalSites,
+  toggleCatalogLanguage,
   uniqueSuffix,
 } from "./helpers";
 
@@ -75,11 +76,14 @@ test("vlastní kvíz: zveřejnění, přeložený popis, skóre v jiném prohlí
   await dialog.getByLabel("Název *").fill(title);
   await pickLanguage(dialog, "ces", /Čeština/);
   await dialog.getByLabel("Krátký popis (nepovinné)").fill("   ");
-  await dialog.getByLabel("Text otázky *").fill("Kolik je 2+2?");
+  await dialog.getByLabel("Text otázky").fill("Kolik je 2+2?");
   await dialog.getByPlaceholder("Možnost 1").fill("3");
   await dialog.getByPlaceholder("Možnost 2").fill("4");
   await dialog.getByTestId("custom-question").getByRole("radio").nth(1).check();
-  await dialog.getByRole("button", { name: "Náhled" }).click();
+  await dialog.getByRole("button", { name: /Náhled/ }).click();
+  await dialog.getByRole("radio").nth(1).check();
+  await dialog.getByRole("button", { name: "Odevzdat odpovědi" }).click();
+  await expect(dialog.getByTestId("preview-score")).toContainText("1 / 1");
   await dialog.getByRole("button", { name: "Zveřejnit kvíz" }).click();
   await expect(page.getByText("Kvíz je v katalogu!")).toBeVisible();
 
@@ -127,7 +131,6 @@ test("filtry de/ko/sv/es najdou importované kvízy", async ({ page, request }) 
   expect(counts.sv).toBeGreaterThanOrEqual(3);
   expect(counts.es).toBeGreaterThanOrEqual(3);
 
-  await page.goto("/");
   for (const [code, label] of [
     ["de", "Němčina"],
     ["ko", "Korejština"],
@@ -135,7 +138,7 @@ test("filtry de/ko/sv/es najdou importované kvízy", async ({ page, request }) 
     ["es", "Španělština"],
   ] as const) {
     await page.goto("/");
-    await page.getByRole("region", { name: "Filtry" }).getByRole("button", { name: label, exact: true }).click();
+    await toggleCatalogLanguage(page, label);
     await expect(cards(page).first()).toHaveAttribute("data-language", code);
     expect(await cards(page).count()).toBeGreaterThanOrEqual(3);
   }

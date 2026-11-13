@@ -7,6 +7,7 @@ import { CreateQuizDialog } from "@/components/create-quiz-dialog";
 import { FilterChip, FilterGroup } from "@/components/filter-chip";
 import { HeroIllustration } from "@/components/hero-illustration";
 import { LocaleSwitch } from "@/components/locale-switch";
+import { OtherLanguagePicker } from "@/components/other-language-picker";
 import { QuizCard } from "@/components/quiz-card";
 import { FORMAT_ICONS, TYPE_ICONS } from "@/components/quiz-meta";
 import { ReportQuizDialog } from "@/components/report-quiz-dialog";
@@ -23,7 +24,12 @@ import {
   withoutDone,
   type Filters,
 } from "@/lib/filter";
-import { catalogLanguages, languageCodeBadge } from "@/lib/languages";
+import {
+  languageCountsFromCodes,
+  shouldShowOtherLanguage,
+  topCatalogLanguages,
+} from "@/lib/language-filter";
+import { catalogLanguages, languageCodeBadge, languageLabel, type QuizLanguage } from "@/lib/languages";
 import { LocaleProvider, useLocale } from "@/lib/i18n/locale";
 import { pluralQuizzes } from "@/lib/i18n/messages";
 import { FORMAT_LABEL_KEYS, FORMATS, QUIZ_TYPES, TYPE_LABEL_KEYS, type Quiz } from "@/lib/quiz";
@@ -47,6 +53,7 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
   const [lastAddedId, setLastAddedId] = useState<number | null>(null);
   const [reportQuiz, setReportQuiz] = useState<Quiz | null>(null);
   const [reportOpen, setReportOpen] = useState(false);
+  const [otherLangOpen, setOtherLangOpen] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
   const { done, setDone } = useDoneQuizzes();
 
@@ -59,6 +66,16 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
     () => catalogLanguages(quizzes.map((q) => q.language), locale),
     [quizzes, locale],
   );
+  const languageCounts = useMemo(
+    () => languageCountsFromCodes(quizzes.map((q) => q.language)),
+    [quizzes],
+  );
+  const showOtherLanguage = shouldShowOtherLanguage(languageCounts.length);
+  const primaryLanguageCodes = useMemo(() => {
+    if (!showOtherLanguage) return languageFilterOptions.map((o) => o.code);
+    return topCatalogLanguages(languageCounts, locale);
+  }, [showOtherLanguage, languageFilterOptions, languageCounts, locale]);
+  const extraSelectedLanguages = filters.languages.filter((code) => !primaryLanguageCodes.includes(code));
 
   function openQuiz(quiz: Quiz) {
     setQuizzes((prev) => prev.map((q) => (q.id === quiz.id ? { ...q, clicks: q.clicks + 1 } : q)));
@@ -189,6 +206,36 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
 
       <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-6 sm:px-6 sm:py-8">
         <section aria-label={t("filters")} className="flex flex-col gap-5 rounded-2xl bg-card p-4 ring-1 ring-border sm:p-5">
+          <FilterGroup title={t("language")}>
+            {primaryLanguageCodes.map((code) => (
+              <FilterChip
+                key={code}
+                label={languageLabel(code, locale)}
+                code={languageCodeBadge(code)}
+                pressed={filters.languages.includes(code)}
+                onToggle={() => setFilters((f) => ({ ...f, languages: toggleValue(f.languages, code) }))}
+              />
+            ))}
+            {extraSelectedLanguages.map((code) => (
+              <FilterChip
+                key={`extra-${code}`}
+                label={languageLabel(code, locale)}
+                code={languageCodeBadge(code)}
+                pressed
+                onToggle={() => setFilters((f) => ({ ...f, languages: toggleValue(f.languages, code) }))}
+              />
+            ))}
+            {showOtherLanguage && (
+              <button
+                type="button"
+                data-testid="other-language"
+                onClick={() => setOtherLangOpen(true)}
+                className="inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full border border-dashed border-border bg-background pr-3.5 pl-2.5 text-sm leading-none font-medium whitespace-nowrap outline-none hover:border-primary/50 hover:bg-primary/5 focus-visible:ring-[3px] focus-visible:ring-ring/50"
+              >
+                {t("otherLanguage")}
+              </button>
+            )}
+          </FilterGroup>
           <div className="grid items-start gap-5 lg:grid-cols-2 lg:gap-8">
             <FilterGroup title={t("format")}>
               {FORMATS.map((format) => (
@@ -213,17 +260,6 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
               ))}
             </FilterGroup>
           </div>
-          <FilterGroup title={t("language")}>
-            {languageFilterOptions.map((language) => (
-              <FilterChip
-                key={language.code}
-                label={language.label}
-                code={languageCodeBadge(language.code)}
-                pressed={filters.languages.includes(language.code)}
-                onToggle={() => setFilters((f) => ({ ...f, languages: toggleValue(f.languages, language.code) }))}
-              />
-            ))}
-          </FilterGroup>
         </section>
 
         {!active && popular.length > 0 && (
@@ -313,6 +349,15 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
       <AddQuizDialog open={addOpen} onOpenChange={setAddOpen} quizzes={quizzes} onCreated={handleCreated} />
       <CreateQuizDialog open={createOpen} onOpenChange={setCreateOpen} onCreated={handleCreated} />
       <ReportQuizDialog quiz={reportQuiz} open={reportOpen} onOpenChange={setReportOpen} />
+      <OtherLanguagePicker
+        open={otherLangOpen}
+        onOpenChange={setOtherLangOpen}
+        options={languageFilterOptions}
+        selected={filters.languages}
+        onToggle={(code: QuizLanguage) =>
+          setFilters((f) => ({ ...f, languages: toggleValue(f.languages, code) }))
+        }
+      />
     </>
   );
 }

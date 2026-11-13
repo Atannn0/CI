@@ -16,6 +16,14 @@ export function PlayQuiz({ initial }: { initial: PlayPayload }) {
   );
 }
 
+function PlayImage({ image }: { image: { url: string; alt: string } | null }) {
+  if (!image) return null;
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={image.url} alt={image.alt} className="mt-2 max-h-48 rounded-xl object-contain" />
+  );
+}
+
 function PlayQuizInner({ initial }: { initial: PlayPayload }) {
   const { locale, t } = useLocale();
   const [answers, setAnswers] = useState<Record<number, number>>({});
@@ -62,21 +70,26 @@ function PlayQuizInner({ initial }: { initial: PlayPayload }) {
           {initial.questions.map((question, index) => (
             <fieldset key={question.id} className="rounded-2xl bg-card p-4 ring-1 ring-border">
               <legend className="mb-3 text-base font-semibold">
-                {index + 1}. {question.prompt}
+                {index + 1}. {question.prompt || t("imageUpload")}
               </legend>
-              <div className="flex flex-col gap-2">
+              <PlayImage image={question.image} />
+              <div className="mt-3 flex flex-col gap-2">
                 {question.options.map((option) => (
                   <label
                     key={option.id}
-                    className="flex cursor-pointer items-center gap-2 rounded-xl border border-border px-3 py-2 has-checked:border-primary has-checked:bg-primary/5"
+                    className="flex cursor-pointer items-start gap-2 rounded-xl border border-border px-3 py-2 has-checked:border-primary has-checked:bg-primary/5"
                   >
                     <input
                       type="radio"
                       name={`q-${question.id}`}
+                      className="mt-1"
                       checked={answers[question.id] === option.id}
                       onChange={() => setAnswers((prev) => ({ ...prev, [question.id]: option.id }))}
                     />
-                    <span>{option.label}</span>
+                    <span className="flex flex-col gap-1">
+                      {option.label}
+                      <PlayImage image={option.image} />
+                    </span>
                   </label>
                 ))}
               </div>
@@ -93,10 +106,27 @@ function PlayQuizInner({ initial }: { initial: PlayPayload }) {
         </>
       ) : (
         <div className="flex flex-col gap-4">
-          <p role="status" className="rounded-2xl bg-emerald-50 px-4 py-3 text-lg font-bold text-emerald-900" data-testid="play-score">
-            {t("yourScore", { score: result.score, total: result.total })}
-          </p>
-          {result.results.map((item) => (
+          {result.mode === "personality" && result.outcome ? (
+            <div
+              role="status"
+              className="rounded-2xl bg-emerald-50 px-4 py-3 text-emerald-900"
+              data-testid="play-personality"
+            >
+              <p className="text-sm font-semibold">{t("yourPersonality")}</p>
+              <p className="text-2xl font-black">{result.outcome.title}</p>
+              <p className="mt-1">{result.outcome.description}</p>
+              <PlayImage image={result.outcome.image} />
+            </div>
+          ) : (
+            <p
+              role="status"
+              className="rounded-2xl bg-emerald-50 px-4 py-3 text-lg font-bold text-emerald-900"
+              data-testid="play-score"
+            >
+              {t("yourScore", { score: result.score ?? 0, total: result.total ?? 0 })}
+            </p>
+          )}
+          {result.results?.map((item) => (
             <div key={item.questionId} className="rounded-2xl bg-card p-4 ring-1 ring-border">
               <p className="font-semibold">{item.prompt}</p>
               <p className="mt-2 text-sm">
