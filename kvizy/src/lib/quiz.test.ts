@@ -58,12 +58,37 @@ describe("validateQuizInput", () => {
     expect(validateQuizInput({ ...valid, url: "http://example.com/a" }).ok).toBe(true);
     expect(validateQuizInput({ ...valid, url: "ftp://example.com/a" }).ok).toBe(false);
     expect(validateQuizInput({ ...valid, url: "example.com/a" }).ok).toBe(false);
+    expect(validateQuizInput({ ...valid, url: "javascript:alert(1)" }).ok).toBe(false);
+    expect(validateQuizInput({ ...valid, url: "data:text/html,<script>alert(1)</script>" }).ok).toBe(false);
   });
 
   it("rejects unknown enum values", () => {
     expect(validateQuizInput({ ...valid, format: "video" }).ok).toBe(false);
     expect(validateQuizInput({ ...valid, types: ["funny"] }).ok).toBe(false);
     expect(validateQuizInput({ ...valid, language: "de" }).ok).toBe(false);
+  });
+
+  it("ignores client attempts to set clicks, id or isCollection", () => {
+    const result = validateQuizInput({
+      ...valid,
+      clicks: 999_999,
+      id: 42,
+      isCollection: true,
+      verified: true,
+    });
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.value).not.toHaveProperty("clicks");
+      expect(result.value).not.toHaveProperty("id");
+      expect(result.value).not.toHaveProperty("isCollection");
+    }
+  });
+
+  it("enforces text length limits without fetching the URL", () => {
+    const longTitle = "a".repeat(121);
+    expect(validateQuizInput({ ...valid, title: longTitle }).ok).toBe(false);
+    const longDesc = "b".repeat(301);
+    expect(validateQuizInput({ ...valid, description: longDesc }).ok).toBe(false);
   });
 });
 

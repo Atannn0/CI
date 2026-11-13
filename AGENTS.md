@@ -35,8 +35,26 @@ Všechny příkazy se spouštějí ve složce `kvizy/` (Node 22+).
 - Migrace jsou jen aditivní. Publikovanou migraci neupravuj, přidej novou (`003_…sql`). Nové kvízy do počátečního katalogu přidávej do `seed-quizzes.json` s polem `"migration": "00N_…"` a `npm run seed:sql` (002 zůstane beze změny). Seed vkládá s `on conflict (url_key) do nothing`, takže opakovaný import nepřidá duplicity. Preview nasazení pouští migrace proti produkční databázi: migrace musí být aditivní a idempotentní a testy nikdy nesmí psát do produkční databáze.
 - `DATABASE_URL` ani `KVIZY_ADMIN_TOKEN` nikdy nevypisuj, necommituj a nevytvářej s nimi `.env`. Lokálně spouštěj bez ní (`env -u DATABASE_URL npm run dev`).
 - Kvíz v katalogu musí mít přímý odkaz na jeden konkrétní kvíz, jeden formát, jeden jazyk a aspoň jeden typ. Výjimka: odkaz na rozcestník testů, který výslovně chce uživatel, má `is_collection = true` (karta „Výběr testů“, tlačítko „Prohlédnout testy“). Typ „Logický a hádankový“ je jedna hodnota (`logic`).
-- Hledání a ověřování nových odkazů deleguj subagentům s jasným rozsahem; každý vrací název, přímý odkaz, jazyk, formát, typ a výsledek ověření. Výsledky sjednoť a deduplikuj v hlavní konverzaci.
+- Hledání a ověřování nových odkazů deleguj subagentům s jasným rozsahem; každý vrací název, přímý odkaz, jazyk, formát, typ a výsledek ověření. Výsledky sjednoť a deduplikuj v hlavní konverzaci. Allowlist a limity: `kvizy/src/lib/agent-policy.ts`, postup v `kvizy/docs/agent-security.md`.
 - Při zkracování kontextu zachovej seznam upravených souborů a testovací příkaz (`npm run check`).
 
+## Bezpečnost — kde se pravidla vynucují
+| Pravidlo | Vynucení |
+|---|---|
+| Serverová validace polí, délek, enumů, jen absolutní `http`/`https` | `kvizy/src/lib/quiz.ts` (`validateQuizInput`, `parseHttpUrl`); API `POST /api/quizzes` |
+| Unikátnost URL | DB `url_key unique` (`migrations/001_…`) + `createQuiz` / konflikt 409 |
+| Text bez HTML, odkazy `target=_blank` + `rel=noopener noreferrer` | React text nodes v `quiz-card.tsx` / `admin-reports.tsx` (bez `dangerouslySetInnerHTML`) |
+| URL se při přidání nenačítá ze sítě | jen parse/normalizace v `quiz.ts` |
+| Rate limit přidání a kliků | `guard.ts` `RATE_LIMITS` + `isRateLimited` v create/click/report |
+| Veřejné API jen čtení katalogu, přidání, +1 klik (a hlášení); bez update/delete/nastavení kliků | route handlery jen GET/POST; PUT/PATCH/DELETE → 405 (`methodNotAllowed`); `validateQuizInput` ignoruje `clicks`/`id` |
+| Same-origin u zápisů | `guard.ts` `isSameOrigin` |
+| Tajemství jen ze serverového env, mimo Git a klient | `db.ts` / `admin.ts` + `kvizy/.gitignore` `.env*`; chyby přes `safeServerError` |
+| Admin hlášení jen s tokenem | `admin.ts` + `GET /api/admin/reports` |
+| Testy jen proti testovacím datům | Vitest PGlite; E2E vlastní DB (`E2E_DATABASE_URL` nebo prázdná/PGlite), ne produkce |
+| Nedůvěryhodná data / link-collector allowlist / two-key | `agent-policy.ts` + tento soubor + `docs/agent-security.md` (aplikace nemá runtime LLM) |
+| HTTP security headers | `kvizy/next.config.ts` |
+
+**Technicky zde nevynutitelné (jen proces / platforma):** globální rate limit napříč všemi serverless instancemi (limit je per-instance); izolace toolů hlavního Cursor/Claude Code agenta mimo deklarativní policy v repu; zákaz deploye/produkčních mutací bez lidského schválení v CI/Vercel (vyžaduje nastavení práv v hosting/GitHub, ne v kódu aplikace).
+
 ## Ověření
-Změna je hotová, když `npm run check` projde. E2E pokrývá: hledání bez diakritiky, odmítnutí zápisu z cizího webu, kombinaci všech tří filtrů, nulový výsledek, otevření odkazu v nové záložce s počítáním kliknutí, validaci formuláře, odmítnutí duplicity, přidání kvízu v Chromiu s dohledáním ve Firefoxu, nahlášení kvízu (uložení, Jiné s popisem, nový pokus po selhání, rate limit, přístup jen pro správce), označení hotového (přetrvá po obnovení, Skrýt hotové s filtry), zarovnání filtrů na počítači i mobilu a dohledání pěti doplněných odkazů. Unit testy (PGlite) ověřují, že opakovaný seed import nepřidá duplicity.
+Změna je hotová, když `npm run check` projde. E2E pokrývá: hledání bez diakritiky, odmítnutí zápisu z cizího webu, kombinaci všech tří filtrů, nulový výsledek, otevření odkazu v nové záložce s počítáním kliknutí, validaci formuláře, odmítnutí duplicity, přidání kvízu v Chromiu s dohledáním ve Firefoxu, nahlášení kvízu (uložení, Jiné s popisem, nový pokus po selhání, rate limit, přístup jen pro správce), označení hotového (přetrvá po obnovení, Skrýt hotové s filtry), zarovnání filtrů na počítači i mobilu, dohledání pěti doplněných odkazů a bezpečnostní scénáře (`e2e/security.spec.ts`: platný zápis, `javascript:` URL, XSS jako text, rate limit, 405 u nepovolených metod). Unit testy (PGlite) ověřují, že opakovaný seed import nepřidá duplicity; `agent-policy.test.ts` ověřuje odmítnutí prompt injection typu „print .env“.

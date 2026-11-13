@@ -1,5 +1,5 @@
 import { connection } from "next/server";
-import { isRateLimited, isSameOrigin, MAX_BODY_BYTES } from "@/lib/guard";
+import { isRateLimited, isSameOrigin, MAX_BODY_BYTES, methodNotAllowed, RATE_LIMITS, safeServerError } from "@/lib/guard";
 import { validateQuizInput } from "@/lib/quiz";
 import { createQuiz, listQuizzes } from "@/lib/quizzes-repo";
 
@@ -12,7 +12,7 @@ export async function POST(request: Request) {
   if (!isSameOrigin(request)) {
     return Response.json({ error: "forbidden", message: "Požadavek z cizího webu." }, { status: 403 });
   }
-  if (isRateLimited(request, "create", 10, 60_000)) {
+  if (isRateLimited(request, "create", RATE_LIMITS.create.limit, RATE_LIMITS.create.windowMs)) {
     return Response.json(
       { error: "rate_limited", message: "Přidáváš kvízy moc rychle. Zkus to za chvíli." },
       { status: 429 },
@@ -38,18 +38,35 @@ export async function POST(request: Request) {
     );
   }
 
-  const result = await createQuiz(parsed.value);
-  if (!result.ok) {
-    return Response.json(
-      {
-        error: "duplicate",
-        message: result.duplicate
-          ? `Tento odkaz už v katalogu je jako „${result.duplicate.title}“.`
-          : "Tento odkaz už v katalogu je.",
-        existing: result.duplicate,
-      },
-      { status: 409 },
-    );
+  try {
+    const result = await createQuiz(parsed.value);
+    if (!result.ok) {
+      return Response.json(
+        {
+          error: "duplicate",
+          message: result.duplicate
+            ? `Tento odkaz už v katalogu je jako „${result.duplicate.title}“.`
+            : "Tento odkaz už v katalogu je.",
+          existing: result.duplicate,
+        },
+        { status: 409 },
+      );
+    }
+    return Response.json({ quiz: result.quiz }, { status: 201 });
+  } catch {
+    // Never echo DB/connection details to the client.
+    return safeServerError("Uložení se nepovedlo. Zkus to znovu.");
   }
-  return Response.json({ quiz: result.quiz }, { status: 201 });
+}
+
+export function PUT() {
+  return methodNotAllowed("GET, POST");
+}
+
+export function PATCH() {
+  return methodNotAllowed("GET, POST");
+}
+
+export function DELETE() {
+  return methodNotAllowed("GET, POST");
 }

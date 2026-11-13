@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
-import { isSameOrigin } from "./guard";
+import { afterEach, describe, expect, it } from "vitest";
+import { isRateLimited, isSameOrigin, methodNotAllowed, RATE_LIMITS, resetRateLimitsForTests } from "./guard";
 
 function post(headers: Record<string, string>) {
   return new Request("http://internal/api/quizzes", { method: "POST", headers });
@@ -30,5 +30,27 @@ describe("isSameOrigin", () => {
     expect(isSameOrigin(post({ origin: "https://evil.example", host: "kvizy.vercel.app" }))).toBe(false);
     expect(isSameOrigin(post({ origin: "https://kvizy.vercel.app.evil.example", host: "kvizy.vercel.app" }))).toBe(false);
     expect(isSameOrigin(post({ origin: "null", host: "kvizy.vercel.app" }))).toBe(false);
+  });
+});
+
+describe("isRateLimited", () => {
+  afterEach(() => resetRateLimitsForTests());
+
+  it("allows up to the limit then blocks further requests in the window", () => {
+    const req = post({ "x-forwarded-for": "203.0.113.9" });
+    const { limit, windowMs } = RATE_LIMITS.create;
+    for (let i = 0; i < limit; i++) {
+      expect(isRateLimited(req, "create-test", limit, windowMs)).toBe(false);
+    }
+    expect(isRateLimited(req, "create-test", limit, windowMs)).toBe(true);
+  });
+});
+
+describe("methodNotAllowed", () => {
+  it("returns 405 with Allow header", async () => {
+    const res = methodNotAllowed("GET, POST");
+    expect(res.status).toBe(405);
+    expect(res.headers.get("Allow")).toBe("GET, POST");
+    expect((await res.json()).error).toBe("method_not_allowed");
   });
 });
