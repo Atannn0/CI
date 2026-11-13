@@ -133,7 +133,7 @@ test("stránka /spravce ukáže hlášení až po zadání klíče", async ({ pa
   await expect(page.getByText(note)).toHaveCount(0);
   await page.getByLabel("Přístupový klíč správce").fill("spatny-klic");
   await page.getByRole("button", { name: "Zobrazit hlášení" }).click();
-  await expect(page.getByRole("alert")).toContainText("Neplatný přístupový klíč");
+  await expect(page.getByRole("alert").filter({ hasText: "Neplatný přístupový klíč" })).toBeVisible();
 
   await page.getByLabel("Přístupový klíč správce").fill(E2E_ADMIN_TOKEN);
   await page.getByRole("button", { name: "Zobrazit hlášení" }).click();

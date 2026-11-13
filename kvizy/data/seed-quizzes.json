@@ -1306,5 +1306,122 @@
       "result": "ověřeno: prohlížeč HTTP 200, titulek „Can You Pass This Incredibly Difficult Logic Test? | HowStuf“ (curl blokován ochranou proti botům)",
       "checked_at": "2026-11-13"
     }
+  },
+  {
+    "title": "IDRlabs – psychologické testy",
+    "url": "https://www.idrlabs.com/",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Rozcestník desítek osobnostních a psychologických testů: Big Five, politické souřadnice, Hogwarts a další.",
+    "is_collection": true,
+    "migration": "004_seed_requested_tests",
+    "verification": {
+      "collector": "en-requested-a",
+      "collector_status": 200,
+      "collector_method": "curl + headless Chromium",
+      "page_title": "IDRlabs",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.idrlabs.com/",
+      "note": "Rozcestník: na úvodní stránce 6 testů a odkaz na /tests.php s 53 testy; bez přihlášení; čeština v nabídce jazyků není.",
+      "result": "ověřeno: HTTP 200 (curl + headless Chromium)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "mytype.fyi – What’s My Type?",
+    "url": "https://mytype.fyi/type",
+    "language": "en",
+    "format": "image",
+    "types": [
+      "preference"
+    ],
+    "topic": "vztahy",
+    "description": "Klikáš na AI tváře, které se ti líbí, a test ti ukáže, jaký je tvůj typ. Jen pro 18+.",
+    "migration": "004_seed_requested_tests",
+    "verification": {
+      "collector": "en-requested-b",
+      "collector_status": 200,
+      "collector_method": "curl + headless Chromium",
+      "page_title": "Your type · mytype.fyi",
+      "recheck_status": "200",
+      "recheck_final_url": "https://mytype.fyi/",
+      "note": "Jeden test (hodnocení AI tváří, ~10 min, 18+). Nepřihlášeného /type přesměruje na úvodní stránku, test jde spustit bez účtu (Find my type); přihlášení Google/X je volitelné pro uložení výsledků a hru s přáteli.",
+      "result": "ověřeno: HTTP 200 (curl + headless Chromium)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Who Attracts You? (Clearer Thinking)",
+    "url": "https://programs.clearerthinking.org/who_attracts_you_study.html",
+    "language": "en",
+    "format": "image",
+    "types": [
+      "preference"
+    ],
+    "topic": "vztahy",
+    "description": "Hodnotíš fotky tváří podle přitažlivosti a dostaneš osobní report o svém typu a o tom, jak jsi vybíravý.",
+    "migration": "004_seed_requested_tests",
+    "verification": {
+      "collector": "en-requested-b",
+      "collector_status": 200,
+      "collector_method": "curl + headless Chromium",
+      "page_title": "(Study) Who Attracts You? | ClearerThinking.org",
+      "recheck_status": "200",
+      "recheck_final_url": "https://programs.clearerthinking.org/who_attracts_you_study.html",
+      "note": "Jeden test (výzkumná studie, ~10 min): hodnocení tváří, na konci zdarma osobní report; bez přihlášení, jen souhlas s podmínkami.",
+      "result": "ověřeno: HTTP 200 (curl + headless Chromium)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "16Personalities – 16 typů osobnosti",
+    "url": "https://www.16personalities.com/",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Úvodní stránka slavného testu 16 typů osobnosti s popisy všech typů; test spustíš jedním klikem.",
+    "migration": "004_seed_requested_tests",
+    "verification": {
+      "collector": "en-requested-a",
+      "collector_status": 200,
+      "collector_method": "curl + headless Chromium",
+      "page_title": "Free Personality Test & Type Descriptions | 16Personalities",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.16personalities.com/",
+      "note": "Úvodní stránka jednoho testu (odkazy vedou jen na /free-personality-test, 60 výroků, 7stupňová škála); bez přihlášení. Stejný test už je v katalogu přes /free-personality-test; česká verze je /cs/osobnostni-test.",
+      "result": "ověřeno: HTTP 200 (curl + headless Chromium)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "9Axes – politický test",
+    "url": "https://9axes.github.io/",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality",
+      "preference"
+    ],
+    "topic": "politika",
+    "description": "Odpovídáš na politické výroky (45 nebo 216) a zjistíš, kde stojíš na devíti politických osách.",
+    "migration": "004_seed_requested_tests",
+    "verification": {
+      "collector": "en-requested-a",
+      "collector_status": 200,
+      "collector_method": "curl + headless Chromium",
+      "page_title": "9Axes",
+      "recheck_status": "200",
+      "recheck_final_url": "https://9axes.github.io/",
+      "note": "Úvodní stránka jednoho testu (Click here to start → krátká verze 45 nebo plná 216 výroků, 5stupňová škála); statický web na GitHub Pages, bez přihlášení.",
+      "result": "ověřeno: HTTP 200 (curl + headless Chromium)",
+      "checked_at": "2026-11-13"
+    }
   }
 ]

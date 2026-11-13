@@ -64,3 +64,15 @@ Odkazy hledali a ověřovali čtyři subagenti (CZ osobnostní/preferenční, CZ
 | en | text | logic |  | [Can You Get 11 of These Basic Brain Teasers?](https://play.howstuffworks.com/quiz/can-you-get-11-of-these-basic-brain-teasers) | ověřeno: prohlížeč HTTP 202, titulek „Can You Get 11 of These Basic Brain Teasers? / HowStuffWorks“ (curl blokován ochranou proti botům) |
 | en | text | logic |  | [Test Your Mental Mettle With These Ridiculous Riddles](https://play.howstuffworks.com/quiz/test-your-mental-mettle-with-these-ridiculous-riddles) | ověřeno: prohlížeč HTTP 200, titulek „Test Your Mental Mettle With These Ridiculous Riddles / HowS“ (curl blokován ochranou proti botům) |
 | en | text | logic |  | [Can You Pass This Incredibly Difficult Logic Test?](https://play.howstuffworks.com/quiz/can-you-pass-this-incredibly-difficult-logic-test) | ověřeno: prohlížeč HTTP 200, titulek „Can You Pass This Incredibly Difficult Logic Test? / HowStuf“ (curl blokován ochranou proti botům) |
+
+## Doplnění 13. 11. 2026 (migrace 004)
+
+Pět odkazů zadaných uživatelem; ověřili je dva subagenti (curl + headless Chromium), hlavní konverzace výsledky sjednotila. Celkem teď 63 kvízů (31 česky, 32 anglicky). Odkaz na rozcestník má `is_collection: true` a na kartě štítek **Výběr testů** s tlačítkem **Prohlédnout testy**. Žádný z odkazů nevyžaduje přihlášení a žádný není nefunkční.
+
+| Jazyk | Formát | Typy | Téma | Kvíz | Výběr testů | Výsledek ověření |
+|---|---|---|---|---|---|---|
+| en | text | personality | psychologie | [IDRlabs – psychologické testy](https://www.idrlabs.com/) | ano | HTTP 200; úvodní stránka odkazuje na 6 testů a seznam `/tests.php` s 53 testy; čeština není |
+| en | image | preference | vztahy | [mytype.fyi – What’s My Type?](https://mytype.fyi/type) | ne | HTTP 200; nepřihlášeného `/type` přesměruje na úvodní stránku, test (hodnocení AI tváří, 18+) se spustí bez účtu, přihlášení Google/X je volitelné |
+| en | image | preference | vztahy | [Who Attracts You? (Clearer Thinking)](https://programs.clearerthinking.org/who_attracts_you_study.html) | ne | HTTP 200; hodnocení tváří a osobní report zdarma, jen souhlas s podmínkami |
+| en | text | personality | psychologie | [16Personalities – 16 typů osobnosti](https://www.16personalities.com/) | ne | HTTP 200; úvodní stránka jediného testu (60 výroků); stejný test je v katalogu i jako `/free-personality-test`, česky existuje `/cs/osobnostni-test` |
+| en | text | personality, preference | politika | [9Axes – politický test](https://9axes.github.io/) | ne | HTTP 200; úvodní stránka jednoho testu (45 nebo 216 výroků), bez přihlášení |

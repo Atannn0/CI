@@ -130,7 +130,7 @@ export function Catalog({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
       <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-6 sm:px-6 sm:py-8">
         <section
           aria-label="Filtry"
-          className="grid items-start gap-5 rounded-2xl bg-card p-4 ring-1 ring-border sm:p-5 lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:gap-8"
+          className="grid items-start gap-5 rounded-2xl bg-card p-4 ring-1 ring-border sm:p-5 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)_auto] lg:gap-8"
         >
           <FilterGroup title="Formát">
             {FORMATS.map((format) => (

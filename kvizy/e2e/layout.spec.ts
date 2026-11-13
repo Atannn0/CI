@@ -9,10 +9,12 @@ const filters = (page: Page) => page.getByRole("region", { name: "Filtry" });
 
 async function boxes(page: Page) {
   const chips = filters(page).getByTestId("filter-chip");
+  await expect(chips).toHaveCount(9);
   return Promise.all((await chips.all()).map(async (chip) => (await chip.boundingBox())!));
 }
 
 async function groupBoxes(page: Page) {
+  await expect(filters(page).getByTestId("filter-chip")).toHaveCount(9);
   const groups = await filters(page).getByTestId("filter-group").all();
   return Promise.all(
     groups.map(async (group) => ({
@@ -21,6 +23,16 @@ async function groupBoxes(page: Page) {
       chips: await Promise.all((await group.getByTestId("filter-chip").all()).map(async (c) => (await c.boundingBox())!)),
     })),
   );
+}
+
+type Box = { x: number; y: number; width: number; height: number };
+
+/** Every row after the first starts exactly under the group's first option. */
+function expectWrappedRowsStartUnderFirst(chips: Box[]) {
+  for (const chip of chips) {
+    const rowStart = chips.filter((c) => Math.abs(c.y - chip.y) <= 1).sort((a, b) => a.x - b.x)[0];
+    expect(Math.abs(rowStart.x - chips[0].x)).toBeLessThanOrEqual(1);
+  }
 }
 
 test.describe("počítač", () => {
@@ -44,10 +56,10 @@ test.describe("počítač", () => {
     const heights = new Set((await boxes(page)).map((b) => Math.round(b.height)));
     expect([...heights]).toHaveLength(1);
 
-    const [, types] = groups;
-    for (const chip of types.chips) {
-      if (chip.y > types.chips[0].y + 1) expect(Math.abs(chip.x - types.chips[0].x)).toBeLessThanOrEqual(1);
-    }
+    for (const g of groups) expectWrappedRowsStartUnderFirst(g.chips);
+    const logic = (await filterButton(page, "Logický a hádankový").boundingBox())!;
+    const types = groups[1].chips;
+    if (logic.y > types[0].y + 1) expect(Math.abs(logic.x - types[0].x)).toBeLessThanOrEqual(1);
   });
 
   test("aktivní stav nemění rozměry tlačítek ani neposouvá okolní filtry", async ({ page }) => {
@@ -77,13 +89,8 @@ test.describe("mobil", () => {
       expect(Math.abs(groups[i].group.x - groups[0].group.x)).toBeLessThanOrEqual(1);
     }
     for (const g of groups) {
-      for (const chip of g.chips) {
-        if (chip.y > g.chips[0].y + 1) {
-          const rowStart = g.chips.filter((c) => Math.abs(c.y - chip.y) <= 1).sort((a, b) => a.x - b.x)[0];
-          expect(Math.abs(rowStart.x - g.chips[0].x)).toBeLessThanOrEqual(1);
-        }
-        expect(chip.x + chip.width).toBeLessThanOrEqual(390);
-      }
+      expectWrappedRowsStartUnderFirst(g.chips);
+      for (const chip of g.chips) expect(chip.x + chip.width).toBeLessThanOrEqual(390);
     }
     const heights = new Set((await boxes(page)).map((b) => Math.round(b.height)));
     expect([...heights]).toHaveLength(1);

@@ -13,7 +13,7 @@ Podrobnosti pro agenty i lidi jsou v [`../AGENTS.md`](../AGENTS.md). Plán je v 
 
 ## Nasazení na Vercel (Hobby) s databází Neon
 
-Repozitář je připravený: `vercel.json` (region Frankfurt, build jen při změně v `kvizy/`), migrace a 58 kvízů se do databáze nahrají samy při buildu. Žádné proměnné prostředí se nenastavují ručně.
+Repozitář je připravený: `vercel.json` (region Frankfurt, build jen při změně v `kvizy/`), migrace a 63 kvízů se do databáze nahrají samy při buildu. Jediná ruční proměnná je volitelný `KVIZY_ADMIN_TOKEN` pro správu hlášení (viz níže).
 
 1. **Import projektu**
    1. Přihlas se na [vercel.com](https://vercel.com) přes GitHub (plán Hobby).
@@ -28,16 +28,26 @@ Repozitář je připravený: `vercel.json` (region Frankfurt, build jen při zm�
    4. Kontrola: **Settings → Environment Variables** teď obsahuje `DATABASE_URL` a `DATABASE_URL_UNPOOLED` (a další `PG*`/`POSTGRES_*`). Nic dalšího nepřidávej.
 3. **Redeploy**
    1. Záložka **Deployments** → u posledního nasazení menu **⋯** → **Redeploy** → **Redeploy**. (Skript ignorovaného buildu redeploy stejného commitu vždy postaví; zaškrtávátko **Use project's Ignore Build Step** může zůstat.)
-   2. V **Build Logs** musí být `migrate: applied 001_create_quizzes.sql` a `migrate: applied 002_seed_quizzes.sql`.
+   2. V **Build Logs** musí být `migrate: applied 001_create_quizzes.sql` … `migrate: applied 004_seed_requested_tests.sql` (u existující databáze jen migrace, které ještě neproběhly).
 
 ### Ověření živého webu
-- Otevři produkční adresu z **Domains** (např. `https://kvizy-….vercel.app`): domovská stránka ukáže „Všechny kvízy 58 kvízů“.
-- `https://<doména>/api/quizzes` vrátí JSON s 58 kvízy (31 `cs`, 27 `en`).
+- Otevři produkční adresu z **Domains** (např. `https://kvizy-….vercel.app`): domovská stránka ukáže „Všechny kvízy 63 kvízů“.
+- `https://<doména>/api/quizzes` vrátí JSON s 63 kvízy (31 `cs`, 32 `en`).
 - Přidej testovací kvíz (**Přidat kvíz**), obnov stránku a otevři web v jiném prohlížeči nebo na mobilu: kvíz najdeš hledáním.
 - Klikni na **Otevřít kvíz**: otevře se nová záložka a po obnovení je kvíz v sekci **Populární kvízy**.
 - Zkus přidat stejný odkaz znovu: formulář ho odmítne.
 - Po dalším automatickém commitu vaultu se v **Deployments** objeví nasazení ve stavu **Canceled** s hláškou `No changes in kvizy/ …: skipping the build.`
 - Data v Neonu: **Storage → kvizy → Open in Neon** → **SQL Editor** → `select count(*) from quizzes;`
+
+### Správa hlášení (jen pro správce)
+Návštěvníci mohou na kartě kliknout na **Nahlásit kvíz**. Hlášení (ID kvízu, důvod, poznámka, čas) se uloží do tabulky `quiz_reports`; kvíz se tím neskryje ani nesmaže. Obsah hlášení vidí jen správce:
+
+1. Vygeneruj tajný klíč (aspoň 24 znaků), např. `openssl rand -base64 32`.
+2. Ve Vercelu **Settings → Environment Variables → Add**: Key `KVIZY_ADMIN_TOKEN`, Value = klíč, prostředí **Production** (případně i **Preview**), **Sensitive** zapnuté → **Save**.
+3. **Deployments → ⋯ → Redeploy** (proměnná se projeví až v novém nasazení).
+4. Otevři `https://<doména>/spravce`, vlož klíč a klikni **Zobrazit hlášení**. Nebo: `curl -H "Authorization: Bearer <klíč>" https://<doména>/api/admin/reports`.
+
+Bez proměnné (nebo s klíčem kratším než 24 znaků) je `/api/admin/reports` zavřený a vrací 404; se špatným klíčem 401. Pokusy jsou omezené na 20 za minutu z jedné IP.
 
 ### Poznámky
 - Plán Hobby má limit 100 nasazení denně a zrušené (ignorované) buildy se do něj počítají. Pokud Obsidian Git pushuje velmi často, nastav v Obsidianu **Settings → Obsidian Git → Auto commit-and-sync interval** aspoň na 15 minut.
