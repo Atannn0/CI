@@ -1,0 +1,1310 @@
+[
+  {
+    "title": "Barevná typologie: Která barva vystihuje tvou povahu?",
+    "url": "https://refresher.cz/133826-KVIZ-Jaky-jsi-typ-osobnosti-podle-barevne-typologie",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Pár otázek o tom, jak se chováš, a zjistíš, jaká barva osobnosti v tobě převládá.",
+    "verification": {
+      "collector": "cs-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Barevná typologie: Která barva vystihuje tvou povahu? | KVÍZ | REFRESHER.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://refresher.cz/133826-KVIZ-Jaky-jsi-typ-osobnosti-podle-barevne-typologie",
+      "note": "Refresher kvíz; otázky a textové odpovědi přímo v HTML (article__quiz-answer).",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Jaká jsi princezna z Disney pohádek?",
+    "url": "https://refresher.cz/139017-Kviz-Jaka-jsi-princezna-z-Disney-pohadek",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "filmy",
+    "description": "Deset otázek o stylu, hudbě a rodině rozhodne, která Disney princezna jsi ty.",
+    "verification": {
+      "collector": "cs-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Kvíz: Jaká jsi princezna z Disney pohádek? | REFRESHER.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://refresher.cz/139017-Kviz-Jaka-jsi-princezna-z-Disney-pohadek",
+      "note": "Refresher kvíz, 10 otázek, textové odpovědi v HTML.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Kdo jsi z Karlíka a továrny na čokoládu?",
+    "url": "https://refresher.cz/149706-KVIZ-Kdo-jsi-z-Karlika-a-tovarny-na-cokoladu",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "filmy",
+    "description": "Zjisti, jestli bys na exkurzi v čokoládovně dopadl jako Karlík, Veruka, nebo August.",
+    "verification": {
+      "collector": "cs-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "KVÍZ: Kdo jsi z Karlíka a továrny na čokoládu? | REFRESHER.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://refresher.cz/149706-KVIZ-Kdo-jsi-z-Karlika-a-tovarny-na-cokoladu",
+      "note": "Refresher kvíz, 9 otázek, textové odpovědi v HTML.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Které postavě z českých vánočních filmů a pohádek se podobáš?",
+    "url": "https://refresher.cz/127682-KVIZ-Ktere-postave-z-ceskych-vanocnich-filmu-a-pohadek-se-podobas",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "filmy",
+    "description": "Vánoční test: jsi spíš postava z Popelky, Anděla Páně, nebo jiné české klasiky?",
+    "verification": {
+      "collector": "cs-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "KVÍZ: Které postavě z českých vánočních filmů se podobáš? | REFRESHER.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://refresher.cz/127682-KVIZ-Ktere-postave-z-ceskych-vanocnich-filmu-a-pohadek-se-podobas",
+      "note": "Refresher kvíz, 10 otázek, textové odpovědi v HTML. Stejný kvíz existuje i na refresher.sk (česky).",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Jsi víc mileniál, nebo gen Z?",
+    "url": "https://refresher.cz/146613-KVIZ-Jsi-vic-milenial-nebo-gen-Z-Zjisti-to-v-nasem-testu",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": null,
+    "description": "Odpovídej na otázky o zvycích a trendech a zjisti, jestli smýšlíš jako mileniál, nebo zetko.",
+    "verification": {
+      "collector": "cs-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "KVÍZ: Jsi víc mileniál, nebo gen Z? Zjisti to v našem testu! | REFRESHER.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://refresher.cz/146613-KVIZ-Jsi-vic-milenial-nebo-gen-Z-Zjisti-to-v-nasem-testu",
+      "note": "Refresher kvíz, textové odpovědi v HTML.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Odpověz na otázky a my ti řekneme, který drink piješ",
+    "url": "https://refresher.cz/101102-KVIZ-Odpovez-na-otazky-a-my-ti-rekneme-ktery-drink-pijes-nejradeji",
+    "language": "cs",
+    "format": "mixed",
+    "types": [
+      "preference",
+      "personality"
+    ],
+    "topic": "jídlo",
+    "description": "Vybírej si oblíbené věci a kvíz tipne, jaký drink si nejradši objednáš.",
+    "verification": {
+      "collector": "cs-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "KVÍZ: Odpověz na otázky a my ti řekneme, který drink piješ | REFRESHER.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://refresher.cz/101102-KVIZ-Odpovez-na-otazky-a-my-ti-rekneme-ktery-drink-pijes-nejradeji",
+      "note": "Refresher kvíz; 22 z 50 odpovědí má obrázek (article__quiz-answer-image).",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "TEST osobnosti: Levá vs. pravá hemisféra",
+    "url": "https://refresher.cz/143973-KVIZ-Jak-funguje-tva-mysl-Odpovez-na-otazky-a-zjisti-zda-ma-ve-tvem-zivote-prevahu-logika-nebo-kreativita",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Krátký test, jestli u tebe vítězí logika, nebo kreativita – porovnejte se v partě.",
+    "verification": {
+      "collector": "cs-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "✅TEST osobnosti: Levá vs. pravá hemisféra | REFRESHER.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://refresher.cz/143973-KVIZ-Jak-funguje-tva-mysl-Odpovez-na-otazky-a-zjisti-zda-ma-ve-tvem-zivote-prevahu-logika-nebo-kreativita",
+      "note": "Refresher kvíz, textové odpovědi v HTML (3 s obrázkem). Sponzorovaný obsah (T-Mobile).",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Osobnostní test: Která postava ze Hry o trůny jste právě vy?",
+    "url": "https://www.marianne.cz/zabava/osobnostni-test-ktera-postava-ze-hry-o-truny-jste-prave-vy-prichazi-novy-serial-rytir-sedmi",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "seriály",
+    "description": "Přeživší, samotář, nebo nespoutaný živel? Zjistěte, kdo z Hry o trůny byste byli.",
+    "verification": {
+      "collector": "cs-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Osobnostní test: Která postava ze Hry o trůny jste právě vy?",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.marianne.cz/zabava/osobnostni-test-ktera-postava-ze-hry-o-truny-jste-prave-vy-prichazi-novy-serial-rytir-sedmi",
+      "note": "Článek s vloženým Riddle.com kvízem (riddle.com/embed/a/lgAxPcGa); otázky se načítají JS, formát odhadnut.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Kterou postavou z Harryho Pottera jsi?",
+    "url": "https://www.svetkouzel.com/harry-potter-kviz/kterou-postavou-z-harryho-pottera-jsi/",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "knihy",
+    "description": "Sedm otázek rozhodne, jestli jsi Harry, Hermiona, Ron, Draco, nebo Luna.",
+    "verification": {
+      "collector": "cs-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Kterou postavou z Harryho Pottera jsi? Test osobnosti | Harry Potter kvíz česky",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.svetkouzel.com/harry-potter-kviz/kterou-postavou-z-harryho-pottera-jsi/",
+      "note": "Český fanouškovský web; JS kvíz 'Otázka 1 / 7', výsledek okamžitě.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Test osobnosti: Jaký seriálový svět vystihuje vaši povahu?",
+    "url": "https://mojepsychologie.zeny.cz/relax/testy-a-kvizy/osobnostni-test-do-jakeho-serialoveho-sveta-podvedome-patrite-3414",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "seriály",
+    "description": "Zjistěte, do kterého seriálového světa byste podvědomě nejlépe zapadli.",
+    "verification": {
+      "collector": "cs-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Test osobnosti: Který seriál vystihuje vaši povahu? | Mojepsychologie.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://mojepsychologie.zeny.cz/relax/testy-a-kvizy/osobnostni-test-do-jakeho-serialoveho-sveta-podvedome-patrite-3414",
+      "note": "Článek s vloženým Outgrow kvízem (načítá se JS); otázky v HTML nejsou.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Test: Komu ze seriálu Comeback se nejvíce podobáš?",
+    "url": "https://www.hryprodivky.cz/test/komu-ze-serialu-comeback-se-nejvice-podobas",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "seriály",
+    "description": "Nostalgie pro fanoušky Comebacku: zjisti, které postavě ze seriálu se nejvíc podobáš.",
+    "verification": {
+      "collector": "cs-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Test: Komu ze seriálu Comeback se nejvíce podobáš? - Hryprodivky.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.hryprodivky.cz/test/komu-ze-serialu-comeback-se-nejvice-podobas",
+      "note": "Otázky a odpovědi v HTML (1) Které jídlo... atd.). Web cílí na mladší publikum, má reklamy.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Věštění ze šálku: Jaká káva vystihuje vaši osobnost?",
+    "url": "https://tchiboblog.cz/kviz-jaka-kava-vas-vystihuje/",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "personality",
+      "preference"
+    ],
+    "topic": "jídlo",
+    "description": "Podle vašich ranních zvyků a ideální dovolené kvíz prozradí, jaká káva jste.",
+    "verification": {
+      "collector": "cs-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Věštění ze šálku: Jaká káva vystihuje vaši osobnost? – Tchibo",
+      "recheck_status": "200",
+      "recheck_final_url": "https://tchiboblog.cz/kviz-jaka-kava-vas-vystihuje/",
+      "note": "Kvíz na firemním blogu Tchibo; otázky v HTML, sdílení výsledku.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Test: Jaký ze 4 typů osobnosti vás nejlépe vystihuje",
+    "url": "https://www.svetzeny.cz/zabava/testy-kvizy/test-jaky-ze-4-typu-osobnosti-vas-nejlepe-vystihuje",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Klasický test temperamentu: jste spíš cholerik, sangvinik, melancholik, nebo flegmatik?",
+    "verification": {
+      "collector": "cs-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Test: Jaký ze 4 typů osobnosti vás nejlépe vystihuje | Svetzeny.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.svetzeny.cz/zabava/testy-kvizy/test-jaky-ze-4-typu-osobnosti-vas-nejlepe-vystihuje",
+      "note": "Otázky (1. Který z živlů...) přímo v textu článku; vyhodnocení přes body v textu, ne interaktivní widget.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Co bys radši? – kvíz pro kamarády",
+    "url": "https://vivatok.com/co-bys-radsi/",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "preference"
+    ],
+    "topic": null,
+    "description": "Vyber 10 dilemat „co bys radši“, pošli odkaz partě a sleduj, kdo tvé volby uhodne nejlíp.",
+    "verification": {
+      "collector": "cs-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "🤔 Co bys radši? | Otázky a kvíz 🤪",
+      "recheck_status": "200",
+      "recheck_final_url": "https://vivatok.com/co-bys-radsi/",
+      "note": "lang=cs, 16 dilemat v HTML, s emoji. Vícejazyčný web (ne české médium), čeština přirozená; bez registrace.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Test: Jaký typ kluka se k tobě hodí?",
+    "url": "https://www.hrydnes.cz/test/jaky-typ-kluka-se-k-tobe-hodi",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "vztahy",
+    "description": "Jedenáct otázek o randění a ideálním klukovi – spíš pro holčičí partu.",
+    "verification": {
+      "collector": "cs-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Test: Jaký typ kluka se k tobě hodí? - hrydnes.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.hrydnes.cz/test/jaky-typ-kluka-se-k-tobe-hodi",
+      "note": "ZÁLOŽNÍ: ověřeno, 11 otázek v HTML; úzké (dívčí, teen) publikum.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "TEST: Jaký je Váš typ osobnosti",
+    "url": "https://www.pronaladu.cz/test-jaky-je-vas-typ-osobnosti/",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Delší test výroků o sobě, který určí váš typ osobnosti – spíš na klidný večer.",
+    "verification": {
+      "collector": "cs-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "TEST: Jaký je Váš typ osobnosti | ProNáladu.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.pronaladu.cz/test-jaky-je-vas-typ-osobnosti/",
+      "note": "ZÁLOŽNÍ: ověřeno, výroky v HTML; seriózní dotazníkový styl, méně zábavný pro skupinu.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Co bys raději? (Every Random)",
+    "url": "https://everyrandom.com/cs/co-bys-radeji",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "preference"
+    ],
+    "topic": null,
+    "description": "Nekonečná hra „co bys raději“ s kategoriemi pro párty a uvidíte, jak hlasovali ostatní.",
+    "verification": {
+      "collector": "cs-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Co bys raději? Přes 430 otázek ke hře online zdarma",
+      "recheck_status": "200",
+      "recheck_final_url": "https://everyrandom.com/cs/co-bys-radeji",
+      "note": "ZÁLOŽNÍ: ověřeno, lang cs; mezinárodní web se strojově působícím překladem, spíš hra než kvíz.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Poznejte ty nejslavnější filmy jen podle fotek",
+    "url": "https://netflixer.cz/kvizy/81874-kviz-poznejte-ty-nejslavnejsi-filmy-jen-podle-fotek-vsechny-uhodnout-jen-opravdovi-znalci/",
+    "language": "cs",
+    "format": "image",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "filmy",
+    "description": "17 filmových záběrů a tři možnosti – kdo z party pozná nejvíc slavných filmů jen podle fotky?",
+    "verification": {
+      "collector": "cs-knowledge",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Kvíz: Poznejte ty nejslavnější filmy jen podle fotek. Všechny uhodnout jen opravdoví znalci - Netflixer",
+      "recheck_status": "200",
+      "recheck_final_url": "https://netflixer.cz/kvizy/81874-kviz-poznejte-ty-nejslavnejsi-filmy-jen-podle-fotek-vsechny-uhodnout-jen-opravdovi-znalci/",
+      "note": "lang=cs; 17 questions with photos and quiz-question markup in HTML",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Poznáte kultovní snímky podle obrázku?",
+    "url": "https://www.marianne.cz/zabava/kviz-poznate-kultovni-snimky-podle-obrazku-plny-pocet-bodu-ziska-jen-opravdovy-filmovy",
+    "language": "cs",
+    "format": "image",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "filmy",
+    "description": "Kultovní filmová klasika podle jediné fotky – plný počet dá jen opravdový filmový znalec.",
+    "verification": {
+      "collector": "cs-knowledge",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Kvíz: Poznáte kultovní snímky podle obrázku? Plný počet bodů získá jen opravdový filmový znalec | Marianne.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.marianne.cz/zabava/kviz-poznate-kultovni-snimky-podle-obrazku-plny-pocet-bodu-ziska-jen-opravdovy-filmovy",
+      "note": "lang=cs; Riddle.com quiz widget embedded",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Lehký kvíz vlajek – Nejznámější vlajky",
+    "url": "https://flags-quiz.com/cs/easy-flags-quiz/",
+    "language": "cs",
+    "format": "image",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "zeměpis",
+    "description": "Poznejte stát podle vlajky – 53 nejznámějších vlajek, čtyři možnosti a tři životy.",
+    "verification": {
+      "collector": "cs-knowledge",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Lehký kvíz vlajek – Nejznámější vlajky",
+      "recheck_status": "200",
+      "recheck_final_url": "https://flags-quiz.com/cs/easy-flags-quiz/",
+      "note": "lang=cs; Czech locale of an international flag-quiz site; JS game, no login",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Velký zvířecí kvíz: Dokážete podle fotky poznat, o jakého tvora se jedná?",
+    "url": "https://www.svetzeny.cz/zabava/testy-kvizy/velky-zvireci-kviz",
+    "language": "cs",
+    "format": "image",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "zvířata",
+    "description": "10 fotek zvířat s jednou nápovědou – poznáte, jaký tvor se na nich skrývá?",
+    "verification": {
+      "collector": "cs-knowledge",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Velký zvířecí kvíz: Dokážete podle fotky poznat, o jakého tvora se jedná? | Svetzeny.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.svetzeny.cz/zabava/testy-kvizy/velky-zvireci-kviz",
+      "note": "lang=cs; quiz markup present in HTML",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Asie není jen o pandách. Poznáte všechna zvířata na fotografiích?",
+    "url": "https://asianstyle.cz/kultura/117103-kviz-asie-neni-jen-o-pandach-poznate-vsechna-zvirata-na-fotografiich/",
+    "language": "cs",
+    "format": "image",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "zvířata",
+    "description": "Saola, nártoun nebo hulman? Poznejte podle fotek exotická zvířata z celé Asie.",
+    "verification": {
+      "collector": "cs-knowledge",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Kvíz: Poznáte všechna zvířata na fotografiích?",
+      "recheck_status": "200",
+      "recheck_final_url": "https://asianstyle.cz/kultura/117103-kviz-asie-neni-jen-o-pandach-poznate-vsechna-zvirata-na-fotografiich/",
+      "note": "lang=cs; photo questions 'Které zvíře lze vidět na fotografii?' in HTML",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Poznávačka ptáků online – kvíz podle fotografií",
+    "url": "https://birding.cz/poznavacka-ptaku",
+    "language": "cs",
+    "format": "image",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "zvířata",
+    "description": "Deset ptáků na fotkách z terénu a čtyři názvy na výběr – kdo je největší ornitolog party?",
+    "verification": {
+      "collector": "cs-knowledge",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Poznávačka ptáků online – kvíz podle fotografií | Birding.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://birding.cz/poznavacka-ptaku",
+      "note": "lang=cs; interactive JS quiz, new random set each game, no login",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "40 jídel, 40 filmů: Poznáte snímek podle toho, co mají hrdinové na talíři?",
+    "url": "https://recepty.idnes.cz/40-jidel-40-filmu-poznate-snimek-podle-toho-co-maji-hrdinove-na-taliri.Q261015_140106_receptyh_zuva",
+    "language": "cs",
+    "format": "mixed",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "jídlo",
+    "description": "Fotka jídla a vtipná nápověda – poznáte, ze kterého filmu talíř pochází? 40 otázek.",
+    "verification": {
+      "collector": "cs-knowledge",
+      "collector_status": 200,
+      "collector_method": "fetch",
+      "page_title": "Kvíz: 40 jídel, 40 filmů: Poznáte snímek podle toho, co mají hrdinové na talíři? – iDNES.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.idnes.cz/nastaveni-souhlasu?url=https%3a%2f%2frecepty.idnes.cz%2f40-jidel-40-filmu-poznate-snimek-podle-toho-co-maji-hrdinove-na-taliri.Q261015_140106_receptyh_zuva",
+      "note": "curl got 200 but was redirected to iDNES cookie-consent page (idnes.cz/nastaveni-souhlasu); Exa fetch shows 'Otázka 1/40' with options. Browser users must click the consent banner first (not a login/paywall).",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Kvíz o české populární hudbě",
+    "url": "https://kviz.kvizky.cz/kviz/kviz-o-ceske-popularni-hudbe-65",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "hudba",
+    "description": "13 otázek o českých kapelách, albech a hitech, na každou jen 30 sekund.",
+    "verification": {
+      "collector": "cs-knowledge",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Kvíz o české populární hudbě | Kvizky",
+      "recheck_status": "200",
+      "recheck_final_url": "https://kviz.kvizky.cz/kviz/kviz-o-ceske-popularni-hudbe-65",
+      "note": "JS quiz with 'SPUSTIT KVÍZ'; asks only for a nickname before start (no account/email)",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Dějepisný kvíz: Poznáte, co bylo dřív?",
+    "url": "https://kviz.kvizky.cz/kviz/dejepisny-kviz-poznate-co-bylo-driv-61",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "historie",
+    "description": "Pád Berlínské zdi, nebo vznik EU? 12 otázek, kde hádáte správné pořadí dějinných událostí.",
+    "verification": {
+      "collector": "cs-knowledge",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Dějepisný kvíz: Poznáte, co bylo dřív? | Kvizky",
+      "recheck_status": "200",
+      "recheck_final_url": "https://kviz.kvizky.cz/kviz/dejepisny-kviz-poznate-co-bylo-driv-61",
+      "note": "JS quiz, 35 s per question; asks only for a nickname before start",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Vyznáte se ve všech sportech na olympiádě?",
+    "url": "https://www.seznamzpravy.cz/clanek/sport-olympiada-kviz-vyznate-se-ve-vsech-sportech-na-olympiade-zkuste-nas-test-255080",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "sport",
+    "description": "Badminton, kanoistika a další „malé“ olympijské sporty – 7 otázek pro skutečné znalce sportu.",
+    "verification": {
+      "collector": "cs-knowledge",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Kvíz: Vyznáte se ve všech sportech na olympiádě? Zkuste náš test - Seznam Zprávy",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.seznamzpravy.cz/clanek/sport-olympiada-kviz-vyznate-se-ve-vsech-sportech-na-olympiade-zkuste-nas-test-255080",
+      "note": "lang=cs; questions (1/7...) and quiz_ markup in HTML; from 2024 (Paris Olympics)",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Jak jste na tom s logickým uvažováním? 11 úloh",
+    "url": "https://www.svetzeny.cz/zabava-kultura/testy-a-kvizy/kviz-jak-jste-na-tom-s-logickym-uvazovanim-11-uloh-proveri-usudek-poradi-v-cili-i-skryte-vzorce-7b023",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": null,
+    "description": "11 logických úloh na úsudek, pořadí v cíli a skryté vzorce – bez kalkulačky, jen s hlavou.",
+    "verification": {
+      "collector": "cs-knowledge",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Kvíz logického uvažování – 11 otázek na úsudek a skryté vzorce | Svetzeny.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.svetzeny.cz/zabava-kultura/testy-a-kvizy/kviz-jak-jste-na-tom-s-logickym-uvazovanim-11-uloh-proveri-usudek-poradi-v-cili-i-skryte-vzorce-7b023",
+      "note": "lang=cs; published 2026-10-22; quiz markup in HTML",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Otestujte si logické myšlení. Uhádnete správně všechny hádanky?",
+    "url": "https://www.svetzeny.cz/zabava/testy-kvizy/kviz-otestujte-si-logicke-mysleni-uhadnete-spravne-vsechny-hadanky-umi-jen-10",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": null,
+    "description": "Logické hádanky a slovní chytáky s výběrem odpovědí – správně je prý vyřeší jen 10 % lidí.",
+    "verification": {
+      "collector": "cs-knowledge",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Kvíz: Otestujte si logické myšlení. Uhádnete správně všechny hádanky? Umí to jen 10 % lidí | Svetzeny.cz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.svetzeny.cz/zabava/testy-kvizy/kviz-otestujte-si-logicke-mysleni-uhadnete-spravne-vsechny-hadanky-umi-jen-10",
+      "note": "lang=cs; Riddle.com widget; riddle questions (e.g. 'Kolik korun bude stát jablko?') present in HTML",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Logický test: 12 logických hádanek s řešením",
+    "url": "https://prismatest.net/cs/trivia/logic-test/",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": null,
+    "description": "12 náhodných hádanek – číselné řady, sylogismy i pasti na intuici, s vysvětlením řešení.",
+    "verification": {
+      "collector": "cs-knowledge",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Logický test: 12 logických hádanek s řešením (zdarma)",
+      "recheck_status": "200",
+      "recheck_final_url": "https://prismatest.net/cs/trivia/logic-test/",
+      "note": "lang=cs; Czech locale of an international site (translation reads naturally); JS test, no login",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Rodinné vztahy – logický test",
+    "url": "https://testi.cz/testy/logika/rodinne-vztahy/",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": null,
+    "description": "Matka dcery mé babičky je moje…? Klasické hlavolamy o rodinných vztazích, které zamotají hlavu.",
+    "verification": {
+      "collector": "cs-knowledge",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Rodinné vztahy – Logika — testi.cz, online testy",
+      "recheck_status": "200",
+      "recheck_final_url": "https://testi.cz/testy/logika/rodinne-vztahy/",
+      "note": "page is windows-1250 encoded; questions in HTML; ~75k plays; old-style site with ads",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Framed",
+    "url": "https://framed.wtf/",
+    "language": "en",
+    "format": "image",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "filmy",
+    "description": "Každý den nový film – poznáte ho z filmových záběrů? Máte šest pokusů a každý další záběr napoví víc.",
+    "verification": {
+      "collector": "en-image",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Framed - The daily movie guessing game",
+      "recheck_status": "200",
+      "recheck_final_url": "https://framed.wtf/",
+      "note": "Daily game; homepage is the game itself. No account needed.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "GuessThe.Game",
+    "url": "https://guessthe.game/",
+    "language": "en",
+    "format": "image",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "hry",
+    "description": "Poznejte videohru podle screenshotů – s každým špatným tipem přibude další obrázek.",
+    "verification": {
+      "collector": "en-image",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "GuessThe.Game - Your daily video game guessing puzzle!",
+      "recheck_status": "200",
+      "recheck_final_url": "https://guessthe.game/",
+      "note": "Daily game; homepage is the game itself.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Episode",
+    "url": "https://episode.wtf/",
+    "language": "en",
+    "format": "image",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "seriály",
+    "description": "Sesterská hra k Framed: poznejte seriál podle záběrů z jednoho dílu.",
+    "verification": {
+      "collector": "en-image",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Episode - The weekly TV show guessing game",
+      "recheck_status": "200",
+      "recheck_final_url": "https://episode.wtf/",
+      "note": "Weekly puzzle (not daily); homepage is the game itself.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Worldle - Guess the Country",
+    "url": "https://worldle.teuteuf.fr/",
+    "language": "en",
+    "format": "image",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "zeměpis",
+    "description": "Poznejte zemi podle jejího obrysu na mapě; po každém tipu dostanete vzdálenost a směr.",
+    "verification": {
+      "collector": "en-image",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Worldle - Guess the Country",
+      "recheck_status": "200",
+      "recheck_final_url": "https://worldle.teuteuf.fr/",
+      "note": "Daily game; homepage is the game itself.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "WhereTaken",
+    "url": "https://wheretaken.teuteuf.fr/",
+    "language": "en",
+    "format": "image",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "zeměpis",
+    "description": "Na které zemi byla pořízena tahle fotka? Denní hádanka podle skutečných snímků z celého světa.",
+    "verification": {
+      "collector": "en-image",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "WhereTaken",
+      "recheck_status": "200",
+      "recheck_final_url": "https://wheretaken.teuteuf.fr/",
+      "note": "Daily game; title is just the brand name, but the page is the game.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Flagle - The Daily Flag Guessing Game",
+    "url": "https://www.flagle.io/",
+    "language": "en",
+    "format": "image",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "vlajky",
+    "description": "Vlajka se odkrývá po kouscích – poznáte zemi dřív, než ji uvidíte celou?",
+    "verification": {
+      "collector": "en-image",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Flagle - The Daily Flag Guessing Game",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.flagle.io/",
+      "note": "Daily game; homepage is the game itself.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Globle",
+    "url": "https://globle-game.com/",
+    "language": "en",
+    "format": "image",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "zeměpis",
+    "description": "Hledáte tajnou zemi na glóbu; čím teplejší barva, tím jste blíž.",
+    "verification": {
+      "collector": "en-image",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Globle",
+      "recheck_status": "200",
+      "recheck_final_url": "https://globle-game.com/",
+      "note": "Daily game played on an interactive globe; the clues are visual (color heat map), not photos.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "World: Flags - Flag Quiz Game - Seterra",
+    "url": "https://www.geoguessr.com/fl/2007",
+    "language": "en",
+    "format": "image",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "vlajky",
+    "description": "Rychlý kvíz od Seterry: přiřaďte 16 nejznámějších vlajek světa ke správné zemi.",
+    "verification": {
+      "collector": "en-image",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "World: Flags - Flag Quiz Game - Seterra",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.geoguessr.com/fl/2007",
+      "note": "https://www.geoguessr.com/seterra/en/fl/2007 redirects here; served in English. Saving high scores needs login, playing does not.",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Landmarks Picture Quiz #1",
+    "url": "https://www.jetpunk.com/quizzes/landmarks-quiz-1",
+    "language": "en",
+    "format": "image",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "památky",
+    "description": "Poznejte 18 slavných památek světa podle fotky, od Eiffelovky po Machu Picchu.",
+    "verification": {
+      "collector": "en-image",
+      "collector_status": 200,
+      "collector_method": "fetch",
+      "page_title": "Landmarks Picture Quiz #1",
+      "recheck_status": "403",
+      "recheck_final_url": "https://www.jetpunk.com/quizzes/landmarks-quiz-1",
+      "note": "curl got 403 (Cloudflare); verified via WebFetch. Official JetPunk quiz, over 400k plays.",
+      "browser_status": 200,
+      "browser_title": "Landmarks Picture Quiz #1",
+      "browser_final_url": "https://www.jetpunk.com/quizzes/landmarks-quiz-1",
+      "result": "ověřeno: prohlížeč HTTP 200, titulek „Landmarks Picture Quiz #1“ (curl blokován ochranou proti botům)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Guess the Movie!! w/ Pictures",
+    "url": "https://www.sporcle.com/games/nickc4861/guess-the-movie-pictures",
+    "language": "en",
+    "format": "image",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "filmy",
+    "description": "Sto filmových screenshotů, jeden po druhém – kolik filmů poznáte za 20 minut?",
+    "verification": {
+      "collector": "en-image",
+      "collector_status": 200,
+      "collector_method": "fetch",
+      "page_title": "Guess the Movie!! w/ Pictures Quiz - By nickc4861",
+      "recheck_status": "403",
+      "recheck_final_url": "https://www.sporcle.com/games/nickc4861/guess-the-movie-pictures",
+      "note": "curl got 403 (CloudFront); verified via WebFetch. User-made quiz, last updated 2021; some stills may be dated.",
+      "browser_status": 200,
+      "browser_title": "Guess the Movie!! w/ Pictures Quiz - By nickc4861",
+      "browser_final_url": "https://www.sporcle.com/games/nickc4861/guess-the-movie-pictures",
+      "result": "ověřeno: prohlížeč HTTP 200, titulek „Guess the Movie!! w/ Pictures Quiz - By nickc4861“ (curl blokován ochranou proti botům)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Corporate Logos",
+    "url": "https://www.sporcle.com/games/g/corplogos",
+    "language": "en",
+    "format": "image",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "loga",
+    "description": "Poznáte 32 firemních log, když z nich zmizí název? Rychlovka na 6 minut.",
+    "verification": {
+      "collector": "en-image",
+      "collector_status": 200,
+      "collector_method": "fetch",
+      "page_title": "Corporate Logos Quiz",
+      "recheck_status": "403",
+      "recheck_final_url": "https://www.sporcle.com/games/g/corplogos",
+      "note": "curl got 403 (CloudFront); verified via WebFetch. Official Sporcle quiz (SporcleAdmin), updated Jun 2025.",
+      "browser_status": 200,
+      "browser_title": "Corporate Logos Quiz",
+      "browser_final_url": "https://www.sporcle.com/games/g/corplogos",
+      "result": "ověřeno: prohlížeč HTTP 200, titulek „Corporate Logos Quiz“ (curl blokován ochranou proti botům)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Countries of the World Quiz",
+    "url": "https://www.jetpunk.com/quizzes/how-many-countries-can-you-name",
+    "language": "en",
+    "format": "mixed",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "zeměpis",
+    "description": "Kolik ze 196 států světa vyjmenujete? Mapa se vám při psaní postupně vybarvuje.",
+    "verification": {
+      "collector": "en-image",
+      "collector_status": 200,
+      "collector_method": "fetch",
+      "page_title": "Countries of the World Quiz",
+      "recheck_status": "403",
+      "recheck_final_url": "https://www.jetpunk.com/quizzes/how-many-countries-can-you-name",
+      "note": "curl got 403 (Cloudflare); verified via WebFetch. JetPunk's most popular quiz (51M plays). Answers are typed, the map is only feedback.",
+      "browser_status": 403,
+      "browser_title": "Just a moment...",
+      "browser_final_url": "https://www.jetpunk.com/quizzes/how-many-countries-can-you-name",
+      "result": "ověřeno sběračem přes WebFetch; Cloudflare blokuje headless prohlížeč, reálný prohlížeč projde kontrolou",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "General Knowledge Quiz #1",
+    "url": "https://www.jetpunk.com/quizzes/general-knowledge-quiz-1",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "všeobecné znalosti",
+    "description": "Dvacet náhodných otázek ve stylu hospodského kvízu – od chemie přes hudbu po Jamese Bonda.",
+    "verification": {
+      "collector": "en-image",
+      "collector_status": 200,
+      "collector_method": "fetch",
+      "page_title": "General Knowledge Quiz #1",
+      "recheck_status": "403",
+      "recheck_final_url": "https://www.jetpunk.com/quizzes/general-knowledge-quiz-1",
+      "note": "curl got 403 (Cloudflare); verified via WebFetch. Official JetPunk quiz (Quizmaster), over 500k plays.",
+      "browser_status": 403,
+      "browser_title": "Just a moment...",
+      "browser_final_url": "https://www.jetpunk.com/quizzes/general-knowledge-quiz-1",
+      "result": "ověřeno sběračem přes WebFetch; Cloudflare blokuje headless prohlížeč, reálný prohlížeč projde kontrolou",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Free Personality Test (16Personalities)",
+    "url": "https://www.16personalities.com/free-personality-test",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Populární test osobnosti: zjisti svůj typ (např. INFJ) a porovnej se s kamarády.",
+    "verification": {
+      "collector": "en-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Free Personality Test | 16Personalities",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.16personalities.com/free-personality-test",
+      "note": "",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Statistical \"Which Character\" Personality Quiz",
+    "url": "https://openpsychometrics.org/tests/characters/",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "seriály",
+    "description": "Statistický kvíz: ke které z ~2000 postav ze seriálů a filmů máš povahově nejblíž?",
+    "verification": {
+      "collector": "en-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Statistical \"Which Character\" Personality Quiz",
+      "recheck_status": "200",
+      "recheck_final_url": "https://openpsychometrics.org/tests/characters/",
+      "note": "",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Which “Friends” Character Are You?",
+    "url": "https://www.buzzfeed.com/jenlewis/which-friends-character-are-you",
+    "language": "en",
+    "format": "mixed",
+    "types": [
+      "personality"
+    ],
+    "topic": "seriály",
+    "description": "Jsi spíš Monica, Chandler, nebo Phoebe? Klasický BuzzFeed kvíz o Přátelích.",
+    "verification": {
+      "collector": "en-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Which “Friends” Character Are You?",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.buzzfeed.com/jenlewis/which-friends-character-are-you",
+      "note": "first curl OK; later BuzzFeed requests rate-limited (406)",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Which Character From “The Office” Are You?",
+    "url": "https://www.buzzfeed.com/laurengarafano/which-office-character-are-you",
+    "language": "en",
+    "format": "mixed",
+    "types": [
+      "personality"
+    ],
+    "topic": "seriály",
+    "description": "Zjisti, jestli jsi Michael, Dwight, Jim nebo Pam z Kanclu.",
+    "verification": {
+      "collector": "en-personality",
+      "collector_status": 200,
+      "collector_method": "fetch",
+      "page_title": "Which Character From The Office Are You?",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.buzzfeed.com/laurengarafano/which-office-character-are-you",
+      "note": "curl got 406/202 (bot protection); verified via WebFetch, content matches quiz",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Hogwarts House Test",
+    "url": "https://www.idrlabs.com/hogwarts-house/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "filmy",
+    "description": "Do které bradavické koleje patříš? Test bez registrace pro fanoušky Harryho Pottera.",
+    "verification": {
+      "collector": "en-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Hogwarts House Test",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.idrlabs.com/hogwarts-house/test.php",
+      "note": "",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Either - A game of preference",
+    "url": "https://either.io/",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "preference"
+    ],
+    "topic": null,
+    "description": "Nekonečné otázky „Would you rather“ – vyber jednu možnost a uvidíš, jak hlasovali ostatní.",
+    "verification": {
+      "collector": "en-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Either - A game of preference",
+      "recheck_status": "200",
+      "recheck_final_url": "https://either.io/",
+      "note": "game runs directly on homepage",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Rrrather: Would you rather",
+    "url": "https://www.rrrather.com/",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "preference"
+    ],
+    "topic": null,
+    "description": "Dilemata „radši bys…?“ s procenty hlasů a komentáři ostatních – ideální na debatu.",
+    "verification": {
+      "collector": "en-personality",
+      "collector_status": 200,
+      "collector_method": "fetch",
+      "page_title": "rrrather: Would you rather... just answer or debate? - Home Page",
+      "recheck_status": "403",
+      "recheck_final_url": "https://www.rrrather.com/",
+      "note": "curl got 403 Cloudflare; verified via WebFetch, game is on homepage",
+      "browser_status": 200,
+      "browser_title": "rrrather: Would you rather... just answer or debate? - Home Page",
+      "browser_final_url": "https://rrrather.com/",
+      "result": "ověřeno: prohlížeč HTTP 200, titulek „rrrather: Would you rather... just answer or debate? - Home “ (curl blokován ochranou proti botům)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "This or That Game",
+    "url": "https://thisorthatgames.com/",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "preference"
+    ],
+    "topic": null,
+    "description": "Rychlé „tohle, nebo tamto?“ – kafe, nebo čaj? Má i režim pro projektor do skupiny.",
+    "verification": {
+      "collector": "en-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "This or That Questions: 2974 Picks + Free Online Game",
+      "recheck_status": "200",
+      "recheck_final_url": "https://thisorthatgames.com/",
+      "note": "game embedded on homepage; no sign-up",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "It’s Time To Decide Whether These Sweet Or Savoury Foods Reign Supreme",
+    "url": "https://www.buzzfeed.com/elizabeth_cotton/sweet-savoury-food-quiz",
+    "language": "en",
+    "format": "image",
+    "types": [
+      "preference"
+    ],
+    "topic": "jídlo",
+    "description": "Sladké, nebo slané? Vybírej mezi dvojicemi jídel na obrázcích.",
+    "verification": {
+      "collector": "en-personality",
+      "collector_status": 200,
+      "collector_method": "fetch",
+      "page_title": "Would You Rather Eat These Sweet Or Savoury Foods",
+      "recheck_status": "406",
+      "recheck_final_url": "https://www.buzzfeed.com/elizabeth_cotton/sweet-savoury-food-quiz",
+      "note": "curl got 406/202 (bot protection); verified via WebFetch, content matches quiz",
+      "browser_status": 200,
+      "browser_title": "Would You Rather Eat These Sweet Or Savoury Foods",
+      "browser_final_url": "https://www.buzzfeed.com/elizabeth_cotton/sweet-savoury-food-quiz",
+      "result": "ověřeno: prohlížeč HTTP 200, titulek „Would You Rather Eat These Sweet Or Savoury Foods“ (curl blokován ochranou proti botům)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Blood Donation - Zebra Puzzle",
+    "url": "https://www.brainzilla.com/logic/zebra/blood-donation/",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": null,
+    "description": "Logická „zebra“ úloha: z nápověd zjisti, kdo je kdo a co daroval.",
+    "verification": {
+      "collector": "en-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Blood Donation - Zebra Puzzle - Brainzilla",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.brainzilla.com/logic/zebra/blood-donation/",
+      "note": "",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Einstein's Riddle",
+    "url": "https://www.brainzilla.com/logic/zebra/einsteins-riddle/",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": null,
+    "description": "Slavná Einsteinova hádanka – komu patří rybička? Řešte společně v interaktivní tabulce.",
+    "verification": {
+      "collector": "en-personality",
+      "collector_status": 200,
+      "collector_method": "curl",
+      "page_title": "Play Einstein's Riddle - Brainzilla",
+      "recheck_status": "200",
+      "recheck_final_url": "https://www.brainzilla.com/logic/zebra/einsteins-riddle/",
+      "note": "",
+      "result": "ověřeno: HTTP 200 (curl)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Can You Get 11 of These Basic Brain Teasers?",
+    "url": "https://play.howstuffworks.com/quiz/can-you-get-11-of-these-basic-brain-teasers",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": null,
+    "description": "Chytáky a hlavolamy s výběrem odpovědí – kdo nečte pozorně, naletí.",
+    "verification": {
+      "collector": "en-personality",
+      "collector_status": 200,
+      "collector_method": "fetch",
+      "page_title": "Can You Get 11 of These Basic Brain Teasers? | HowStuffWorks",
+      "recheck_status": "202",
+      "recheck_final_url": "https://play.howstuffworks.com/quiz/can-you-get-11-of-these-basic-brain-teasers",
+      "note": "curl got 202 bot challenge; verified via WebFetch",
+      "browser_status": 202,
+      "browser_title": "Can You Get 11 of These Basic Brain Teasers? | HowStuffWorks",
+      "browser_final_url": "https://play.howstuffworks.com/quiz/can-you-get-11-of-these-basic-brain-teasers",
+      "result": "ověřeno: prohlížeč HTTP 202, titulek „Can You Get 11 of These Basic Brain Teasers? | HowStuffWorks“ (curl blokován ochranou proti botům)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Test Your Mental Mettle With These Ridiculous Riddles",
+    "url": "https://play.howstuffworks.com/quiz/test-your-mental-mettle-with-these-ridiculous-riddles",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": null,
+    "description": "Klasické anglické hádanky typu „co jsem?“ s vysvětlením po každé odpovědi.",
+    "verification": {
+      "collector": "en-personality",
+      "collector_status": 200,
+      "collector_method": "fetch",
+      "page_title": "Test Your Mental Mettle With These Ridiculous Riddles | HowStuffWorks",
+      "recheck_status": "202",
+      "recheck_final_url": "https://play.howstuffworks.com/quiz/test-your-mental-mettle-with-these-ridiculous-riddles",
+      "note": "curl got 202 bot challenge; verified via WebFetch",
+      "browser_status": 200,
+      "browser_title": "Test Your Mental Mettle With These Ridiculous Riddles | HowStuffWorks",
+      "browser_final_url": "https://play.howstuffworks.com/quiz/test-your-mental-mettle-with-these-ridiculous-riddles",
+      "result": "ověřeno: prohlížeč HTTP 200, titulek „Test Your Mental Mettle With These Ridiculous Riddles | HowS“ (curl blokován ochranou proti botům)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Can You Pass This Incredibly Difficult Logic Test?",
+    "url": "https://play.howstuffworks.com/quiz/can-you-pass-this-incredibly-difficult-logic-test",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": null,
+    "description": "Číselné řady, slovní vzorce a chytáky – těžší logický test pro celou partu.",
+    "verification": {
+      "collector": "en-personality",
+      "collector_status": 200,
+      "collector_method": "fetch",
+      "page_title": "Can You Pass This Incredibly Difficult Logic Test? | HowStuffWorks",
+      "recheck_status": "202",
+      "recheck_final_url": "https://play.howstuffworks.com/quiz/can-you-pass-this-incredibly-difficult-logic-test",
+      "note": "curl got 202 bot challenge; verified via WebFetch",
+      "browser_status": 200,
+      "browser_title": "Can You Pass This Incredibly Difficult Logic Test? | HowStuffWorks",
+      "browser_final_url": "https://play.howstuffworks.com/quiz/can-you-pass-this-incredibly-difficult-logic-test",
+      "result": "ověřeno: prohlížeč HTTP 200, titulek „Can You Pass This Incredibly Difficult Logic Test? | HowStuf“ (curl blokován ochranou proti botům)",
+      "checked_at": "2026-11-13"
+    }
+  }
+]
