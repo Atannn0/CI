@@ -24,6 +24,14 @@ type Bucket = { count: number; resetAt: number };
 const buckets = ((globalThis as typeof globalThis & { __kvizyRate?: Map<string, Bucket> }).__kvizyRate ??=
   new Map<string, Bucket>());
 
+/** Fixed-window quotas for public write endpoints (per IP, per process instance). */
+export const RATE_LIMITS = {
+  create: { limit: 10, windowMs: 60_000 },
+  click: { limit: 60, windowMs: 60_000 },
+  report: { limit: 10, windowMs: 10 * 60_000 },
+  admin: { limit: 20, windowMs: 60_000 },
+} as const;
+
 /**
  * Fixed-window limit per client IP and action. Kept in memory, so on serverless hosting it is
  * per instance: a brake on bursts, not a global quota.
@@ -44,4 +52,22 @@ export function isRateLimited(request: Request, action: string, limit: number, w
   return bucket.count > limit;
 }
 
+/** Test helper: clears in-memory rate-limit buckets between cases. */
+export function resetRateLimitsForTests(): void {
+  buckets.clear();
+}
+
 export const MAX_BODY_BYTES = 8_000;
+
+/** Public catalog writes that are not allowed (update/delete/set clicks). */
+export function methodNotAllowed(allow: string): Response {
+  return Response.json(
+    { error: "method_not_allowed", message: "Tato operace není povolená." },
+    { status: 405, headers: { Allow: allow } },
+  );
+}
+
+/** Generic 500 that never echoes DB or env details to the client. */
+export function safeServerError(message = "Něco se nepovedlo. Zkus to znovu."): Response {
+  return Response.json({ error: "server_error", message }, { status: 500 });
+}
