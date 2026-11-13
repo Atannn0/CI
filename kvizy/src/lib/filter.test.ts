@@ -11,6 +11,8 @@ function quiz(partial: Partial<Quiz> & Pick<Quiz, "id" | "title">): Quiz {
     types: ["knowledge"],
     topic: null,
     isCollection: false,
+    hidden: false,
+    source: null,
     clicks: 0,
     createdAt: "2026-01-01T00:00:00.000Z",
     ...partial,

@@ -1,7 +1,13 @@
 import { connection } from "next/server";
 import { isRateLimited, isSameOrigin, MAX_BODY_BYTES, methodNotAllowed, RATE_LIMITS, safeServerError } from "@/lib/guard";
+import { DEFAULT_LOCALE, type UiLocale } from "@/lib/i18n/messages";
 import { validateQuizInput } from "@/lib/quiz";
 import { createQuiz, listQuizzes } from "@/lib/quizzes-repo";
+
+function requestLocale(request: Request): UiLocale {
+  const header = request.headers.get("accept-language")?.toLowerCase() ?? "";
+  return header.startsWith("en") ? "en" : DEFAULT_LOCALE;
+}
 
 export async function GET() {
   await connection();
@@ -30,10 +36,11 @@ export async function POST(request: Request) {
     return Response.json({ error: "invalid_json", message: "Neplatná data formuláře." }, { status: 400 });
   }
 
-  const parsed = validateQuizInput(body);
+  const locale = requestLocale(request);
+  const parsed = validateQuizInput(body, locale);
   if (!parsed.ok) {
     return Response.json(
-      { error: "validation", message: "Zkontroluj zvýrazněná pole.", fields: parsed.errors },
+      { error: "validation", message: locale === "en" ? "Check the highlighted fields." : "Zkontroluj zvýrazněná pole.", fields: parsed.errors },
       { status: 422 },
     );
   }

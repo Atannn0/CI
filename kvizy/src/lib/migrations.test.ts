@@ -54,11 +54,29 @@ describe("migrations", () => {
     const seeds = JSON.parse(await readFile("data/seed-quizzes.json", "utf8")) as { url: string; is_collection?: boolean }[];
     for (const link of REQUESTED_LINKS) {
       const key = urlKey(link)!;
-      const { rows } = await db.query<{ is_collection: boolean }>("select is_collection from quizzes where url_key = $1", [key]);
+      const { rows } = await db.query<{ is_collection: boolean; hidden: boolean }>(
+        "select is_collection, hidden from quizzes where url_key = $1",
+        [key],
+      );
       expect(rows, link).toHaveLength(1);
       const seed = seeds.find((s) => urlKey(s.url) === key);
       expect(rows[0].is_collection, link).toBe(seed?.is_collection ?? false);
+      if (link === "https://www.idrlabs.com/") expect(rows[0].hidden).toBe(true);
     }
+  });
+
+  it("imports IDRlabs individuals and ja/zh quizzes without duplicates on re-run", async () => {
+    const db = new PGlite();
+    await applyMigrations(client(db), await readMigrations());
+    const before = await count(db);
+    const imports = JSON.parse(await readFile("data/import-quizzes.json", "utf8")) as { url: string; language: string }[];
+    expect(imports.filter((q) => q.language === "ja").length).toBeGreaterThanOrEqual(4);
+    expect(imports.filter((q) => q.language === "zh").length).toBeGreaterThanOrEqual(4);
+    expect(await count(db, "language = 'ja'")).toBeGreaterThanOrEqual(4);
+    expect(await count(db, "language = 'zh'")).toBeGreaterThanOrEqual(4);
+    expect(await count(db, "url_key like 'idrlabs.com/%'")).toBeGreaterThanOrEqual(10);
+    for (const migration of (await readMigrations()).filter((m) => /_seed_/.test(m.name))) await db.exec(migration.sql);
+    expect(await count(db)).toBe(before);
   });
 
   it("keeps a reported quiz and rejects a Jiné report without a note", async () => {

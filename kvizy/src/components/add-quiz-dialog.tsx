@@ -15,14 +15,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ChoiceGroup, ChoiceOption, Field } from "@/components/form-fields";
+import { LanguageCombobox } from "@/components/language-combobox";
+import { LocaleSwitch } from "@/components/locale-switch";
+import { useLocale } from "@/lib/i18n/locale";
 import {
-  FORMAT_LABELS,
+  FORMAT_LABEL_KEYS,
   FORMATS,
-  LANGUAGE_LABELS,
-  LANGUAGES,
   LIMITS,
   QUIZ_TYPES,
-  TYPE_LABELS,
+  TYPE_LABEL_KEYS,
   urlKey,
   validateQuizInput,
   type Quiz,
@@ -49,6 +50,7 @@ const EMPTY_FORM = {
 };
 
 export function AddQuizDialog({ open, onOpenChange, quizzes, onCreated }: Props) {
+  const { locale, t } = useLocale();
   const [form, setForm] = useState(EMPTY_FORM);
   const [errors, setErrors] = useState<QuizInputErrors>({});
   const [serverError, setServerError] = useState<string | null>(null);
@@ -66,6 +68,7 @@ export function AddQuizDialog({ open, onOpenChange, quizzes, onCreated }: Props)
     setServerError(null);
   }
 
+  // Keep draft values when switching UI language; only clear on explicit close/success.
   function reset() {
     setForm(EMPTY_FORM);
     setErrors({});
@@ -74,35 +77,35 @@ export function AddQuizDialog({ open, onOpenChange, quizzes, onCreated }: Props)
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const parsed = validateQuizInput(form);
+    const parsed = validateQuizInput(form, locale);
     if (!parsed.ok) {
       setErrors(parsed.errors);
       return;
     }
     if (duplicate) {
-      setErrors({ url: `Tento odkaz už v katalogu je jako „${duplicate.title}“.` });
+      setErrors({ url: `${t("duplicateUrl")} „${duplicate.title}“.` });
       return;
     }
     setSubmitting(true);
     try {
       const response = await fetch("/api/quizzes", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "Accept-Language": locale },
         body: JSON.stringify(parsed.value),
       });
       const data = await response.json();
       if (response.status === 201) {
         onCreated(data.quiz as Quiz);
-        toast.success("Kvíz je v katalogu!", { description: `„${data.quiz.title}“ teď najde každý z party.` });
+        toast.success(t("quizAdded"), { description: `„${data.quiz.title}“ ${t("quizAddedDesc")}` });
         reset();
         onOpenChange(false);
         return;
       }
       if (response.status === 409) setErrors({ url: data.message });
       else if (response.status === 422) setErrors(data.fields ?? {});
-      setServerError(data.message ?? "Uložení se nepovedlo. Zkus to znovu.");
+      setServerError(data.message ?? t("saveFailed"));
     } catch {
-      setServerError("Uložení se nepovedlo. Zkontroluj připojení a zkus to znovu.");
+      setServerError(t("saveFailedNet"));
     } finally {
       setSubmitting(false);
     }
@@ -118,22 +121,25 @@ export function AddQuizDialog({ open, onOpenChange, quizzes, onCreated }: Props)
     >
       <DialogContent className="max-h-[calc(100dvh-2rem)] overflow-y-auto sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold">Přidat kvíz</DialogTitle>
-          <DialogDescription>Bez registrace. Pole s hvězdičkou jsou povinná.</DialogDescription>
+          <div className="flex items-start justify-between gap-3 pr-8">
+            <DialogTitle className="text-xl font-bold">{t("addTitle")}</DialogTitle>
+            <LocaleSwitch />
+          </div>
+          <DialogDescription>{t("addLead")}</DialogDescription>
         </DialogHeader>
-        <form noValidate onSubmit={handleSubmit} className="flex flex-col gap-4" aria-label="Přidat kvíz">
-          <Field id="quiz-title" label="Název *" error={errors.title}>
+        <form noValidate onSubmit={handleSubmit} className="flex flex-col gap-4" aria-label={t("addTitle")}>
+          <Field id="quiz-title" label={t("fieldTitle")} error={errors.title}>
             <Input
               id="quiz-title"
               value={form.title}
               maxLength={LIMITS.title}
               onChange={(e) => update("title", e.target.value)}
               aria-invalid={!!errors.title}
-              placeholder="Která seriálová postava jsi?"
+              placeholder={t("titlePlaceholder")}
             />
           </Field>
 
-          <Field id="quiz-url" label="Přímý odkaz *" error={errors.url}>
+          <Field id="quiz-url" label={t("fieldUrl")} error={errors.url}>
             <Input
               id="quiz-url"
               type="url"
@@ -146,68 +152,64 @@ export function AddQuizDialog({ open, onOpenChange, quizzes, onCreated }: Props)
             {duplicate && !errors.url && (
               <p role="status" className="flex items-start gap-1.5 text-sm text-amber-700">
                 <TriangleAlertIcon className="mt-0.5 size-4 shrink-0" aria-hidden />
-                Tento odkaz už v katalogu je jako „{duplicate.title}“.
+                {t("duplicateUrl")} „{duplicate.title}“.
               </p>
             )}
           </Field>
 
-          <ChoiceGroup legend="Formát *" error={errors.format}>
+          <ChoiceGroup legend={t("fieldFormat")} error={errors.format}>
             {FORMATS.map((format) => (
               <ChoiceOption
                 key={format}
                 type="radio"
                 name="format"
-                label={FORMAT_LABELS[format]}
+                label={t(FORMAT_LABEL_KEYS[format])}
                 checked={form.format === format}
                 onChange={() => update("format", format)}
               />
             ))}
           </ChoiceGroup>
 
-          <ChoiceGroup legend="Typ kvízu * (alespoň jeden)" error={errors.types}>
+          <ChoiceGroup legend={t("fieldTypes")} error={errors.types}>
             {QUIZ_TYPES.map((type) => (
               <ChoiceOption
                 key={type}
                 type="checkbox"
                 name="types"
-                label={TYPE_LABELS[type]}
+                label={t(TYPE_LABEL_KEYS[type])}
                 checked={form.types.includes(type)}
                 onChange={() => update("types", toggleValue(form.types, type))}
               />
             ))}
           </ChoiceGroup>
 
-          <ChoiceGroup legend="Jazyk *" error={errors.language}>
-            {LANGUAGES.map((language) => (
-              <ChoiceOption
-                key={language}
-                type="radio"
-                name="language"
-                label={LANGUAGE_LABELS[language]}
-                checked={form.language === language}
-                onChange={() => update("language", language)}
-              />
-            ))}
-          </ChoiceGroup>
+          <Field id="quiz-language" label={t("fieldLanguage")} error={errors.language}>
+            <LanguageCombobox
+              id="quiz-language"
+              value={form.language}
+              error={!!errors.language}
+              onChange={(code) => update("language", code)}
+            />
+          </Field>
 
-          <Field id="quiz-topic" label="Téma (nepovinné)" error={errors.topic}>
+          <Field id="quiz-topic" label={t("fieldTopic")} error={errors.topic}>
             <Input
               id="quiz-topic"
               value={form.topic}
               maxLength={LIMITS.topic}
               onChange={(e) => update("topic", e.target.value)}
-              placeholder="filmy, hudba, jídlo…"
+              placeholder={t("topicPlaceholder")}
             />
           </Field>
 
-          <Field id="quiz-description" label="Krátký popis (nepovinné)" error={errors.description}>
+          <Field id="quiz-description" label={t("fieldDescription")} error={errors.description}>
             <Textarea
               id="quiz-description"
               value={form.description}
               maxLength={LIMITS.description}
               onChange={(e) => update("description", e.target.value)}
               rows={2}
-              placeholder="O čem kvíz je a proč se hodí pro partu"
+              placeholder={t("descriptionPlaceholder")}
             />
           </Field>
 
@@ -219,10 +221,10 @@ export function AddQuizDialog({ open, onOpenChange, quizzes, onCreated }: Props)
 
           <DialogFooter>
             <Button type="button" variant="outline" size="lg" onClick={() => onOpenChange(false)}>
-              Zrušit
+              {t("cancel")}
             </Button>
             <Button type="submit" size="lg" disabled={submitting} className="font-semibold">
-              {submitting ? "Ukládám…" : "Uložit kvíz"}
+              {submitting ? t("saving") : t("saveQuiz")}
             </Button>
           </DialogFooter>
         </form>

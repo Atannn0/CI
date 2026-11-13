@@ -1,6 +1,12 @@
 import { isRateLimited, isSameOrigin, MAX_BODY_BYTES, methodNotAllowed, RATE_LIMITS, safeServerError } from "@/lib/guard";
+import { DEFAULT_LOCALE, type UiLocale } from "@/lib/i18n/messages";
 import { createReport } from "@/lib/quizzes-repo";
 import { validateReportInput } from "@/lib/report";
+
+function requestLocale(request: Request): UiLocale {
+  const header = request.headers.get("accept-language")?.toLowerCase() ?? "";
+  return header.startsWith("en") ? "en" : DEFAULT_LOCALE;
+}
 
 export async function POST(request: Request, ctx: RouteContext<"/api/quizzes/[id]/report">) {
   if (!isSameOrigin(request)) {
@@ -30,10 +36,11 @@ export async function POST(request: Request, ctx: RouteContext<"/api/quizzes/[id
     return Response.json({ error: "invalid_json", message: "Neplatná data hlášení." }, { status: 400 });
   }
 
-  const parsed = validateReportInput(body);
+  const locale = requestLocale(request);
+  const parsed = validateReportInput(body, locale);
   if (!parsed.ok) {
     return Response.json(
-      { error: "validation", message: "Zkontroluj zvýrazněná pole.", fields: parsed.errors },
+      { error: "validation", message: locale === "en" ? "Check the highlighted fields." : "Zkontroluj zvýrazněná pole.", fields: parsed.errors },
       { status: 422 },
     );
   }
