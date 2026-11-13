@@ -30,7 +30,11 @@ export function filterQuizzes(quizzes: Quiz[], filters: Filters): Quiz[] {
     if (filters.languages.length > 0 && !filters.languages.includes(quiz.language)) return false;
     if (filters.types.length > 0 && !quiz.types.some((t) => filters.types.includes(t))) return false;
     if (words.length === 0) return true;
-    const haystack = normalizeText([quiz.title, quiz.description ?? "", quiz.topic ?? ""].join(" "));
+    const haystack = normalizeText(
+      [quiz.title, quiz.description ?? "", quiz.descriptionCs ?? "", quiz.descriptionEn ?? "", quiz.topic ?? ""].join(
+        " ",
+      ),
+    );
     return words.every((word) => haystack.includes(word));
   });
 }

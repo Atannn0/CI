@@ -9,8 +9,10 @@ type Leaf = Record<UiLocale, string>;
 const m = <T extends Record<string, Leaf>>(tree: T) => tree;
 
 export const messages = m({
-  brand: { cs: "Kvízy pro partu", en: "Quizzes for the crew" },
-  addQuiz: { cs: "Přidat kvíz", en: "Add quiz" },
+  brand: { cs: "Kvízovna", en: "Kvízovna" },
+  addQuiz: { cs: "Přidat odkaz", en: "Add link" },
+  createQuiz: { cs: "Vytvořit kvíz", en: "Create quiz" },
+  addMenu: { cs: "Přidat do katalogu", en: "Add to catalog" },
   searchLabel: { cs: "Najdi kvíz pro svou partu", en: "Find a quiz for your crew" },
   searchPlaceholder: { cs: "Filmy, hádanky, jídlo…", en: "Movies, riddles, food…" },
   clearSearch: { cs: "Vymazat hledání", en: "Clear search" },
@@ -18,6 +20,11 @@ export const messages = m({
     cs: "Osobnostní testy, hádanky i poznávačky. Vyber podle nálady a otevři jedním kliknutím.",
     en: "Personality tests, riddles and trivia. Pick a mood and open it in one click.",
   },
+  share: { cs: "Sdílet", en: "Share" },
+  linkCopied: { cs: "Odkaz zkopírován", en: "Link copied" },
+  linkCopyFailed: { cs: "Kopírování selhalo. Zkopíruj odkaz ručně:", en: "Copy failed. Copy the link manually:" },
+  playQuiz: { cs: "Hrát kvíz", en: "Play quiz" },
+  customBadge: { cs: "Vlastní kvíz", en: "Custom quiz" },
   filters: { cs: "Filtry", en: "Filters" },
   format: { cs: "Formát", en: "Format" },
   quizType: { cs: "Typ kvízu", en: "Quiz type" },
@@ -163,6 +170,42 @@ export const messages = m({
   adminReasonCol: { cs: "Důvod", en: "Reason" },
   adminNoteCol: { cs: "Doplnění", en: "Details" },
   adminLogin: { cs: "Přihlášení správce", en: "Admin sign-in" },
+
+  createTitle: { cs: "Vytvořit kvíz", en: "Create a quiz" },
+  createLead: {
+    cs: "Znalostní kvíz přímo v Kvízovně. Bez registrace.",
+    en: "A knowledge quiz hosted in Kvízovna. No sign-up.",
+  },
+  addQuestion: { cs: "Přidat otázku", en: "Add question" },
+  removeQuestion: { cs: "Odebrat otázku", en: "Remove question" },
+  addOption: { cs: "Přidat možnost", en: "Add option" },
+  removeOption: { cs: "Odebrat", en: "Remove" },
+  questionN: { cs: "Otázka {n}", en: "Question {n}" },
+  promptLabel: { cs: "Text otázky *", en: "Question text *" },
+  optionLabel: { cs: "Možnost", en: "Option" },
+  correctLabel: { cs: "Správná", en: "Correct" },
+  preview: { cs: "Náhled", en: "Preview" },
+  publishQuiz: { cs: "Zveřejnit kvíz", en: "Publish quiz" },
+  publishing: { cs: "Zveřejňuji…", en: "Publishing…" },
+  backToEdit: { cs: "Zpět k úpravám", en: "Back to editing" },
+  submitAnswers: { cs: "Odevzdat odpovědi", en: "Submit answers" },
+  yourScore: { cs: "Tvůj výsledek: {score} / {total}", en: "Your score: {score} / {total}" },
+  correctAnswer: { cs: "Správně:", en: "Correct:" },
+  yourAnswer: { cs: "Tvoje odpověď:", en: "Your answer:" },
+  playAgain: { cs: "Hrát znovu", en: "Play again" },
+  backToCatalog: { cs: "Zpět do katalogu", en: "Back to catalog" },
+  errCustomQuestionsMin: { cs: "Přidej alespoň jednu otázku.", en: "Add at least one question." },
+  errCustomQuestionsMax: { cs: "Maximum je 40 otázek.", en: "At most 40 questions." },
+  errCustomPrompt: { cs: "Doplň text otázky č. {n}.", en: "Fill in question {n}." },
+  errCustomOptionsCount: {
+    cs: "Otázka {n} potřebuje 2–6 možností.",
+    en: "Question {n} needs 2–6 options.",
+  },
+  errCustomOptionLabel: { cs: "Doplň text možnosti u otázky {n}.", en: "Fill in an option for question {n}." },
+  errCustomOneCorrect: {
+    cs: "U otázky {n} označ právě jednu správnou odpověď.",
+    en: "Mark exactly one correct answer for question {n}.",
+  },
 });
 
 export type MessageKey = keyof typeof messages;

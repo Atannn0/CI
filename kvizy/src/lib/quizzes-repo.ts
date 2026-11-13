@@ -8,6 +8,8 @@ type QuizRow = {
   title: string;
   url: string;
   description: string | null;
+  description_cs: string | null;
+  description_en: string | null;
   language: Quiz["language"];
   format: Quiz["format"];
   types: Quiz["types"];
@@ -15,19 +17,23 @@ type QuizRow = {
   is_collection: boolean;
   hidden: boolean;
   source: string | null;
+  kind: Quiz["kind"];
+  slug: string | null;
   clicks: number | string;
   created_at: Date | string;
 };
 
 const COLUMNS =
-  "id, title, url, description, language, format, types, topic, is_collection, hidden, source, clicks, created_at";
+  "id, title, url, description, description_cs, description_en, language, format, types, topic, is_collection, hidden, source, kind, slug, clicks, created_at";
 
-function toQuiz(row: QuizRow): Quiz {
+export function toQuiz(row: QuizRow): Quiz {
   return {
     id: Number(row.id),
     title: row.title,
     url: row.url,
     description: row.description,
+    descriptionCs: row.description_cs || row.description || `Kvíz o: ${row.title}`,
+    descriptionEn: row.description_en || row.description || `Quiz about: ${row.title}`,
     language: row.language,
     format: row.format,
     types: row.types,
@@ -35,6 +41,8 @@ function toQuiz(row: QuizRow): Quiz {
     isCollection: row.is_collection,
     hidden: Boolean(row.hidden),
     source: row.source,
+    kind: row.kind === "custom" ? "custom" : "external",
+    slug: row.slug,
     clicks: Number(row.clicks),
     createdAt: new Date(row.created_at).toISOString(),
   };
@@ -55,6 +63,16 @@ export async function findByUrl(url: string): Promise<Quiz | null> {
   return rows[0] ? toQuiz(rows[0]) : null;
 }
 
+export async function findBySlug(slug: string): Promise<Quiz | null> {
+  const rows = await sql<QuizRow>(`select ${COLUMNS} from quizzes where slug = $1 and hidden = false`, [slug]);
+  return rows[0] ? toQuiz(rows[0]) : null;
+}
+
+export async function findById(id: number): Promise<Quiz | null> {
+  const rows = await sql<QuizRow>(`select ${COLUMNS} from quizzes where id = $1`, [id]);
+  return rows[0] ? toQuiz(rows[0]) : null;
+}
+
 export type CreateResult = { ok: true; quiz: Quiz } | { ok: false; duplicate: Quiz | null };
 
 export async function createQuiz(input: QuizInput): Promise<CreateResult> {
@@ -62,10 +80,21 @@ export async function createQuiz(input: QuizInput): Promise<CreateResult> {
   if (existing) return { ok: false, duplicate: existing };
   try {
     const rows = await sql<QuizRow>(
-      `insert into quizzes (title, url, url_key, description, language, format, types, topic)
-       values ($1, $2, $3, $4, $5, $6, $7, $8)
+      `insert into quizzes (title, url, url_key, description, description_cs, description_en, language, format, types, topic)
+       values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
        returning ${COLUMNS}`,
-      [input.title, input.url, urlKey(input.url), input.description, input.language, input.format, input.types, input.topic],
+      [
+        input.title,
+        input.url,
+        urlKey(input.url),
+        input.description,
+        input.descriptionCs,
+        input.descriptionEn,
+        input.language,
+        input.format,
+        input.types,
+        input.topic,
+      ],
     );
     return { ok: true, quiz: toQuiz(rows[0]) };
   } catch (error) {
@@ -121,3 +150,5 @@ export async function listReports(limit = 500): Promise<QuizReport[]> {
     createdAt: new Date(row.created_at).toISOString(),
   }));
 }
+
+export { COLUMNS as QUIZ_COLUMNS };

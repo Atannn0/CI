@@ -42,7 +42,19 @@ describe("validateQuizInput", () => {
     if (result.ok) {
       expect(result.value.title).toBe("Poznáš film podle záběru?");
       expect(result.value.description).toBeNull();
+      expect(result.value.descriptionCs).toBe("Kvíz o: Poznáš film podle záběru?");
+      expect(result.value.descriptionEn).toBe("Quiz about: Poznáš film podle záběru?");
       expect(result.value.topic).toBe("filmy");
+    }
+  });
+
+  it("keeps a filled description as CS and templates EN when the text is Czech", () => {
+    const result = validateQuizInput({ ...valid, description: "  Těžké české hádanky  " });
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.value.description).toBe("Těžké české hádanky");
+      expect(result.value.descriptionCs).toBe("Těžké české hádanky");
+      expect(result.value.descriptionEn).toBe("Quiz about: Poznáš film podle záběru?");
     }
   });
 

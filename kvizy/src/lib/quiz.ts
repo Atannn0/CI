@@ -1,3 +1,4 @@
+import { bilingualDescriptions } from "@/lib/descriptions";
 import { t, type UiLocale } from "@/lib/i18n/messages";
 import { isQuizLanguage, type QuizLanguage } from "@/lib/languages";
 
@@ -9,6 +10,7 @@ export const QUIZ_TYPES = ["personality", "preference", "knowledge", "logic"] as
 
 export type QuizFormat = (typeof FORMATS)[number];
 export type QuizType = (typeof QUIZ_TYPES)[number];
+export type QuizKind = "external" | "custom";
 
 export const FORMAT_LABEL_KEYS = {
   image: "formatImage",
@@ -47,6 +49,8 @@ export type Quiz = {
   title: string;
   url: string;
   description: string | null;
+  descriptionCs: string;
+  descriptionEn: string;
   language: QuizLanguage;
   format: QuizFormat;
   types: QuizType[];
@@ -56,6 +60,8 @@ export type Quiz = {
   /** Soft-hidden from the public catalog (e.g. replaced hub card). */
   hidden: boolean;
   source: string | null;
+  kind: QuizKind;
+  slug: string | null;
   clicks: number;
   createdAt: string;
 };
@@ -64,6 +70,8 @@ export type QuizInput = {
   title: string;
   url: string;
   description: string | null;
+  descriptionCs: string;
+  descriptionEn: string;
   language: QuizLanguage;
   format: QuizFormat;
   types: QuizType[];
@@ -144,12 +152,18 @@ export function validateQuizInput(
   if (topic && topic.length > LIMITS.topic) errors.topic = t("errTopicTooLong", locale, { n: LIMITS.topic });
 
   if (Object.keys(errors).length > 0) return { ok: false, errors };
+  const blurbs = bilingualDescriptions(title!, description, {
+    cs: typeof data.descriptionCs === "string" ? data.descriptionCs : null,
+    en: typeof data.descriptionEn === "string" ? data.descriptionEn : null,
+  });
   return {
     ok: true,
     value: {
       title: title!,
       url: parseHttpUrl(urlText)!.toString(),
-      description,
+      description: blurbs.description,
+      descriptionCs: blurbs.descriptionCs,
+      descriptionEn: blurbs.descriptionEn,
       language: language as QuizLanguage,
       format: format as QuizFormat,
       types,
@@ -163,4 +177,12 @@ export function pluralQuizzes(count: number): string {
   if (count === 1) return "1 kvíz";
   if (count >= 2 && count <= 4) return `${count} kvízy`;
   return `${count} kvízů`;
+}
+
+/** Absolute public URL for a catalog quiz (custom play page or external link). */
+export function quizShareUrl(quiz: Pick<Quiz, "kind" | "slug" | "url">, origin: string): string {
+  if (quiz.kind === "custom" && quiz.slug) {
+    return `${origin.replace(/\/+$/, "")}/hrat/${quiz.slug}`;
+  }
+  return quiz.url;
 }

@@ -28,6 +28,7 @@ export default defineConfig({
       POSTGRES_URL: "",
       POSTGRES_URL_NON_POOLING: "",
       KVIZY_ADMIN_TOKEN: E2E_ADMIN_TOKEN,
+      KVIZY_E2E: "1",
     },
   },
 });

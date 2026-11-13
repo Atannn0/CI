@@ -6,6 +6,8 @@ function quiz(partial: Partial<Quiz> & Pick<Quiz, "id" | "title">): Quiz {
   return {
     url: `https://example.com/${partial.id}`,
     description: null,
+    descriptionCs: `Kvíz o: ${partial.title}`,
+    descriptionEn: `Quiz about: ${partial.title}`,
     language: "cs",
     format: "text",
     types: ["knowledge"],
@@ -13,6 +15,8 @@ function quiz(partial: Partial<Quiz> & Pick<Quiz, "id" | "title">): Quiz {
     isCollection: false,
     hidden: false,
     source: null,
+    kind: "external",
+    slug: null,
     clicks: 0,
     createdAt: "2026-01-01T00:00:00.000Z",
     ...partial,
@@ -22,7 +26,15 @@ function quiz(partial: Partial<Quiz> & Pick<Quiz, "id" | "title">): Quiz {
 const catalog: Quiz[] = [
   quiz({ id: 1, title: "Poznáš film podle záběru?", format: "image", types: ["knowledge"], topic: "filmy", clicks: 5 }),
   quiz({ id: 2, title: "Která seriálová postava jsi?", types: ["personality"], topic: "seriály", clicks: 9 }),
-  quiz({ id: 3, title: "Co bys radši?", types: ["preference"], description: "Těžké volby o jídle", clicks: 1 }),
+  quiz({
+    id: 3,
+    title: "Co bys radši?",
+    types: ["preference"],
+    description: "Těžké volby o jídle",
+    descriptionCs: "Těžké volby o jídle",
+    descriptionEn: "Hard choices about food",
+    clicks: 1,
+  }),
   quiz({ id: 4, title: "Guess the flag", language: "en", format: "image", types: ["knowledge"], topic: "vlajky" }),
   quiz({ id: 5, title: "Riddles for friends", language: "en", format: "mixed", types: ["logic", "knowledge"] }),
 ];
@@ -79,6 +91,14 @@ describe("popularQuizzes", () => {
   it("orders clicked quizzes by clicks and skips unopened ones", () => {
     expect(ids(popularQuizzes(catalog))).toEqual([2, 1, 3]);
     expect(ids(popularQuizzes(catalog, 2))).toEqual([2, 1]);
+  });
+
+  it("defaults to at most six popular quizzes", () => {
+    const many = Array.from({ length: 8 }, (_, i) =>
+      quiz({ id: 100 + i, title: `Hit ${i}`, clicks: 20 - i }),
+    );
+    expect(popularQuizzes(many)).toHaveLength(6);
+    expect(ids(popularQuizzes(many))).toEqual([100, 101, 102, 103, 104, 105]);
   });
 });
 

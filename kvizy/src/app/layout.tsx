@@ -14,8 +14,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kvízy pro partu",
+  title: "Kvízovna",
   description: "Najdi online kvíz, na který má tvoje parta zrovna náladu.",
+  openGraph: {
+    title: "Kvízovna",
+    description: "Najdi online kvíz, na který má tvoje parta zrovna náladu.",
+    siteName: "Kvízovna",
+  },
+  twitter: {
+    card: "summary",
+    title: "Kvízovna",
+    description: "Najdi online kvíz, na který má tvoje parta zrovna náladu.",
+  },
 };
 
 export const viewport: Viewport = {

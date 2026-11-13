@@ -1,10 +1,22 @@
 "use client";
 
-import { CheckIcon, ExternalLinkIcon, FlagIcon, FlameIcon, LayoutGridIcon, TagIcon } from "lucide-react";
+import { useState } from "react";
+import {
+  CheckIcon,
+  ExternalLinkIcon,
+  FlagIcon,
+  FlameIcon,
+  LayoutGridIcon,
+  PlayIcon,
+  Share2Icon,
+  TagIcon,
+} from "lucide-react";
+import { toast } from "sonner";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { FORMAT_LABEL_KEYS, TYPE_LABEL_KEYS, type Quiz } from "@/lib/quiz";
+import { localizedDescription } from "@/lib/descriptions";
+import { FORMAT_LABEL_KEYS, TYPE_LABEL_KEYS, quizShareUrl, type Quiz } from "@/lib/quiz";
 import { languageCodeBadge, languageLabel } from "@/lib/languages";
 import { useLocale } from "@/lib/i18n/locale";
 import { FORMAT_ICONS, TYPE_COLORS, TYPE_ICONS } from "./quiz-meta";
@@ -22,6 +34,23 @@ export function QuizCard({ quiz, onOpen, onReport, done, onDoneChange, highlight
   const { locale, t } = useLocale();
   const FormatIcon = FORMAT_ICONS[quiz.format];
   const langLabel = languageLabel(quiz.language, locale);
+  const description = localizedDescription(quiz, locale);
+  const isCustom = quiz.kind === "custom";
+  const href = isCustom && quiz.slug ? `/hrat/${quiz.slug}` : quiz.url;
+  const [manualUrl, setManualUrl] = useState<string | null>(null);
+
+  async function share() {
+    const url = quizShareUrl(quiz, window.location.origin);
+    try {
+      await navigator.clipboard.writeText(url);
+      setManualUrl(null);
+      toast.success(t("linkCopied"));
+    } catch {
+      setManualUrl(url);
+      toast.error(t("linkCopyFailed"));
+    }
+  }
+
   return (
     <Card
       data-testid="quiz-card"
@@ -30,6 +59,7 @@ export function QuizCard({ quiz, onOpen, onReport, done, onDoneChange, highlight
       data-language={quiz.language}
       data-types={quiz.types.join(" ")}
       data-collection={quiz.isCollection}
+      data-kind={quiz.kind}
       data-done={done}
       className={cn(
         "h-full gap-3 transition-shadow hover:shadow-md",
@@ -43,6 +73,12 @@ export function QuizCard({ quiz, onOpen, onReport, done, onDoneChange, highlight
             <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-amber-950 ring-1 ring-amber-300">
               <LayoutGridIcon className="size-3.5" aria-hidden />
               {t("collectionBadge")}
+            </span>
+          )}
+          {isCustom && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-0.5 text-emerald-950 ring-1 ring-emerald-300">
+              <PlayIcon className="size-3.5" aria-hidden />
+              {t("customBadge")}
             </span>
           )}
           <span
@@ -63,7 +99,7 @@ export function QuizCard({ quiz, onOpen, onReport, done, onDoneChange, highlight
         <CardTitle className="text-lg leading-snug font-bold">
           <h3>{quiz.title}</h3>
         </CardTitle>
-        {quiz.description && <CardDescription className="line-clamp-3">{quiz.description}</CardDescription>}
+        {description && <CardDescription className="line-clamp-3">{description}</CardDescription>}
       </CardHeader>
       <CardContent className="mt-auto flex flex-wrap gap-1.5">
         {quiz.types.map((type) => {
@@ -103,28 +139,49 @@ export function QuizCard({ quiz, onOpen, onReport, done, onDoneChange, highlight
             {t("openedTimes")}
           </span>
         </div>
+        {manualUrl && (
+          <p role="status" className="break-all rounded-lg bg-muted px-2 py-1.5 text-xs" data-testid="share-fallback">
+            {manualUrl}
+          </p>
+        )}
         <div className="flex items-center justify-between gap-2">
           <a
-            href={quiz.url}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={href}
+            target={isCustom ? undefined : "_blank"}
+            rel={isCustom ? undefined : "noopener noreferrer"}
             onClick={() => onOpen(quiz)}
             className={cn(buttonVariants({ size: "lg" }), "px-4 font-semibold")}
           >
-            {quiz.isCollection ? t("browseTests") : t("openQuiz")}
-            <ExternalLinkIcon data-icon="inline-end" aria-hidden />
-            <span className="sr-only"> {t("openNewTab")}</span>
+            {isCustom ? t("playQuiz") : quiz.isCollection ? t("browseTests") : t("openQuiz")}
+            {isCustom ? (
+              <PlayIcon data-icon="inline-end" aria-hidden />
+            ) : (
+              <ExternalLinkIcon data-icon="inline-end" aria-hidden />
+            )}
+            {!isCustom && <span className="sr-only"> {t("openNewTab")}</span>}
           </a>
-          <button
-            type="button"
-            onClick={() => onReport(quiz)}
-            title={t("reportQuiz")}
-            aria-label={t("reportQuiz")}
-            className="grid size-9 place-items-center rounded-full text-muted-foreground outline-none hover:bg-muted hover:text-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50"
-            data-testid="report-quiz"
-          >
-            <FlagIcon className="size-4" aria-hidden />
-          </button>
+          <div className="flex items-center">
+            <button
+              type="button"
+              onClick={share}
+              title={t("share")}
+              aria-label={t("share")}
+              className="grid size-9 place-items-center rounded-full text-muted-foreground outline-none hover:bg-muted hover:text-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50"
+              data-testid="share-quiz"
+            >
+              <Share2Icon className="size-4" aria-hidden />
+            </button>
+            <button
+              type="button"
+              onClick={() => onReport(quiz)}
+              title={t("reportQuiz")}
+              aria-label={t("reportQuiz")}
+              className="grid size-9 place-items-center rounded-full text-muted-foreground outline-none hover:bg-muted hover:text-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50"
+              data-testid="report-quiz"
+            >
+              <FlagIcon className="size-4" aria-hidden />
+            </button>
+          </div>
         </div>
       </CardFooter>
     </Card>

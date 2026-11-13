@@ -1,7 +1,7 @@
 # AGENTS.md
 
 ## Projekt
-Kořen repozitáře je Obsidian vault s poznámkami z kurzu MAS (synchronizuje ho plugin Obsidian Git). Jediná aplikace ve vaultu je **Kvízy pro partu** ve složce `kvizy/`: česká webová aplikace, ve které parta přátel rychle najde online kvíz podle nálady. Je to katalog odkazů; kvízy se otevírají na původních webech v nové záložce. Hotovo znamená: hledání bez diakritiky, tři filtry (formát, typ, jazyk), přidání kvízu bez účtu do sdílené databáze, popularita podle kliknutí na **Otevřít kvíz**, **Nahlásit kvíz** (hlášení vidí jen správce), **Označit jako hotový** s přepínačem **Skrýt hotové** a všechny kontroly níže zelené.
+Kořen repozitáře je Obsidian vault s poznámkami z kurzu MAS (synchronizuje ho plugin Obsidian Git). Jediná aplikace ve vaultu je **Kvízovna** ve složce `kvizy/`: katalog online kvízů (CZ/EN rozhraní), ve kterém parta rychle najde kvíz podle nálady. Externí kvízy se otevírají na původních webech; vlastní znalostní kvízy se hrají v aplikaci na `/hrat/[slug]`. Hotovo znamená: hledání bez diakritiky (jeden křížek), tři filtry (formát, typ, jazyk včetně de/ko/sv/es…), **Přidat odkaz** / **Vytvořit kvíz**, bilingvní popisy, sdílení odkazu, popularita (nejvýše 6 v sekci Populární), **Nahlásit kvíz**, **Označit jako hotový** / **Skrýt hotové** a zelené kontroly níže.
 
 ## Instalace, spuštění, testy
 Všechny příkazy se spouštějí ve složce `kvizy/` (Node 22+).
@@ -23,10 +23,10 @@ Všechny příkazy se spouštějí ve složce `kvizy/` (Node 22+).
 - Postup klikání ve Vercelu je v `kvizy/README.md`.
 
 ## Mapa projektu
-- `kvizy/src/app/` stránka (`page.tsx`), správa hlášení (`spravce/page.tsx`) a API: `api/quizzes` (GET seznam, POST přidání), `api/quizzes/[id]/click` (POST započte otevření), `api/quizzes/[id]/report` (POST hlášení), `api/admin/reports` (GET hlášení pro správce)
-- `kvizy/src/components/` UI: `catalog.tsx` (hlavička, hledání, filtry, populární, Skrýt hotové, výsledky), `hero-illustration.tsx`, `filter-chip.tsx`, `quiz-card.tsx`, `add-quiz-dialog.tsx`, `report-quiz-dialog.tsx`, `admin-reports.tsx`, `form-fields.tsx`, `ui/` (shadcn/ui)
-- `kvizy/src/lib/` logika: `quiz.ts` (typy, štítky, validace, normalizace URL a textu), `languages.ts` (ISO kódy a vyhledávání jazyků), `i18n/` (CZ/EN překlady a locale), `filter.ts` (hledání a filtry), `db.ts` (Postgres/PGlite), `migrate-core.mjs` (migrace pro build i runtime), `guard.ts` (same-origin a rate limit pro zápisy), `admin.ts` (přístup správce přes `KVIZY_ADMIN_TOKEN`), `report.ts` (důvody a validace hlášení), `done-store.ts` (hotové kvízy v `localStorage`), `quizzes-repo.ts` (SQL dotazy)
-- `kvizy/migrations/` schéma a počáteční katalog (`002` a `004` seed jsou zmrazené; `003` collections/reports; `005` širší jazyky + `hidden`/`source`; `006` IDRlabs jednotlivě + JA/ZH a skrytí hubu)
+- `kvizy/src/app/` stránka (`page.tsx`), hraní vlastního kvízu (`hrat/[slug]`), správa hlášení (`spravce/page.tsx`) a API: `api/quizzes`, `api/custom-quizzes` (+ `[slug]`, `submit`), click/report, `api/admin/reports`
+- `kvizy/src/components/` UI: `catalog.tsx`, `quiz-card.tsx` (sdílení / hrát), `add-quiz-dialog.tsx`, `create-quiz-dialog.tsx`, `play-quiz.tsx`, filtry, report, `ui/`
+- `kvizy/src/lib/` logika: `quiz.ts`, `descriptions.ts` (bilingvní popisy), `custom-quiz.ts` / `custom-quizzes-repo.ts`, `languages.ts`, `i18n/`, `filter.ts` (popular ≤ 6), `db.ts`, `guard.ts`, `quizzes-repo.ts`, …
+- `kvizy/migrations/` aditivní schéma a seed (`002`/`004`/`006` zmrazené; `007` description_cs/en + custom questions; `008` de/ko/sv/es; `009` bilingvní backfill)
 - `kvizy/data/seed-quizzes.json` ověřený katalog; `data/import-quizzes.json` opakovatelný import; `npm run seed:sql` generuje jen nezmrazené seed migrace
 - `kvizy/e2e/` Playwright testy, `kvizy/docs/` plán a protokol ověření odkazů, `kvizy/vercel.json` a `kvizy/scripts/` (migrace, generátor seedu, ignored build step)
 - Ostatní složky (`00 Index/` … `99 Sources/`) jsou poznámky vaultu, ne součást aplikace.

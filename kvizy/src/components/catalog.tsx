@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { EyeIcon, FlameIcon, PlusIcon, RotateCcwIcon, SearchIcon, SparklesIcon, XIcon } from "lucide-react";
+import { useMemo, useRef, useState } from "react";
+import { EyeIcon, FlameIcon, LinkIcon, PenLineIcon, PlusIcon, RotateCcwIcon, SearchIcon, SparklesIcon, XIcon } from "lucide-react";
 import { AddQuizDialog } from "@/components/add-quiz-dialog";
+import { CreateQuizDialog } from "@/components/create-quiz-dialog";
 import { FilterChip, FilterGroup } from "@/components/filter-chip";
 import { HeroIllustration } from "@/components/hero-illustration";
 import { LocaleSwitch } from "@/components/locale-switch";
@@ -41,14 +42,17 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
   const [hideDone, setHideDone] = useState(false);
   const [addOpen, setAddOpen] = useState(false);
+  const [createOpen, setCreateOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [lastAddedId, setLastAddedId] = useState<number | null>(null);
   const [reportQuiz, setReportQuiz] = useState<Quiz | null>(null);
   const [reportOpen, setReportOpen] = useState(false);
+  const searchRef = useRef<HTMLInputElement>(null);
   const { done, setDone } = useDoneQuizzes();
 
   const matching = useMemo(() => filterQuizzes(quizzes, filters), [quizzes, filters]);
   const results = useMemo(() => withoutDone(matching, done, hideDone), [matching, done, hideDone]);
-  const popular = useMemo(() => popularQuizzes(withoutDone(quizzes, done, hideDone)), [quizzes, done, hideDone]);
+  const popular = useMemo(() => popularQuizzes(withoutDone(quizzes, done, hideDone), 6), [quizzes, done, hideDone]);
   const active = hasActiveFilters(filters);
   const hiddenDone = matching.length - results.length;
   const languageFilterOptions = useMemo(
@@ -77,6 +81,11 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
     setLastAddedId(quiz.id);
   }
 
+  function clearSearch() {
+    setFilters((f) => ({ ...f, query: "" }));
+    searchRef.current?.focus();
+  }
+
   const cardProps = {
     onOpen: openQuiz,
     onReport: openReport,
@@ -96,11 +105,50 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
             </p>
             <div className="flex shrink-0 items-center gap-2">
               <LocaleSwitch />
-              <Button size="lg" onClick={() => setAddOpen(true)} className="h-10 px-3 font-semibold shadow-sm sm:px-4">
-                <PlusIcon data-icon="inline-start" aria-hidden />
-                <span className="hidden sm:inline">{t("addQuiz")}</span>
-                <span className="sm:hidden">{t("addQuiz")}</span>
-              </Button>
+              <div className="relative">
+                <Button
+                  size="lg"
+                  onClick={() => setMenuOpen((v) => !v)}
+                  aria-expanded={menuOpen}
+                  aria-haspopup="menu"
+                  className="h-10 px-3 font-semibold shadow-sm sm:px-4"
+                  data-testid="add-menu"
+                >
+                  <PlusIcon data-icon="inline-start" aria-hidden />
+                  {t("addMenu")}
+                </Button>
+                {menuOpen && (
+                  <div
+                    role="menu"
+                    className="absolute right-0 z-40 mt-2 w-52 overflow-hidden rounded-xl border border-border bg-card shadow-lg"
+                  >
+                    <button
+                      type="button"
+                      role="menuitem"
+                      className="flex w-full items-center gap-2 px-3 py-2.5 text-left text-sm font-medium hover:bg-muted"
+                      onClick={() => {
+                        setMenuOpen(false);
+                        setAddOpen(true);
+                      }}
+                    >
+                      <LinkIcon className="size-4" aria-hidden />
+                      {t("addQuiz")}
+                    </button>
+                    <button
+                      type="button"
+                      role="menuitem"
+                      className="flex w-full items-center gap-2 px-3 py-2.5 text-left text-sm font-medium hover:bg-muted"
+                      onClick={() => {
+                        setMenuOpen(false);
+                        setCreateOpen(true);
+                      }}
+                    >
+                      <PenLineIcon className="size-4" aria-hidden />
+                      {t("createQuiz")}
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
@@ -113,6 +161,7 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
               <div className="relative max-w-2xl">
                 <SearchIcon className="absolute top-1/2 left-4 size-5 -translate-y-1/2 text-violet-700/70" aria-hidden />
                 <Input
+                  ref={searchRef}
                   id="search"
                   type="search"
                   value={filters.query}
@@ -120,16 +169,17 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
                   placeholder={t("searchPlaceholder")}
                   className="h-14 rounded-2xl border-violet-200 bg-white pr-12 pl-12 text-base text-foreground shadow-sm focus-visible:border-violet-400 md:text-lg"
                 />
-                {filters.query && (
+                {filters.query ? (
                   <button
                     type="button"
-                    onClick={() => setFilters((f) => ({ ...f, query: "" }))}
+                    onClick={clearSearch}
                     className="absolute top-1/2 right-3 grid size-8 -translate-y-1/2 place-items-center rounded-full text-muted-foreground hover:bg-muted"
                     aria-label={t("clearSearch")}
+                    data-testid="clear-search"
                   >
                     <XIcon className="size-4" />
                   </button>
-                )}
+                ) : null}
               </div>
             </div>
             <HeroIllustration className="hidden md:block lg:mr-6" />
@@ -138,32 +188,31 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
       </header>
 
       <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-6 sm:px-6 sm:py-8">
-        <section
-          aria-label={t("filters")}
-          className="grid items-start gap-5 rounded-2xl bg-card p-4 ring-1 ring-border sm:p-5 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)_auto] lg:gap-8"
-        >
-          <FilterGroup title={t("format")}>
-            {FORMATS.map((format) => (
-              <FilterChip
-                key={format}
-                label={t(FORMAT_LABEL_KEYS[format])}
-                icon={FORMAT_ICONS[format]}
-                pressed={filters.formats.includes(format)}
-                onToggle={() => setFilters((f) => ({ ...f, formats: toggleValue(f.formats, format) }))}
-              />
-            ))}
-          </FilterGroup>
-          <FilterGroup title={t("quizType")}>
-            {QUIZ_TYPES.map((type) => (
-              <FilterChip
-                key={type}
-                label={t(TYPE_LABEL_KEYS[type])}
-                icon={TYPE_ICONS[type]}
-                pressed={filters.types.includes(type)}
-                onToggle={() => setFilters((f) => ({ ...f, types: toggleValue(f.types, type) }))}
-              />
-            ))}
-          </FilterGroup>
+        <section aria-label={t("filters")} className="flex flex-col gap-5 rounded-2xl bg-card p-4 ring-1 ring-border sm:p-5">
+          <div className="grid items-start gap-5 lg:grid-cols-2 lg:gap-8">
+            <FilterGroup title={t("format")}>
+              {FORMATS.map((format) => (
+                <FilterChip
+                  key={format}
+                  label={t(FORMAT_LABEL_KEYS[format])}
+                  icon={FORMAT_ICONS[format]}
+                  pressed={filters.formats.includes(format)}
+                  onToggle={() => setFilters((f) => ({ ...f, formats: toggleValue(f.formats, format) }))}
+                />
+              ))}
+            </FilterGroup>
+            <FilterGroup title={t("quizType")}>
+              {QUIZ_TYPES.map((type) => (
+                <FilterChip
+                  key={type}
+                  label={t(TYPE_LABEL_KEYS[type])}
+                  icon={TYPE_ICONS[type]}
+                  pressed={filters.types.includes(type)}
+                  onToggle={() => setFilters((f) => ({ ...f, types: toggleValue(f.types, type) }))}
+                />
+              ))}
+            </FilterGroup>
+          </div>
           <FilterGroup title={t("language")}>
             {languageFilterOptions.map((language) => (
               <FilterChip
@@ -262,6 +311,7 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
       <footer className="border-t py-6 text-center text-sm text-muted-foreground">{t("footer")}</footer>
 
       <AddQuizDialog open={addOpen} onOpenChange={setAddOpen} quizzes={quizzes} onCreated={handleCreated} />
+      <CreateQuizDialog open={createOpen} onOpenChange={setCreateOpen} onCreated={handleCreated} />
       <ReportQuizDialog quiz={reportQuiz} open={reportOpen} onOpenChange={setReportOpen} />
     </>
   );
