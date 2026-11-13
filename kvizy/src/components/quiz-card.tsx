@@ -1,7 +1,7 @@
 "use client";
 
-import { ExternalLinkIcon, FlameIcon, TagIcon } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
+import { CheckIcon, ExternalLinkIcon, FlagIcon, FlameIcon, LayoutGridIcon, TagIcon } from "lucide-react";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { FORMAT_LABELS, LANGUAGE_LABELS, TYPE_LABELS, type Quiz } from "@/lib/quiz";
@@ -10,10 +10,13 @@ import { FORMAT_ICONS, LANGUAGE_CODES, TYPE_COLORS, TYPE_ICONS } from "./quiz-me
 type Props = {
   quiz: Quiz;
   onOpen: (quiz: Quiz) => void;
+  onReport: (quiz: Quiz) => void;
+  done: boolean;
+  onDoneChange: (quiz: Quiz, done: boolean) => void;
   highlight?: boolean;
 };
 
-export function QuizCard({ quiz, onOpen, highlight = false }: Props) {
+export function QuizCard({ quiz, onOpen, onReport, done, onDoneChange, highlight = false }: Props) {
   const FormatIcon = FORMAT_ICONS[quiz.format];
   return (
     <Card
@@ -22,13 +25,22 @@ export function QuizCard({ quiz, onOpen, highlight = false }: Props) {
       data-format={quiz.format}
       data-language={quiz.language}
       data-types={quiz.types.join(" ")}
+      data-collection={quiz.isCollection}
+      data-done={done}
       className={cn(
         "h-full gap-3 transition-shadow hover:shadow-md",
+        done && "bg-emerald-50/50 ring-emerald-200",
         highlight && "ring-2 ring-primary",
       )}
     >
       <CardHeader className="gap-2">
         <div className="flex flex-wrap items-center gap-1.5 text-xs font-medium">
+          {quiz.isCollection && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-amber-950 ring-1 ring-amber-300">
+              <LayoutGridIcon className="size-3.5" aria-hidden />
+              Výběr testů
+            </span>
+          )}
           <span
             className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2 py-0.5 text-violet-900 ring-1 ring-violet-200"
             title={`Formát: ${FORMAT_LABELS[quiz.format]}`}
@@ -69,22 +81,40 @@ export function QuizCard({ quiz, onOpen, highlight = false }: Props) {
           </span>
         )}
       </CardContent>
-      <CardFooter className="flex items-center justify-between gap-2">
-        <span className="inline-flex items-center gap-1 text-xs text-muted-foreground" title="Počet otevření">
-          <FlameIcon className="size-3.5 text-orange-500" aria-hidden />
-          <span data-testid="click-count">{quiz.clicks}</span>× otevřeno
-        </span>
-        <a
-          href={quiz.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => onOpen(quiz)}
-          className={cn(buttonVariants({ size: "lg" }), "px-4 font-semibold")}
-        >
-          Otevřít kvíz
-          <ExternalLinkIcon data-icon="inline-end" aria-hidden />
-          <span className="sr-only"> (otevře se v nové záložce)</span>
-        </a>
+      <CardFooter className="flex-col items-stretch gap-3">
+        <div className="flex items-center justify-between gap-2">
+          <label className="inline-flex cursor-pointer items-center gap-2 text-sm font-medium select-none">
+            <input
+              type="checkbox"
+              checked={done}
+              onChange={(e) => onDoneChange(quiz, e.target.checked)}
+              className="size-4.5 cursor-pointer accent-emerald-600 outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
+            />
+            <span className={cn(done && "text-emerald-800")}>Označit jako hotový</span>
+            {done && <CheckIcon className="size-4 text-emerald-600" aria-hidden />}
+          </label>
+          <span className="inline-flex items-center gap-1 text-xs text-muted-foreground" title="Počet otevření">
+            <FlameIcon className="size-3.5 text-orange-500" aria-hidden />
+            <span data-testid="click-count">{quiz.clicks}</span>× otevřeno
+          </span>
+        </div>
+        <div className="flex items-center justify-between gap-2">
+          <a
+            href={quiz.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => onOpen(quiz)}
+            className={cn(buttonVariants({ size: "lg" }), "px-4 font-semibold")}
+          >
+            {quiz.isCollection ? "Prohlédnout testy" : "Otevřít kvíz"}
+            <ExternalLinkIcon data-icon="inline-end" aria-hidden />
+            <span className="sr-only"> (otevře se v nové záložce)</span>
+          </a>
+          <Button variant="ghost" size="sm" onClick={() => onReport(quiz)} className="text-muted-foreground">
+            <FlagIcon data-icon="inline-start" aria-hidden />
+            Nahlásit kvíz
+          </Button>
+        </div>
       </CardFooter>
     </Card>
   );

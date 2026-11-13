@@ -1,6 +1,7 @@
 import "server-only";
 import { isUniqueViolation, sql } from "./db";
 import { urlKey, type Quiz, type QuizInput } from "./quiz";
+import type { QuizReport, ReportInput } from "./report";
 
 type QuizRow = {
   id: number | string;
@@ -11,11 +12,12 @@ type QuizRow = {
   format: Quiz["format"];
   types: Quiz["types"];
   topic: string | null;
+  is_collection: boolean;
   clicks: number | string;
   created_at: Date | string;
 };
 
-const COLUMNS = "id, title, url, description, language, format, types, topic, clicks, created_at";
+const COLUMNS = "id, title, url, description, language, format, types, topic, is_collection, clicks, created_at";
 
 function toQuiz(row: QuizRow): Quiz {
   return {
@@ -27,6 +29,7 @@ function toQuiz(row: QuizRow): Quiz {
     format: row.format,
     types: row.types,
     topic: row.topic,
+    isCollection: row.is_collection,
     clicks: Number(row.clicks),
     createdAt: new Date(row.created_at).toISOString(),
   };
@@ -69,4 +72,44 @@ export async function registerClick(id: number): Promise<number | null> {
     [id],
   );
   return rows[0] ? Number(rows[0].clicks) : null;
+}
+
+/** Stores a report; returns null when the quiz does not exist. */
+export async function createReport(quizId: number, input: ReportInput): Promise<{ id: number } | null> {
+  const rows = await sql<{ id: number | string }>(
+    `insert into quiz_reports (quiz_id, reason, note)
+     select id, $2, $3 from quizzes where id = $1
+     returning id`,
+    [quizId, input.reason, input.note],
+  );
+  return rows[0] ? { id: Number(rows[0].id) } : null;
+}
+
+type ReportRow = {
+  id: number | string;
+  quiz_id: number | string;
+  title: string;
+  url: string;
+  reason: QuizReport["reason"];
+  note: string | null;
+  created_at: Date | string;
+};
+
+export async function listReports(limit = 500): Promise<QuizReport[]> {
+  const rows = await sql<ReportRow>(
+    `select r.id, r.quiz_id, q.title, q.url, r.reason, r.note, r.created_at
+     from quiz_reports r join quizzes q on q.id = r.quiz_id
+     order by r.created_at desc, r.id desc
+     limit $1`,
+    [limit],
+  );
+  return rows.map((row) => ({
+    id: Number(row.id),
+    quizId: Number(row.quiz_id),
+    quizTitle: row.title,
+    quizUrl: row.url,
+    reason: row.reason,
+    note: row.note,
+    createdAt: new Date(row.created_at).toISOString(),
+  }));
 }

@@ -33,6 +33,8 @@ export type Quiz = {
   format: QuizFormat;
   types: QuizType[];
   topic: string | null;
+  /** The link leads to a hub of several tests rather than to one quiz. */
+  isCollection: boolean;
   clicks: number;
   createdAt: string;
 };

@@ -48,6 +48,14 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+@theme {
+  --color-coral-100: oklch(0.94 0.04 30);
+  --color-coral-300: oklch(0.83 0.11 30);
+  --color-coral-400: oklch(0.75 0.15 30);
+  --color-coral-500: oklch(0.68 0.17 30);
+  --color-lavender: oklch(0.955 0.025 295);
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
