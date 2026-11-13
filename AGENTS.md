@@ -12,6 +12,7 @@ Všechny příkazy se spouštějí ve složce `kvizy/` (Node 22+).
 - Vše před commitem: `npm run check` (lint, typecheck, unit, E2E)
 - E2E proti skutečnému Postgresu: `E2E_DATABASE_URL=postgres://… npm run test:e2e` (prázdná databáze; migrace se aplikují samy)
 - Produkční build: `npm run build` (po buildu `scripts/migrate.mjs` aplikuje migrace, pokud je nastavené `DATABASE_URL`)
+- Import kvízů (IDRlabs + JA/ZH atd.): `npm run import:quizzes` (proti `DATABASE_URL`, dedupe podle `url_key`, zachová id/kliknutí/hlášení); `npm run import:quizzes -- --seed` sloučí `data/import-quizzes.json` do seedu a přegeneruje migraci `006_…`; `--dry-run` jen spočítá.
 
 ## Nasazení (Vercel + Neon)
 - Produkce běží na Vercelu (Hobby) jako projekt s Root Directory `kvizy`; databáze je Neon Postgres připojený přes Vercel Storage. Integrace sama nastaví `DATABASE_URL` (pooled) a `DATABASE_URL_UNPOOLED` (přímé); ručně se nenastavuje nic.
@@ -24,9 +25,9 @@ Všechny příkazy se spouštějí ve složce `kvizy/` (Node 22+).
 ## Mapa projektu
 - `kvizy/src/app/` stránka (`page.tsx`), správa hlášení (`spravce/page.tsx`) a API: `api/quizzes` (GET seznam, POST přidání), `api/quizzes/[id]/click` (POST započte otevření), `api/quizzes/[id]/report` (POST hlášení), `api/admin/reports` (GET hlášení pro správce)
 - `kvizy/src/components/` UI: `catalog.tsx` (hlavička, hledání, filtry, populární, Skrýt hotové, výsledky), `hero-illustration.tsx`, `filter-chip.tsx`, `quiz-card.tsx`, `add-quiz-dialog.tsx`, `report-quiz-dialog.tsx`, `admin-reports.tsx`, `form-fields.tsx`, `ui/` (shadcn/ui)
-- `kvizy/src/lib/` logika: `quiz.ts` (typy, štítky, validace, normalizace URL a textu), `filter.ts` (hledání a filtry), `db.ts` (Postgres/PGlite), `migrate-core.mjs` (migrace pro build i runtime), `guard.ts` (same-origin a rate limit pro zápisy), `admin.ts` (přístup správce přes `KVIZY_ADMIN_TOKEN`), `report.ts` (důvody a validace hlášení), `done-store.ts` (hotové kvízy v `localStorage`), `quizzes-repo.ts` (SQL dotazy)
-- `kvizy/migrations/` schéma a počáteční katalog (`002_seed_quizzes.sql` a `004_seed_requested_tests.sql` jsou generované; `003` přidává `is_collection` a tabulku `quiz_reports`)
-- `kvizy/data/seed-quizzes.json` ověřený katalog včetně výsledků ověření; `npm run seed:sql` z něj vygeneruje seed migrace (položky bez pole `migration` patří do 002, novější mají vlastní, např. `004_seed_requested_tests`)
+- `kvizy/src/lib/` logika: `quiz.ts` (typy, štítky, validace, normalizace URL a textu), `languages.ts` (ISO kódy a vyhledávání jazyků), `i18n/` (CZ/EN překlady a locale), `filter.ts` (hledání a filtry), `db.ts` (Postgres/PGlite), `migrate-core.mjs` (migrace pro build i runtime), `guard.ts` (same-origin a rate limit pro zápisy), `admin.ts` (přístup správce přes `KVIZY_ADMIN_TOKEN`), `report.ts` (důvody a validace hlášení), `done-store.ts` (hotové kvízy v `localStorage`), `quizzes-repo.ts` (SQL dotazy)
+- `kvizy/migrations/` schéma a počáteční katalog (`002` a `004` seed jsou zmrazené; `003` collections/reports; `005` širší jazyky + `hidden`/`source`; `006` IDRlabs jednotlivě + JA/ZH a skrytí hubu)
+- `kvizy/data/seed-quizzes.json` ověřený katalog; `data/import-quizzes.json` opakovatelný import; `npm run seed:sql` generuje jen nezmrazené seed migrace
 - `kvizy/e2e/` Playwright testy, `kvizy/docs/` plán a protokol ověření odkazů, `kvizy/vercel.json` a `kvizy/scripts/` (migrace, generátor seedu, ignored build step)
 - Ostatní složky (`00 Index/` … `99 Sources/`) jsou poznámky vaultu, ne součást aplikace.
 

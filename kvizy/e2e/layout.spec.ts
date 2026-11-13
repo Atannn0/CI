@@ -9,12 +9,16 @@ const filters = (page: Page) => page.getByRole("region", { name: "Filtry" });
 
 async function boxes(page: Page) {
   const chips = filters(page).getByTestId("filter-chip");
-  await expect(chips).toHaveCount(9);
+  // 3 formats + 4 types + one chip per language present in the catalog
+  await expect(chips).not.toHaveCount(0);
+  expect(await chips.count()).toBeGreaterThanOrEqual(9);
   return Promise.all((await chips.all()).map(async (chip) => (await chip.boundingBox())!));
 }
 
 async function groupBoxes(page: Page) {
-  await expect(filters(page).getByTestId("filter-chip")).toHaveCount(9);
+  const chips = filters(page).getByTestId("filter-chip");
+  await expect(chips).not.toHaveCount(0);
+  expect(await chips.count()).toBeGreaterThanOrEqual(9);
   const groups = await filters(page).getByTestId("filter-group").all();
   return Promise.all(
     groups.map(async (group) => ({

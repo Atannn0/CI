@@ -1423,5 +1423,841 @@
       "result": "ověřeno: HTTP 200 (curl + headless Chromium)",
       "checked_at": "2026-11-13"
     }
+  },
+  {
+    "title": "Big Five Personality Test",
+    "url": "https://www.idrlabs.com/big-five-types/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Anglický Big Five test s odkazy na sociální výzkum.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Big Five Personality Test (30 Subscales)",
+    "url": "https://www.idrlabs.com/big-five-subscales/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Podrobnější Big Five se skóre na 30 podškálách.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "HEXACO Personality Test",
+    "url": "https://www.idrlabs.com/hexaco/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Šestifaktorový HEXACO test včetně Honesty-Humility.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Jung Type Test",
+    "url": "https://www.idrlabs.com/jung-type/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Moderní Jungův typový test se čtyřmi dimenzemi.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Personality Test (Jung / Briggs-Myers)",
+    "url": "https://www.idrlabs.com/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "44položkový test čtyřpísmenného Jung/Myers-Briggs typu.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Cognitive Functions Test",
+    "url": "https://www.idrlabs.com/cognitive-function/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Osm jungovských kognitivních funkcí.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Personality Style Test",
+    "url": "https://www.idrlabs.com/personality-style/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Patnáct dynamických stylů osobnosti.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Dark Triad Test",
+    "url": "https://www.idrlabs.com/dark-triad/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Narcismus, makiavelismus a psychopatie.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Light/Dark Triad Test",
+    "url": "https://www.idrlabs.com/light-triad-dark-triad/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Light Triad a Dark Triad v jednom profilu.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Dark Core Personality Test",
+    "url": "https://www.idrlabs.com/dark-core-personality/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Společné dark core temných rysů.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Difficult Person Test",
+    "url": "https://www.idrlabs.com/difficult-person/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Sedm dimenzí antagonismu — jak těžké je s tebou vyjít.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Narcissism Test (NPI)",
+    "url": "https://www.idrlabs.com/narcissism/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Klasický Narcissistic Personality Inventory.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Attachment Style Test",
+    "url": "https://www.idrlabs.com/attachment-style/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "vztahy",
+    "description": "Styl citové vazby (secure/anxious/avoidant/fearful).",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Open Enneagram Test",
+    "url": "https://www.idrlabs.com/open-enneagram/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Datově podložený Enneagram test.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "DISC Test (Classic Version)",
+    "url": "https://www.idrlabs.com/disc/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Klasický DISC profil.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Team Role Test",
+    "url": "https://www.idrlabs.com/team-role/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality",
+      "preference"
+    ],
+    "topic": "tým",
+    "description": "Týmové role, ve kterých nejlépe funguješ.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Grit Test",
+    "url": "https://www.idrlabs.com/grit/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Vytrvalost a vášeň pro dlouhodobé cíle.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Highly Sensitive Person (HSP) Test",
+    "url": "https://www.idrlabs.com/highly-sensitive-person/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Skríning sensory-processing sensitivity.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "EQ Test",
+    "url": "https://www.idrlabs.com/emotional-intelligence/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "psychologie",
+    "description": "Osobnostní EQ napříč empatií a regulací emocí.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Multiple Intelligences Test",
+    "url": "https://www.idrlabs.com/multiple-intelligences/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality",
+      "preference"
+    ],
+    "topic": "psychologie",
+    "description": "Devět typů inteligence podle Gardnera.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Political Coordinates Test",
+    "url": "https://www.idrlabs.com/political-coordinates/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "preference"
+    ],
+    "topic": "politika",
+    "description": "Politické souřadnice Left–Right × Communitarian–Liberal.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "8 Values Political Test",
+    "url": "https://www.idrlabs.com/8-values-political/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "preference"
+    ],
+    "topic": "politika",
+    "description": "Osm hodnotových os politických preferencí.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Moral Foundations Test",
+    "url": "https://www.idrlabs.com/morality/6/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "preference"
+    ],
+    "topic": "morálka",
+    "description": "Šest morálních základů (Care, Fairness, Loyalty…).",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Love Styles Test",
+    "url": "https://www.idrlabs.com/love-styles/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "preference",
+      "personality"
+    ],
+    "topic": "vztahy",
+    "description": "Jak dáváš a přijímáš lásku napříč styly.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Face Preference Test",
+    "url": "https://www.idrlabs.com/faces/test.php",
+    "language": "en",
+    "format": "image",
+    "types": [
+      "preference"
+    ],
+    "topic": "preference",
+    "description": "Volba vůdců podle tváří.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Rorschach Test",
+    "url": "https://www.idrlabs.com/rorschach/test.php",
+    "language": "en",
+    "format": "image",
+    "types": [
+      "personality"
+    ],
+    "topic": "projektivní",
+    "description": "Projektivní inkoustové skvrny.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "IQ Test",
+    "url": "https://www.idrlabs.com/iq-16/test.php",
+    "language": "en",
+    "format": "mixed",
+    "types": [
+      "logic",
+      "knowledge"
+    ],
+    "topic": "IQ",
+    "description": "Krátký IQ test (SAPA/ICAR).",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Matrices IQ Test",
+    "url": "https://www.idrlabs.com/matrices-iq/test.php",
+    "language": "en",
+    "format": "image",
+    "types": [
+      "logic"
+    ],
+    "topic": "IQ",
+    "description": "Časovaný maticový IQ test.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Jungian Typology Test",
+    "url": "https://www.idrlabs.com/jungian-typology/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "psychologie",
+    "description": "Vědomostní kvíz o Jungově typologii.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Pooh Pathology Test",
+    "url": "https://www.idrlabs.com/pooh-pathology/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "zábava",
+    "description": "Zábavný match k postavám Medvídka Pú.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Psychometric Hogwarts House Test",
+    "url": "https://www.idrlabs.com/psychometric-hogwarts-house/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "filmy",
+    "description": "Bradavice přes Big Five, HEXACO a Dark Triad.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Moral Alignment Test",
+    "url": "https://www.idrlabs.com/moral-alignment/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "preference",
+      "personality"
+    ],
+    "topic": "zábava",
+    "description": "Devět D&D morálních alignmentů.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Psychometric Moral Alignment Test",
+    "url": "https://www.idrlabs.com/psychometric-moral-alignment/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality",
+      "preference"
+    ],
+    "topic": "zábava",
+    "description": "Alignment chart s Light/Dark Triad a Moral Foundations.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Murderous Villain Test",
+    "url": "https://www.idrlabs.com/villain/test.php",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "zábava",
+    "description": "Srovnání s historickými „villain“ postavami.",
+    "source": "idrlabs",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "idrlabs-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "16タイプ性格診断",
+    "url": "https://shindan.co/seikaku-type",
+    "language": "ja",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "28 japonských otázek k 16 typům osobnosti; zdarma bez registrace.",
+    "source": "shindan.co",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "ja-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "ソシオニクス診断テスト",
+    "url": "https://www.socionics.or.jp/analyze.php",
+    "language": "ja",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "socionics",
+    "description": "60 japonských posuvníkových otázek socionics diagnostiky.",
+    "source": "socionics.or.jp",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "ja-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "歴史出来事クイズ",
+    "url": "https://ichigo-drill.jp/rekishi-dekigoto-quiz",
+    "language": "ja",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "dějiny",
+    "description": "Trojvýběrové kvízy o klíčových historických událostech v japonštině.",
+    "source": "ichigo-drill.jp",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "ja-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "一般常識クイズ",
+    "url": "https://ichigo-drill.jp/common-sense-2",
+    "language": "ja",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "trivia",
+    "description": "Stovky japonských otázek z obecného přehledu.",
+    "source": "ichigo-drill.jp",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "ja-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "なぞなぞ",
+    "url": "https://playjester.com/ja/riddles/",
+    "language": "ja",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": "hádanky",
+    "description": "Kolo japonských hádanek se čtyřmi možnostmi.",
+    "source": "playjester.com",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "ja-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "愛着スタイル診断",
+    "url": "https://akasakacl.com/aichaku-style-shindan/",
+    "language": "ja",
+    "format": "text",
+    "types": [
+      "personality",
+      "preference"
+    ],
+    "topic": "vztahy",
+    "description": "12 japonských otázek o stylu citové vazby.",
+    "source": "akasakacl.com",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "ja-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "免费性格测试：41个问题",
+    "url": "https://cn.41q.com/",
+    "language": "zh",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "41 čínských otázek se dvěma volbami (Jung/MBTI-style); zdarma.",
+    "source": "41Q",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "zh-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "随机知识问答",
+    "url": "https://deertools.cn/tools/trivia-quiz",
+    "language": "zh",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "trivia",
+    "description": "Čínský trivia kvíz (historie, geografie, věda).",
+    "source": "DeerTools",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "zh-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "二选一游戏",
+    "url": "https://spinpick.tooleek.com/zh/balance-game",
+    "language": "zh",
+    "format": "text",
+    "types": [
+      "preference"
+    ],
+    "topic": "preference",
+    "description": "Deset čínských this-or-that otázek z denních preferencí.",
+    "source": "SpinPick",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "zh-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "邏輯推理小測驗",
+    "url": "https://www.philosophy.hku.hk/think/chi/quiz-validity.php",
+    "language": "zh",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": "logika",
+    "description": "10 argumentů — rozhodnout valid/invalid; tradiční čínština (HKU).",
+    "source": "HKU Philosophy",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "zh-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "MBTI 测试（28题）",
+    "url": "https://www.sbti.ai/mbti/test",
+    "language": "zh",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "28 čínských dichotomických otázek; výsledek lokálně bez účtu.",
+    "source": "SBTI",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "zh-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "你是哪种旅行搭子？",
+    "url": "https://www.testwhat.com/lvtuzi.html",
+    "language": "zh",
+    "format": "text",
+    "types": [
+      "preference",
+      "personality"
+    ],
+    "topic": "cestování",
+    "description": "16 situačních otázek o stylu cestování; čínsky, zdarma.",
+    "source": "TestWhat",
+    "migration": "006_seed_idrlabs_ja_zh",
+    "verification": {
+      "collector": "zh-subagent",
+      "result": "ověřeno subagentem (web fetch), otázky v cílovém jazyce",
+      "checked_at": "2026-11-13"
+    }
   }
 ]

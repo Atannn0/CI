@@ -62,10 +62,13 @@ describe("validateQuizInput", () => {
     expect(validateQuizInput({ ...valid, url: "data:text/html,<script>alert(1)</script>" }).ok).toBe(false);
   });
 
-  it("rejects unknown enum values", () => {
+  it("rejects unknown enum values but accepts extended languages", () => {
     expect(validateQuizInput({ ...valid, format: "video" }).ok).toBe(false);
     expect(validateQuizInput({ ...valid, types: ["funny"] }).ok).toBe(false);
-    expect(validateQuizInput({ ...valid, language: "de" }).ok).toBe(false);
+    expect(validateQuizInput({ ...valid, language: "xx" }).ok).toBe(false);
+    expect(validateQuizInput({ ...valid, language: "de" }).ok).toBe(true);
+    expect(validateQuizInput({ ...valid, language: "ja" }).ok).toBe(true);
+    expect(validateQuizInput({ ...valid, language: "zh" }).ok).toBe(true);
   });
 
   it("ignores client attempts to set clicks, id or isCollection", () => {

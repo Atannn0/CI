@@ -1,11 +1,29 @@
+import { t, type UiLocale } from "@/lib/i18n/messages";
+import { isQuizLanguage, type QuizLanguage } from "@/lib/languages";
+
+export { normalizeText } from "@/lib/quiz-text";
+export { QUIZ_LANGUAGES as LANGUAGES, type QuizLanguage } from "@/lib/languages";
+
 export const FORMATS = ["image", "text", "mixed"] as const;
 export const QUIZ_TYPES = ["personality", "preference", "knowledge", "logic"] as const;
-export const LANGUAGES = ["cs", "en"] as const;
 
 export type QuizFormat = (typeof FORMATS)[number];
 export type QuizType = (typeof QUIZ_TYPES)[number];
-export type QuizLanguage = (typeof LANGUAGES)[number];
 
+export const FORMAT_LABEL_KEYS = {
+  image: "formatImage",
+  text: "formatText",
+  mixed: "formatMixed",
+} as const;
+
+export const TYPE_LABEL_KEYS = {
+  personality: "typePersonality",
+  preference: "typePreference",
+  knowledge: "typeKnowledge",
+  logic: "typeLogic",
+} as const;
+
+/** Czech labels kept for unit tests and non-React callers; UI prefers `t(...)`. */
 export const FORMAT_LABELS: Record<QuizFormat, string> = {
   image: "Obrázkový",
   text: "Textový",
@@ -19,7 +37,7 @@ export const TYPE_LABELS: Record<QuizType, string> = {
   logic: "Logický a hádankový",
 };
 
-export const LANGUAGE_LABELS: Record<QuizLanguage, string> = {
+export const LANGUAGE_LABELS: Record<"cs" | "en", string> = {
   cs: "Čeština",
   en: "Angličtina",
 };
@@ -35,6 +53,9 @@ export type Quiz = {
   topic: string | null;
   /** The link leads to a hub of several tests rather than to one quiz. */
   isCollection: boolean;
+  /** Soft-hidden from the public catalog (e.g. replaced hub card). */
+  hidden: boolean;
+  source: string | null;
   clicks: number;
   createdAt: string;
 };
@@ -52,11 +73,6 @@ export type QuizInput = {
 export type QuizInputErrors = Partial<Record<keyof QuizInput, string>>;
 
 export const LIMITS = { title: 120, url: 2000, description: 300, topic: 40 } as const;
-
-/** Lowercase and strip diacritics so "Kocka" matches "Kočka". */
-export function normalizeText(value: string): string {
-  return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
-}
 
 /** Returns null unless the value is an absolute http(s) URL. */
 export function parseHttpUrl(value: string): URL | null {
@@ -95,36 +111,37 @@ function optionalText(value: unknown): string | null {
 
 export function validateQuizInput(
   raw: unknown,
+  locale: UiLocale = "cs",
 ): { ok: true; value: QuizInput } | { ok: false; errors: QuizInputErrors } {
   const data = (raw && typeof raw === "object" ? raw : {}) as Record<string, unknown>;
   const errors: QuizInputErrors = {};
 
   const title = optionalText(data.title);
-  if (!title) errors.title = "Vyplň název kvízu.";
-  else if (title.length > LIMITS.title) errors.title = `Název může mít nejvýš ${LIMITS.title} znaků.`;
+  if (!title) errors.title = t("errTitleRequired", locale);
+  else if (title.length > LIMITS.title) errors.title = t("errTitleTooLong", locale, { n: LIMITS.title });
 
   const urlText = typeof data.url === "string" ? data.url.trim() : "";
-  if (!urlText) errors.url = "Vlož přímý odkaz na kvíz.";
-  else if (urlText.length > LIMITS.url) errors.url = "Odkaz je příliš dlouhý.";
-  else if (!parseHttpUrl(urlText)) errors.url = "Odkaz musí začínat http:// nebo https:// a vést na web.";
+  if (!urlText) errors.url = t("errUrlRequired", locale);
+  else if (urlText.length > LIMITS.url) errors.url = t("errUrlTooLong", locale);
+  else if (!parseHttpUrl(urlText)) errors.url = t("errUrlInvalid", locale);
 
   const format = data.format;
-  if (!FORMATS.includes(format as QuizFormat)) errors.format = "Vyber formát kvízu.";
+  if (!FORMATS.includes(format as QuizFormat)) errors.format = t("errFormat", locale);
 
   const language = data.language;
-  if (!LANGUAGES.includes(language as QuizLanguage)) errors.language = "Vyber jazyk kvízu.";
+  if (!isQuizLanguage(language)) errors.language = t("errLanguage", locale);
 
   const typesRaw = Array.isArray(data.types) ? data.types : [];
-  const types = QUIZ_TYPES.filter((t) => typesRaw.includes(t));
-  if (types.length === 0) errors.types = "Vyber alespoň jeden typ kvízu.";
+  const types = QUIZ_TYPES.filter((x) => typesRaw.includes(x));
+  if (types.length === 0) errors.types = t("errTypes", locale);
 
   const description = optionalText(data.description);
   if (description && description.length > LIMITS.description)
-    errors.description = `Popis může mít nejvýš ${LIMITS.description} znaků.`;
+    errors.description = t("errDescriptionTooLong", locale, { n: LIMITS.description });
 
   const topicRaw = optionalText(data.topic);
   const topic = topicRaw ? topicRaw.toLowerCase() : null;
-  if (topic && topic.length > LIMITS.topic) errors.topic = `Téma může mít nejvýš ${LIMITS.topic} znaků.`;
+  if (topic && topic.length > LIMITS.topic) errors.topic = t("errTopicTooLong", locale, { n: LIMITS.topic });
 
   if (Object.keys(errors).length > 0) return { ok: false, errors };
   return {
@@ -141,7 +158,7 @@ export function validateQuizInput(
   };
 }
 
-/** Czech plural: 1 kvíz, 2–4 kvízy, 0 and 5+ kvízů. */
+/** Czech plural kept for backwards-compatible imports; prefer i18n `pluralQuizzes`. */
 export function pluralQuizzes(count: number): string {
   if (count === 1) return "1 kvíz";
   if (count >= 2 && count <= 4) return `${count} kvízy`;

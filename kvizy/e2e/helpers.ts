@@ -40,3 +40,10 @@ export function doneCheckbox(card: Locator) {
 export function uniqueSuffix() {
   return `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
 }
+
+/** Select a quiz language in the searchable add-quiz combobox. */
+export async function pickLanguage(dialog: Locator, query: string, label: RegExp | string) {
+  await dialog.getByTestId("language-combobox").click();
+  await dialog.getByTestId("language-combobox-search").fill(query);
+  await dialog.getByTestId("language-combobox-list").getByRole("button", { name: label }).click();
+}

@@ -13,11 +13,14 @@ type QuizRow = {
   types: Quiz["types"];
   topic: string | null;
   is_collection: boolean;
+  hidden: boolean;
+  source: string | null;
   clicks: number | string;
   created_at: Date | string;
 };
 
-const COLUMNS = "id, title, url, description, language, format, types, topic, is_collection, clicks, created_at";
+const COLUMNS =
+  "id, title, url, description, language, format, types, topic, is_collection, hidden, source, clicks, created_at";
 
 function toQuiz(row: QuizRow): Quiz {
   return {
@@ -30,13 +33,18 @@ function toQuiz(row: QuizRow): Quiz {
     types: row.types,
     topic: row.topic,
     isCollection: row.is_collection,
+    hidden: Boolean(row.hidden),
+    source: row.source,
     clicks: Number(row.clicks),
     createdAt: new Date(row.created_at).toISOString(),
   };
 }
 
+/** Public catalog: soft-hidden hub cards stay in the DB but are not listed. */
 export async function listQuizzes(): Promise<Quiz[]> {
-  const rows = await sql<QuizRow>(`select ${COLUMNS} from quizzes order by created_at desc, id desc`);
+  const rows = await sql<QuizRow>(
+    `select ${COLUMNS} from quizzes where hidden = false order by created_at desc, id desc`,
+  );
   return rows.map(toQuiz);
 }
 
@@ -68,7 +76,7 @@ export async function createQuiz(input: QuizInput): Promise<CreateResult> {
 
 export async function registerClick(id: number): Promise<number | null> {
   const rows = await sql<{ clicks: number | string }>(
-    "update quizzes set clicks = clicks + 1 where id = $1 returning clicks",
+    "update quizzes set clicks = clicks + 1 where id = $1 and hidden = false returning clicks",
     [id],
   );
   return rows[0] ? Number(rows[0].clicks) : null;

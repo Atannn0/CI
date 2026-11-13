@@ -1,4 +1,5 @@
-import { normalizeText, type Quiz, type QuizFormat, type QuizLanguage, type QuizType } from "./quiz";
+import type { QuizLanguage } from "./languages";
+import { normalizeText, type Quiz, type QuizFormat, type QuizType } from "./quiz";
 
 export type Filters = {
   query: string;
