@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { EMPTY_FILTERS, filterQuizzes, popularQuizzes, toggleValue } from "./filter";
+import { EMPTY_FILTERS, filterQuizzes, popularQuizzes, toggleValue, withoutDone } from "./filter";
 import type { Quiz } from "./quiz";
 
 function quiz(partial: Partial<Quiz> & Pick<Quiz, "id" | "title">): Quiz {
@@ -10,6 +10,7 @@ function quiz(partial: Partial<Quiz> & Pick<Quiz, "id" | "title">): Quiz {
     format: "text",
     types: ["knowledge"],
     topic: null,
+    isCollection: false,
     clicks: 0,
     createdAt: "2026-01-01T00:00:00.000Z",
     ...partial,
@@ -54,6 +55,21 @@ describe("filterQuizzes", () => {
   it("matches a quiz with several types when any of them is selected", () => {
     expect(ids(filterQuizzes(catalog, { ...EMPTY_FILTERS, types: ["logic"], languages: ["en"] }))).toEqual([5]);
     expect(ids(filterQuizzes(catalog, { ...EMPTY_FILTERS, types: ["knowledge"], formats: ["mixed"] }))).toEqual([5]);
+  });
+});
+
+describe("withoutDone", () => {
+  it("hides done quizzes only when the switch is on", () => {
+    const done = new Set([2, 4]);
+    expect(ids(withoutDone(catalog, done, false))).toEqual([1, 2, 3, 4, 5]);
+    expect(ids(withoutDone(catalog, done, true))).toEqual([1, 3, 5]);
+    expect(ids(withoutDone(catalog, new Set(), true))).toEqual([1, 2, 3, 4, 5]);
+  });
+
+  it("combines with the query and the filters", () => {
+    const matching = filterQuizzes(catalog, { ...EMPTY_FILTERS, formats: ["image"] });
+    expect(ids(withoutDone(matching, new Set([1]), true))).toEqual([4]);
+    expect(ids(withoutDone(matching, new Set([1, 4]), true))).toEqual([]);
   });
 });
 

@@ -34,6 +34,12 @@ export function filterQuizzes(quizzes: Quiz[], filters: Filters): Quiz[] {
   });
 }
 
+/** Applied after filterQuizzes when the visitor hides quizzes marked as done. */
+export function withoutDone(quizzes: Quiz[], done: ReadonlySet<number>, hide: boolean): Quiz[] {
+  if (!hide || done.size === 0) return quizzes;
+  return quizzes.filter((quiz) => !done.has(quiz.id));
+}
+
 export function popularQuizzes(quizzes: Quiz[], limit = 6): Quiz[] {
   return [...quizzes]
     .filter((q) => q.clicks > 0)

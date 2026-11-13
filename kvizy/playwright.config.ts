@@ -1,4 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
+import { E2E_ADMIN_TOKEN } from "./e2e/helpers";
 
 const PORT = Number(process.env.E2E_PORT ?? 4388);
 const baseURL = `http://127.0.0.1:${PORT}`;
@@ -26,6 +27,7 @@ export default defineConfig({
       DATABASE_URL_UNPOOLED: process.env.E2E_DATABASE_URL ?? "",
       POSTGRES_URL: "",
       POSTGRES_URL_NON_POOLING: "",
+      KVIZY_ADMIN_TOKEN: E2E_ADMIN_TOKEN,
     },
   },
 });

@@ -10,7 +10,8 @@ test("domovská stránka má hledání, Přidat kvíz, Populární kvízy a reá
   await expect(page.getByLabel("Najdi kvíz pro svou partu")).toBeVisible();
   await expect(page.getByRole("button", { name: "Přidat kvíz" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Populární kvízy" })).toBeVisible();
-  await expect(page.getByRole("button", { name: /Obrázkové kvízy/ })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Obrázkové kvízy/ })).toHaveCount(0);
+  await expect(filterButton(page, "Obrázkový")).toBeVisible();
 
   const { quizzes } = await (await request.get("/api/quizzes")).json();
   const cs = quizzes.filter((q: { language: string }) => q.language === "cs").length;
@@ -77,9 +78,9 @@ test("kombinace všech tří filtrů s více hodnotami v jednom filtru", async (
   await expect(page.getByRole("heading", { name: "Populární kvízy" })).toBeVisible();
 });
 
-test("velké tlačítko Obrázkové kvízy zapne filtr formátu", async ({ page }) => {
+test("filtr Obrázkový ukáže jen obrázkové kvízy", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: /Obrázkové kvízy/ }).click();
+  await filterButton(page, "Obrázkový").click();
   await expect(filterButton(page, "Obrázkový")).toHaveAttribute("aria-pressed", "true");
   const list = cards(page);
   expect(await list.count()).toBeGreaterThan(0);
@@ -98,7 +99,7 @@ test("nulový počet výsledků zobrazí zprávu a dá se vymazat", async ({ pag
 
 test("Otevřít kvíz otevře původní web v nové záložce a započítá kliknutí", async ({ page, context, request }) => {
   await page.goto("/");
-  const card = cards(page).first();
+  const card = cards(page).and(page.locator('[data-collection="false"]')).first();
   const id = Number(await card.getAttribute("data-quiz-id"));
   const link = card.getByRole("link", { name: /Otevřít kvíz/ });
   const href = (await link.getAttribute("href"))!;

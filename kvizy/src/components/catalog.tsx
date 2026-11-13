@@ -1,15 +1,26 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FlameIcon, ImageIcon, PlusIcon, RotateCcwIcon, SearchIcon, SparklesIcon, XIcon } from "lucide-react";
+import { EyeIcon, FlameIcon, PlusIcon, RotateCcwIcon, SearchIcon, SparklesIcon, XIcon } from "lucide-react";
 import { AddQuizDialog } from "@/components/add-quiz-dialog";
 import { FilterChip, FilterGroup } from "@/components/filter-chip";
+import { HeroIllustration } from "@/components/hero-illustration";
 import { QuizCard } from "@/components/quiz-card";
-import { FORMAT_ICONS, TYPE_ICONS } from "@/components/quiz-meta";
+import { FORMAT_ICONS, LANGUAGE_CODES, TYPE_ICONS } from "@/components/quiz-meta";
+import { ReportQuizDialog } from "@/components/report-quiz-dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { EMPTY_FILTERS, filterQuizzes, hasActiveFilters, popularQuizzes, toggleValue, type Filters } from "@/lib/filter";
+import { useDoneQuizzes } from "@/lib/done-store";
+import {
+  EMPTY_FILTERS,
+  filterQuizzes,
+  hasActiveFilters,
+  popularQuizzes,
+  toggleValue,
+  withoutDone,
+  type Filters,
+} from "@/lib/filter";
 import {
   FORMAT_LABELS,
   FORMATS,
@@ -24,13 +35,18 @@ import {
 export function Catalog({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
   const [quizzes, setQuizzes] = useState(initialQuizzes);
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
+  const [hideDone, setHideDone] = useState(false);
   const [addOpen, setAddOpen] = useState(false);
   const [lastAddedId, setLastAddedId] = useState<number | null>(null);
+  const [reportQuiz, setReportQuiz] = useState<Quiz | null>(null);
+  const [reportOpen, setReportOpen] = useState(false);
+  const { done, setDone } = useDoneQuizzes();
 
-  const results = useMemo(() => filterQuizzes(quizzes, filters), [quizzes, filters]);
-  const popular = useMemo(() => popularQuizzes(quizzes), [quizzes]);
+  const matching = useMemo(() => filterQuizzes(quizzes, filters), [quizzes, filters]);
+  const results = useMemo(() => withoutDone(matching, done, hideDone), [matching, done, hideDone]);
+  const popular = useMemo(() => popularQuizzes(withoutDone(quizzes, done, hideDone)), [quizzes, done, hideDone]);
   const active = hasActiveFilters(filters);
-  const imageOnly = filters.formats.length === 1 && filters.formats[0] === "image";
+  const hiddenDone = matching.length - results.length;
 
   function openQuiz(quiz: Quiz) {
     setQuizzes((prev) => prev.map((q) => (q.id === quiz.id ? { ...q, clicks: q.clicks + 1 } : q)));
@@ -42,91 +58,80 @@ export function Catalog({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
       .catch(() => {});
   }
 
+  function openReport(quiz: Quiz) {
+    setReportQuiz(quiz);
+    setReportOpen(true);
+  }
+
   function handleCreated(quiz: Quiz) {
     setQuizzes((prev) => [quiz, ...prev.filter((q) => q.id !== quiz.id)]);
     setFilters(EMPTY_FILTERS);
     setLastAddedId(quiz.id);
   }
 
+  const cardProps = {
+    onOpen: openQuiz,
+    onReport: openReport,
+    onDoneChange: (quiz: Quiz, value: boolean) => setDone(quiz.id, value),
+  };
+
   return (
     <>
-      <header className="relative overflow-hidden bg-gradient-to-br from-violet-600 via-fuchsia-500 to-orange-400 text-white">
-        <div aria-hidden className="pointer-events-none absolute -top-16 -right-10 size-64 rounded-full bg-white/15 blur-2xl" />
-        <div aria-hidden className="pointer-events-none absolute -bottom-20 -left-10 size-72 rounded-full bg-yellow-300/25 blur-3xl" />
-        <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-4 pt-6 pb-8 sm:px-6 sm:pt-8 sm:pb-10">
+      <header className="border-b border-violet-200/70 bg-lavender text-violet-950">
+        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 pt-6 pb-8 sm:px-6 sm:pt-8 sm:pb-10">
           <div className="flex items-center justify-between gap-3">
             <p className="inline-flex items-center gap-2 text-lg font-extrabold tracking-tight sm:text-xl">
-              <span className="grid size-9 place-items-center rounded-xl bg-white/20 ring-1 ring-white/40">
+              <span className="grid size-9 place-items-center rounded-xl bg-violet-600 text-white shadow-sm">
                 <SparklesIcon className="size-5" aria-hidden />
               </span>
               Kvízy pro partu
             </p>
-            <Button
-              size="lg"
-              onClick={() => setAddOpen(true)}
-              className="h-10 bg-white px-4 font-semibold text-violet-700 shadow-md hover:bg-white/90"
-            >
+            <Button size="lg" onClick={() => setAddOpen(true)} className="h-10 px-4 font-semibold shadow-sm">
               <PlusIcon data-icon="inline-start" aria-hidden />
               Přidat kvíz
             </Button>
           </div>
 
-          <div className="flex flex-col gap-3">
-            <h1 className="text-3xl font-black tracking-tight text-balance sm:text-5xl">
-              <label htmlFor="search">Najdi kvíz pro svou partu</label>
-            </h1>
-            <div className="relative">
-              <SearchIcon className="absolute top-1/2 left-4 size-5 -translate-y-1/2 text-muted-foreground" aria-hidden />
-              <Input
-                id="search"
-                type="search"
-                value={filters.query}
-                onChange={(e) => setFilters((f) => ({ ...f, query: e.target.value }))}
-                placeholder="Filmy, hádanky, jídlo…"
-                className="h-14 rounded-2xl border-0 bg-white pr-12 pl-12 text-base text-foreground shadow-lg md:text-lg"
-              />
-              {filters.query && (
-                <button
-                  type="button"
-                  onClick={() => setFilters((f) => ({ ...f, query: "" }))}
-                  className="absolute top-1/2 right-3 grid size-8 -translate-y-1/2 place-items-center rounded-full text-muted-foreground hover:bg-muted"
-                  aria-label="Vymazat hledání"
-                >
-                  <XIcon className="size-4" />
-                </button>
-              )}
+          <div className="grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_auto] lg:gap-12">
+            <div className="flex flex-col gap-4">
+              <h1 className="text-3xl font-black tracking-tight text-balance sm:text-5xl">
+                <label htmlFor="search">Najdi kvíz pro svou partu</label>
+              </h1>
+              <p className="max-w-xl text-base text-violet-900/80 sm:text-lg">
+                Osobnostní testy, hádanky i poznávačky. Vyber podle nálady a otevři jedním kliknutím.
+              </p>
+              <div className="relative max-w-2xl">
+                <SearchIcon className="absolute top-1/2 left-4 size-5 -translate-y-1/2 text-violet-700/70" aria-hidden />
+                <Input
+                  id="search"
+                  type="search"
+                  value={filters.query}
+                  onChange={(e) => setFilters((f) => ({ ...f, query: e.target.value }))}
+                  placeholder="Filmy, hádanky, jídlo…"
+                  className="h-14 rounded-2xl border-violet-200 bg-white pr-12 pl-12 text-base text-foreground shadow-sm focus-visible:border-violet-400 md:text-lg"
+                />
+                {filters.query && (
+                  <button
+                    type="button"
+                    onClick={() => setFilters((f) => ({ ...f, query: "" }))}
+                    className="absolute top-1/2 right-3 grid size-8 -translate-y-1/2 place-items-center rounded-full text-muted-foreground hover:bg-muted"
+                    aria-label="Vymazat hledání"
+                  >
+                    <XIcon className="size-4" />
+                  </button>
+                )}
+              </div>
             </div>
+            <HeroIllustration className="hidden md:block lg:mr-6" />
           </div>
-
-          <button
-            type="button"
-            aria-pressed={imageOnly}
-            onClick={() => setFilters((f) => ({ ...f, formats: imageOnly ? [] : ["image"] }))}
-            className={cn(
-              "group flex items-center gap-4 rounded-2xl px-4 py-3 text-left ring-2 transition-all outline-none focus-visible:ring-4 focus-visible:ring-white sm:max-w-md",
-              imageOnly
-                ? "bg-white text-violet-700 ring-white"
-                : "bg-white/15 text-white ring-white/50 hover:bg-white/25",
-            )}
-          >
-            <span
-              className={cn(
-                "grid size-12 shrink-0 place-items-center rounded-xl",
-                imageOnly ? "bg-violet-100" : "bg-white/20",
-              )}
-            >
-              <ImageIcon className="size-7" aria-hidden />
-            </span>
-            <span className="flex flex-col">
-              <span className="text-lg font-extrabold">Obrázkové kvízy</span>
-              <span className="text-sm opacity-90">Málo čtení, hodně koukání. Ideální pro partu.</span>
-            </span>
-          </button>
         </div>
       </header>
 
       <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-6 sm:px-6 sm:py-8">
-        <section aria-label="Filtry" className="grid gap-5 rounded-2xl bg-card p-4 ring-1 ring-border sm:p-5 lg:grid-cols-[auto_1fr_auto]">
+        <section
+          aria-label="Filtry"
+          className="grid items-start gap-5 rounded-2xl bg-card p-4 ring-1 ring-border sm:p-5 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)_auto] lg:gap-8"
+        >
           <FilterGroup title="Formát">
             {FORMATS.map((format) => (
               <FilterChip
@@ -154,6 +159,7 @@ export function Catalog({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
               <FilterChip
                 key={language}
                 label={LANGUAGE_LABELS[language]}
+                code={LANGUAGE_CODES[language]}
                 pressed={filters.languages.includes(language)}
                 onToggle={() => setFilters((f) => ({ ...f, languages: toggleValue(f.languages, language) }))}
               />
@@ -169,7 +175,7 @@ export function Catalog({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
             </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-testid="popular-list">
               {popular.map((quiz) => (
-                <QuizCard key={quiz.id} quiz={quiz} onOpen={openQuiz} />
+                <QuizCard key={quiz.id} quiz={quiz} done={done.has(quiz.id)} {...cardProps} />
               ))}
             </div>
           </section>
@@ -186,12 +192,15 @@ export function Catalog({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
 
         <section aria-labelledby="results-heading" className="flex flex-col gap-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <h2 id="results-heading" className="text-2xl font-extrabold tracking-tight">
-              {active ? "Výsledky" : "Všechny kvízy"}{" "}
-              <span className="text-base font-semibold text-muted-foreground" data-testid="result-count" aria-live="polite">
-                {active ? `Nalezeno: ${pluralQuizzes(results.length)}` : pluralQuizzes(results.length)}
-              </span>
-            </h2>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              <h2 id="results-heading" className="text-2xl font-extrabold tracking-tight">
+                {active ? "Výsledky" : "Všechny kvízy"}{" "}
+                <span className="text-base font-semibold text-muted-foreground" data-testid="result-count" aria-live="polite">
+                  {active ? `Nalezeno: ${pluralQuizzes(results.length)}` : pluralQuizzes(results.length)}
+                </span>
+              </h2>
+              <HideDoneSwitch checked={hideDone} onChange={setHideDone} doneCount={done.size} />
+            </div>
             {active && (
               <Button variant="outline" size="lg" onClick={() => setFilters(EMPTY_FILTERS)}>
                 <RotateCcwIcon data-icon="inline-start" aria-hidden />
@@ -203,17 +212,37 @@ export function Catalog({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
           {results.length === 0 ? (
             <div className="flex flex-col items-center gap-3 rounded-2xl border-2 border-dashed border-border px-6 py-12 text-center">
               <p className="text-lg font-bold">Tady nic není.</p>
-              <p className="text-muted-foreground" data-testid="empty-message">
-                Žádný kvíz neodpovídá hledání a filtrům. Zkus jiné slovo nebo uber filtry.
-              </p>
-              <Button variant="outline" onClick={() => setFilters(EMPTY_FILTERS)}>
-                Vymazat hledání a filtry
-              </Button>
+              {hiddenDone > 0 ? (
+                <>
+                  <p className="text-muted-foreground" data-testid="empty-message">
+                    Všechny kvízy, které odpovídají hledání a filtrům, máš hotové.
+                  </p>
+                  <Button variant="outline" onClick={() => setHideDone(false)}>
+                    <EyeIcon data-icon="inline-start" aria-hidden />
+                    Zobrazit hotové
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <p className="text-muted-foreground" data-testid="empty-message">
+                    Žádný kvíz neodpovídá hledání a filtrům. Zkus jiné slovo nebo uber filtry.
+                  </p>
+                  <Button variant="outline" onClick={() => setFilters(EMPTY_FILTERS)}>
+                    Vymazat hledání a filtry
+                  </Button>
+                </>
+              )}
             </div>
           ) : (
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-testid="results-list">
               {results.map((quiz) => (
-                <QuizCard key={quiz.id} quiz={quiz} onOpen={openQuiz} highlight={quiz.id === lastAddedId} />
+                <QuizCard
+                  key={quiz.id}
+                  quiz={quiz}
+                  done={done.has(quiz.id)}
+                  highlight={quiz.id === lastAddedId}
+                  {...cardProps}
+                />
               ))}
             </div>
           )}
@@ -225,6 +254,46 @@ export function Catalog({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
       </footer>
 
       <AddQuizDialog open={addOpen} onOpenChange={setAddOpen} quizzes={quizzes} onCreated={handleCreated} />
+      <ReportQuizDialog quiz={reportQuiz} open={reportOpen} onOpenChange={setReportOpen} />
     </>
+  );
+}
+
+function HideDoneSwitch({
+  checked,
+  onChange,
+  doneCount,
+}: {
+  checked: boolean;
+  onChange: (value: boolean) => void;
+  doneCount: number;
+}) {
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      onClick={() => onChange(!checked)}
+      className="inline-flex h-9 items-center gap-2 rounded-full border border-border bg-card pr-3.5 pl-1.5 text-sm font-medium outline-none hover:border-primary/50 focus-visible:ring-[3px] focus-visible:ring-ring/50"
+    >
+      <span
+        aria-hidden
+        className={cn(
+          "relative h-5 w-9 shrink-0 rounded-full transition-colors",
+          checked ? "bg-primary" : "bg-muted-foreground/30",
+        )}
+      >
+        <span
+          className={cn(
+            "absolute top-0.5 left-0.5 size-4 rounded-full bg-white shadow-sm transition-transform",
+            checked && "translate-x-4",
+          )}
+        />
+      </span>
+      Skrýt hotové
+      <span className="text-muted-foreground tabular-nums" data-testid="done-count">
+        ({doneCount})
+      </span>
+    </button>
   );
 }
