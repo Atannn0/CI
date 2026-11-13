@@ -1,6 +1,6 @@
 # Kvízy pro partu
 
-Česká webová aplikace: katalog online kvízů, ve kterém parta rychle najde kvíz podle nálady. Next.js 16 + TypeScript + Tailwind + shadcn/ui, sdílená databáze Postgres (lokálně PGlite v paměti).
+Česká webová aplikace: katalog online kvízů, ve kterém parta rychle najde kvíz podle nálady. Next.js 16 + TypeScript + Tailwind + shadcn/ui, sdílená databáze Postgres (na Vercelu Neon, lokálně PGlite v paměti).
 
 ```bash
 npm install
@@ -10,3 +10,36 @@ npm run check      # lint, typecheck, unit testy, E2E testy
 ```
 
 Podrobnosti pro agenty i lidi jsou v [`../AGENTS.md`](../AGENTS.md). Plán je v [`docs/plan.md`](docs/plan.md), protokol ověření počátečního katalogu v [`docs/catalog-verification.md`](docs/catalog-verification.md).
+
+## Nasazení na Vercel (Hobby) s databází Neon
+
+Repozitář je připravený: `vercel.json` (region Frankfurt, build jen při změně v `kvizy/`), migrace a 58 kvízů se do databáze nahrají samy při buildu. Žádné proměnné prostředí se nenastavují ručně.
+
+1. **Import projektu**
+   1. Přihlas se na [vercel.com](https://vercel.com) přes GitHub (plán Hobby).
+   2. **Add New… → Project**. V seznamu **Import Git Repository** najdi `Atannn0/CI` a klikni **Import**. Pokud tam není, klikni **Adjust GitHub App Permissions** (nebo **Install**), povol Vercelu přístup k repozitáři `CI` a vrať se.
+   3. Na obrazovce **Configure Project** u **Root Directory** klikni **Edit**, vyber složku `kvizy` a potvrď **Continue**. **Framework Preset** se přepne na **Next.js**.
+   4. **Build and Output Settings** ani **Environment Variables** neměň. Klikni **Deploy**.
+   5. První build doběhne (v logu `migrate: nothing to do (no DATABASE_URL)`), ale web zatím ukáže „Katalog se teď nepodařilo načíst“, protože chybí databáze. To je v pořádku.
+2. **Databáze Neon přes Storage**
+   1. V projektu otevři záložku **Storage** → **Create Database** (nebo **Connect Database**) → v sekci **Marketplace Database Providers** vyber **Neon** → **Continue**.
+   2. Při instalaci zvol **Create New Neon Account** (pokud se Vercel zeptá), region **Europe (Frankfurt) – aws-eu-central-1**, plán **Free**, jméno databáze třeba `kvizy`. Volitelné služby (Auth, Realtime) nech vypnuté. Potvrď **Create** / **Continue**.
+   3. V dialogu **Connect Project** vyber projekt `kvizy`, nech zaškrtnutá prostředí **Development, Preview, Production**, **Create database branch for deployment** nech nezaškrtnuté, **Custom Prefix** nech prázdný. Klikni **Connect**.
+   4. Kontrola: **Settings → Environment Variables** teď obsahuje `DATABASE_URL` a `DATABASE_URL_UNPOOLED` (a další `PG*`/`POSTGRES_*`). Nic dalšího nepřidávej.
+3. **Redeploy**
+   1. Záložka **Deployments** → u posledního nasazení menu **⋯** → **Redeploy** → **Redeploy**. (Skript ignorovaného buildu redeploy stejného commitu vždy postaví; zaškrtávátko **Use project's Ignore Build Step** může zůstat.)
+   2. V **Build Logs** musí být `migrate: applied 001_create_quizzes.sql` a `migrate: applied 002_seed_quizzes.sql`.
+
+### Ověření živého webu
+- Otevři produkční adresu z **Domains** (např. `https://kvizy-….vercel.app`): domovská stránka ukáže „Všechny kvízy 58 kvízů“.
+- `https://<doména>/api/quizzes` vrátí JSON s 58 kvízy (31 `cs`, 27 `en`).
+- Přidej testovací kvíz (**Přidat kvíz**), obnov stránku a otevři web v jiném prohlížeči nebo na mobilu: kvíz najdeš hledáním.
+- Klikni na **Otevřít kvíz**: otevře se nová záložka a po obnovení je kvíz v sekci **Populární kvízy**.
+- Zkus přidat stejný odkaz znovu: formulář ho odmítne.
+- Po dalším automatickém commitu vaultu se v **Deployments** objeví nasazení ve stavu **Canceled** s hláškou `No changes in kvizy/ …: skipping the build.`
+- Data v Neonu: **Storage → kvizy → Open in Neon** → **SQL Editor** → `select count(*) from quizzes;`
+
+### Poznámky
+- Plán Hobby má limit 100 nasazení denně a zrušené (ignorované) buildy se do něj počítají. Pokud Obsidian Git pushuje velmi často, nastav v Obsidianu **Settings → Obsidian Git → Auto commit-and-sync interval** aspoň na 15 minut.
+- Preview nasazení (větve z pull requestů) používají stejnou databázi jako produkce a jsou chráněná přihlášením do Vercelu. Migrace jsou jen aditivní, takže to produkci nerozbije.
+- Bez `DATABASE_URL` na Vercelu aplikace záměrně selže s chybovou stránkou, místo aby tiše ukládala data do dočasné paměti.
