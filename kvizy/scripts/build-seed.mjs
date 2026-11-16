@@ -62,6 +62,7 @@ const FROZEN = new Set([
   "006_seed_idrlabs_ja_zh",
   "008_seed_de_ko_sv_es",
   "009_backfill_bilingual_descriptions",
+  "011_seed_da_fr_it",
 ]);
 
 for (const [migration, entries] of groups) {

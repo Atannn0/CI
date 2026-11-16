@@ -1,5 +1,12 @@
 import { expect, test } from "@playwright/test";
-import { cards, openAddLink, pickLanguage, stubExternalSites, uniqueSuffix } from "./helpers";
+import {
+  cards,
+  openAddLink,
+  pickLanguage,
+  stubExternalSites,
+  toggleCatalogLanguage,
+  uniqueSuffix,
+} from "./helpers";
 
 test.beforeEach(async ({ context, baseURL }) => {
   await stubExternalSites(context, baseURL!);
@@ -58,7 +65,7 @@ test("přidání kvízu v němčině přes vyhledatelný seznam jazyků", async 
   await dialog.getByRole("button", { name: "Uložit kvíz" }).click();
   await expect(page.getByText("Kvíz je v katalogu!")).toBeVisible();
 
-  await page.getByRole("region", { name: "Filtry" }).getByRole("button", { name: "Němčina" }).click();
+  await toggleCatalogLanguage(page, "Němčina");
   await expect(cards(page).first()).toHaveAttribute("data-language", "de");
 });
 

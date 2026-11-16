@@ -3040,5 +3040,206 @@
       "result": "ověřeno (HTTP 200 + jazyk otázek)",
       "checked_at": "2026-11-13"
     }
+  },
+  {
+    "title": "DISC-personlighedstest",
+    "url": "https://personalitypick.com/da/disc",
+    "language": "da",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "DISC",
+    "description_cs": "Dánský DISC test: 28 výroků o rozhodování a týmové práci.",
+    "description_en": "Danish DISC quiz: 28 statements about decisions and teamwork.",
+    "source": "personalitypick.com",
+    "description": "Dánský DISC test: 28 výroků o rozhodování a týmové práci.",
+    "migration": "012_seed_da_fr_it_extra",
+    "verification": {
+      "collector": "da-fr-it-link-collector",
+      "result": "ověřeno subagentem (Exa)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Enneagram-testen",
+    "url": "https://personalitypick.com/da/enneagram",
+    "language": "da",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Enneagram",
+    "description_cs": "Dánský enneagram: 36 výroků o motivacích, typ 1–9.",
+    "description_en": "Danish Enneagram quiz: 36 statements on motives, types 1–9.",
+    "source": "personalitypick.com",
+    "description": "Dánský enneagram: 36 výroků o motivacích, typ 1–9.",
+    "migration": "012_seed_da_fr_it_extra",
+    "verification": {
+      "collector": "da-fr-it-link-collector",
+      "result": "ověřeno subagentem (Exa)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Big Five-personlighedstesten",
+    "url": "https://personalitypick.com/da/big-five",
+    "language": "da",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Big Five",
+    "description_cs": "Dánský Big Five: 40 výroků o pěti osobnostních rysech.",
+    "description_en": "Danish Big Five quiz: 40 statements across the five traits.",
+    "source": "personalitypick.com",
+    "description": "Dánský Big Five: 40 výroků o pěti osobnostních rysech.",
+    "migration": "012_seed_da_fr_it_extra",
+    "verification": {
+      "collector": "da-fr-it-link-collector",
+      "result": "ověřeno subagentem (Exa)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Gratis Personlighedstest (16 typer)",
+    "url": "https://boo.world/da/free-personality-test",
+    "language": "da",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description_cs": "Dánský test 16 typů osobnosti na Boo.",
+    "description_en": "Danish 16-type personality quiz on Boo.",
+    "source": "boo.world",
+    "description": "Dánský test 16 typů osobnosti na Boo.",
+    "migration": "012_seed_da_fr_it_extra",
+    "verification": {
+      "collector": "da-fr-it-link-collector",
+      "result": "ověřeno subagentem (Exa)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Test d’Ennéagramme",
+    "url": "https://prismatest.net/fr/tests/enneagram-test/",
+    "language": "fr",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Enneagram",
+    "description_cs": "Francouzský enneagram: 54 výroků o motivacích.",
+    "description_en": "French Enneagram quiz: 54 motivation statements.",
+    "source": "PrismaTest",
+    "description": "Francouzský enneagram: 54 výroků o motivacích.",
+    "migration": "012_seed_da_fr_it_extra",
+    "verification": {
+      "collector": "da-fr-it-link-collector",
+      "result": "ověřeno subagentem (Exa)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Test de personnalité des Big Five",
+    "url": "https://prismatest.net/fr/tests/big-five-personality-test/",
+    "language": "fr",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Big Five",
+    "description_cs": "Francouzský Big Five (IPIP-50).",
+    "description_en": "French Big Five (IPIP-50).",
+    "source": "PrismaTest",
+    "description": "Francouzský Big Five (IPIP-50).",
+    "migration": "012_seed_da_fr_it_extra",
+    "verification": {
+      "collector": "da-fr-it-link-collector",
+      "result": "ověřeno subagentem (Exa)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Quel animal êtes-vous ?",
+    "url": "https://prismatest.net/fr/tests/what-animal-am-i/",
+    "language": "fr",
+    "format": "text",
+    "types": [
+      "personality",
+      "preference"
+    ],
+    "topic": "zvířata",
+    "description_cs": "Francouzský kvíz: 12 otázek přiřadí zvíře k tvému stylu.",
+    "description_en": "French fun quiz: 12 questions match you to an animal.",
+    "source": "PrismaTest",
+    "description": "Francouzský kvíz: 12 otázek přiřadí zvíře k tvému stylu.",
+    "migration": "012_seed_da_fr_it_extra",
+    "verification": {
+      "collector": "da-fr-it-link-collector",
+      "result": "ověřeno subagentem (Exa)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Test della personalità dei Big Five",
+    "url": "https://prismatest.net/it/tests/big-five-personality-test/",
+    "language": "it",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Big Five",
+    "description_cs": "Italský Big Five (IPIP-50).",
+    "description_en": "Italian Big Five (IPIP-50).",
+    "source": "PrismaTest",
+    "description": "Italský Big Five (IPIP-50).",
+    "migration": "012_seed_da_fr_it_extra",
+    "verification": {
+      "collector": "da-fr-it-link-collector",
+      "result": "ověřeno subagentem (Exa)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Test dell’Enneagramma",
+    "url": "https://prismatest.net/it/tests/enneagram-test/",
+    "language": "it",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Enneagram",
+    "description_cs": "Italský enneagram: 54 výroků o motivacích.",
+    "description_en": "Italian Enneagram quiz: 54 motivation statements.",
+    "source": "PrismaTest",
+    "description": "Italský enneagram: 54 výroků o motivacích.",
+    "migration": "012_seed_da_fr_it_extra",
+    "verification": {
+      "collector": "da-fr-it-link-collector",
+      "result": "ověřeno subagentem (Exa)",
+      "checked_at": "2026-11-13"
+    }
+  },
+  {
+    "title": "Test Introverso, Estroverso o Ambiverso",
+    "url": "https://prismatest.net/it/tests/introvert-extrovert-test/",
+    "language": "it",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description_cs": "Italský test introverze–extroverze: 20 výroků.",
+    "description_en": "Italian introvert–extrovert quiz: 20 statements.",
+    "source": "PrismaTest",
+    "description": "Italský test introverze–extroverze: 20 výroků.",
+    "migration": "012_seed_da_fr_it_extra",
+    "verification": {
+      "collector": "da-fr-it-link-collector",
+      "result": "ověřeno subagentem (Exa)",
+      "checked_at": "2026-11-13"
+    }
   }
 ]
