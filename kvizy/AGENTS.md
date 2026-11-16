@@ -1,4 +1,4 @@
-# Kvízovna
+# WhichQuiz
 
 Účel aplikace, příkazy, mapa projektu a tabulka vynucení bezpečnosti jsou v kořenovém [`../AGENTS.md`](../AGENTS.md). Allowlist subagentů: [`docs/agent-security.md`](docs/agent-security.md), `src/lib/agent-policy.ts`.
 

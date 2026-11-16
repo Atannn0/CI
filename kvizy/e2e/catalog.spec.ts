@@ -7,7 +7,7 @@ test.beforeEach(async ({ context, baseURL }) => {
 
 test("domovská stránka má hledání, Přidat do katalogu, Populární kvízy a reálný katalog v CZ i EN", async ({ page, request }) => {
   await page.goto("/");
-  await expect(page.getByLabel("Najdi kvíz pro svou partu")).toBeVisible();
+  await expect(page.getByLabel("Najdi kvíz, nebo si vytvoř vlastní")).toBeVisible();
   await expect(page.getByTestId("add-menu")).toBeVisible();
   await expect(page.getByRole("button", { name: "Přidat do katalogu" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Populární kvízy" })).toBeVisible();
@@ -75,7 +75,7 @@ test("kombinace všech tří filtrů s více hodnotami v jednom filtru", async (
   expect(both).toBeGreaterThanOrEqual(count);
 
   await page.getByRole("button", { name: "Vymazat hledání a filtry" }).first().click();
-  await expect(page.getByLabel("Najdi kvíz pro svou partu")).toHaveValue("");
+  await expect(page.getByLabel("Najdi kvíz, nebo si vytvoř vlastní")).toHaveValue("");
   await expect(filterButton(page, "Obrázkový")).toHaveAttribute("aria-pressed", "false");
   await expect(page.getByRole("heading", { name: "Populární kvízy" })).toBeVisible();
 });
