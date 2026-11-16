@@ -359,7 +359,18 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
         </section>
       </main>
 
-      <footer className="border-t py-6 text-center text-sm text-muted-foreground">{t("footer")}</footer>
+      <footer className="border-t py-6 text-center text-sm text-muted-foreground">
+        <p>{t("footer")}</p>
+        <p className="mt-2">
+          <a
+            href={locale === "en" ? "/privacy" : "/soukromi"}
+            className="underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
+            data-testid="footer-privacy"
+          >
+            {t("footerPrivacy")}
+          </a>
+        </p>
+      </footer>
 
       <AddQuizDialog open={addOpen} onOpenChange={setAddOpen} quizzes={quizzes} onCreated={handleCreated} />
       <CreateQuizDialog open={createOpen} onOpenChange={setCreateOpen} onCreated={handleCreated} />

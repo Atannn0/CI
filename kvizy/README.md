@@ -49,7 +49,41 @@ Návštěvníci mohou na kartě kliknout na **Nahlásit kvíz**. Hlášení (ID 
 
 Bez proměnné (nebo s klíčem kratším než 24 znaků) je `/api/admin/reports` zavřený a vrací 404; se špatným klíčem 401. Pokusy jsou omezené na 20 za minutu z jedné IP.
 
+### Env proměnné Neon jako Sensitive (checklist pro Ondru)
+
+**Citlivé označení Neon env má na starosti Mac worker** — cloud agent hesla nerotuje a Marketplace vazby nepřepisuje, ať nevznikne konflikt. Níže je copy-paste checklist, pokud to děláš ručně.
+
+Cloud agent **nemá** přihlášení do Vercel CLI/API z této VM — Mac / prohlížeč stačí, self-hosted runner není nutný.
+
+Varování „looks like a secret, but its value is visible…“ znamená, že členové projektu vidí hodnotu v Settings — **ne** že connection string teče do prohlížeče návštěvníků.
+
+**Označit Sensitive bez rotace hesla (preferované, pokud credentials neunikly):**
+
+1. Otevři [vercel.com](https://vercel.com) → projekt s Root Directory `kvizy` → **Settings → Environment Variables**.
+2. Projdi všechny DB proměnné od Neon Marketplace, typicky:
+   - `DATABASE_URL`
+   - `DATABASE_URL_UNPOOLED`
+   - `POSTGRES_URL`, `POSTGRES_PRISMA_URL`, `POSTGRES_URL_NON_POOLING`
+   - `POSTGRES_USER`, `POSTGRES_HOST`, `POSTGRES_DATABASE`, `POSTGRES_PASSWORD`
+   - `PGHOST`, `PGHOST_UNPOOLED`, `PGUSER`, `PGDATABASE`, `PGPASSWORD`
+3. U každé: prostředí **Production**, **Preview** i **Development**.
+4. Pokud UI u Marketplace položky nabízí **Sensitive** / **Encrypt**: zapni a ulož.
+5. Pokud Marketplace položku **nejde** přepnout:
+   1. Otevři Neon (**Storage → Open in Neon** / Neon Console) a zkopíruj aktuální connection stringy (pooled + direct) — heslo neměň.
+   2. Ve Vercelu **Add** nové proměnné se **stejnými názvy** `DATABASE_URL` a `DATABASE_URL_UNPOOLED`, vlož hodnoty, zapni **Sensitive**, zaškrtni Production + Preview + Development → Save.
+   3. Stejně pro ostatní `POSTGRES_*` / `PG*` které Vercel stále hlásí, nebo po ověření smazání duplicit nech jen citlivé connection stringy, které aplikace opravdu čte (`DATABASE_URL`, `DATABASE_URL_UNPOOLED`; kód umí i legacy `POSTGRES_URL` / `POSTGRES_URL_NON_POOLING`).
+   4. Staré ne-Sensitive duplicity odstraň až po úspěšném redeployi.
+6. **Deployments → ⋯ → Redeploy** Production (a ověř homepage + `/api/quizzes`).
+7. Znovu otevři Environment Variables: u Sensitive hodnot by se heslo **nemělo** znovu zobrazit jako plaintext.
+
+**Kdy rotovat heslo v Neon:** jen když string unikl (chat, screenshot, cizí přístup k projektu). Jinak stačí Sensitive. Rotace = nové heslo v Neon → aktualizovat Sensitive env → Redeploy → staré heslo přestane platit.
+
+**`KVIZY_ADMIN_TOKEN`** už má být Sensitive (viz výše); pokud není, označ stejně.
+
 ### Poznámky
 - Plán Hobby má limit 100 nasazení denně a zrušené (ignorované) buildy se do něj počítají. Pokud Obsidian Git pushuje velmi často, nastav v Obsidianu **Settings → Obsidian Git → Auto commit-and-sync interval** aspoň na 15 minut.
-- Preview nasazení (větve z pull requestů) používají stejnou databázi jako produkce a jsou chráněná přihlášením do Vercelu. Migrace jsou jen aditivní, takže to produkci nerozbije.
+- Preview musí mít vlastní Neon branch + `KVIZY_PREVIEW_DB_READY=1` (viz `docs/preview-database.md`). Bez toho Preview build/runtime failne dřív než migrace. Preview URL jsou dál chráněná Vercel přihlášením.
 - Bez `DATABASE_URL` na Vercelu aplikace záměrně selže s chybovou stránkou, místo aby tiše ukládala data do dočasné paměti.
+- Stránka soukromí: `/soukromi` (a anglická cesta `/privacy`; text přepínačem CZ/EN).
+- Oddělení Preview DB: `docs/preview-database.md` (`KVIZY_PREVIEW_DB_READY=1` jen pro Preview).
+- Rate limity zápisů/médií jsou **per serverless instance** (in-memory). Sdílený Redis/Upstash v projektu zatím není — pro globální anti-spam by bylo potřeba ho doplnit.

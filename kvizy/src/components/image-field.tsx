@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { useLocale } from "@/lib/i18n/locale";
 import { MEDIA_LIMITS } from "@/lib/media";
 
-export type ImageDraft = { mediaId: number; url: string; alt: string } | null;
+export type ImageDraft = { mediaId: number; url: string; alt: string; accessToken: string } | null;
 
 type Props = {
   id: string;
@@ -34,7 +34,12 @@ export function ImageField({ id, value, onChange, requireAlt = true }: Props) {
         setError(data.message ?? t("errCustomImage"));
         return;
       }
-      onChange({ mediaId: data.id, url: data.url, alt: value?.alt ?? "" });
+      onChange({
+        mediaId: data.id as number,
+        url: data.url as string,
+        accessToken: data.accessToken as string,
+        alt: value?.alt ?? "",
+      });
     } catch {
       setError(t("saveFailedNet"));
     } finally {
