@@ -86,7 +86,7 @@ const emptyOutcome = (): OutcomeDraft => ({
 });
 
 function toImagePayload(image: ImageDraft) {
-  return image ? { mediaId: image.mediaId, alt: image.alt } : null;
+  return image ? { mediaId: image.mediaId, alt: image.alt, accessToken: image.accessToken } : null;
 }
 
 export function CreateQuizDialog({ open, onOpenChange, onCreated }: Props) {

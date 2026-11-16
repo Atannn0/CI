@@ -36,11 +36,13 @@ export async function POST(request: Request) {
             : "Soubor se nepodařilo nahrát.";
       return Response.json({ error: stored.error, message }, { status: 422 });
     }
+    const draftUrl = `/api/media/${stored.id}?access=${encodeURIComponent(stored.accessToken)}`;
     return Response.json(
       {
         id: stored.id,
         mimeType: stored.mimeType,
-        url: `/api/media/${stored.id}`,
+        accessToken: stored.accessToken,
+        url: draftUrl,
         maxBytes: MEDIA_LIMITS.maxBytes,
         allowed: MEDIA_LIMITS.allowedMime,
       },

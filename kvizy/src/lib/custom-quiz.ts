@@ -24,6 +24,8 @@ export type CustomMode = "knowledge" | "personality";
 export type CustomImageInput = {
   mediaId: number;
   alt: string;
+  /** Upload token from POST /api/media; required to prove ownership before publish. */
+  accessToken: string;
 };
 
 export type CustomOptionInput = {
@@ -88,17 +90,27 @@ function parseImage(
   if (!Number.isSafeInteger(mediaId) || mediaId <= 0) return { ok: false, error: t("errCustomImage", locale) };
   const alt = optionalText(data.alt);
   if (!alt || alt.length > CUSTOM_LIMITS.altMax) return { ok: false, error: t("errCustomImageAlt", locale) };
-  return { ok: true, value: { mediaId, alt } };
+  const accessToken = typeof data.accessToken === "string" ? data.accessToken.trim() : "";
+  if (!accessToken || accessToken.length > 200) return { ok: false, error: t("errCustomImage", locale) };
+  return { ok: true, value: { mediaId, alt, accessToken } };
 }
 
 export function collectMediaIds(input: CustomQuizInput): number[] {
-  const ids = new Set<number>();
-  for (const outcome of input.outcomes) if (outcome.image) ids.add(outcome.image.mediaId);
+  return collectMediaClaims(input).map((c) => c.mediaId);
+}
+
+export function collectMediaClaims(input: CustomQuizInput): Array<{ mediaId: number; accessToken: string }> {
+  const byId = new Map<number, string>();
+  const add = (image: CustomImageInput | null) => {
+    if (!image) return;
+    byId.set(image.mediaId, image.accessToken);
+  };
+  for (const outcome of input.outcomes) add(outcome.image);
   for (const question of input.questions) {
-    if (question.image) ids.add(question.image.mediaId);
-    for (const option of question.options) if (option.image) ids.add(option.image.mediaId);
+    add(question.image);
+    for (const option of question.options) add(option.image);
   }
-  return [...ids];
+  return [...byId.entries()].map(([mediaId, accessToken]) => ({ mediaId, accessToken }));
 }
 
 export function validateCustomQuizInput(

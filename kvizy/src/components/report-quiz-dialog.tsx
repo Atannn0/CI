@@ -137,6 +137,9 @@ function ReportForm({ quiz, onClose }: { quiz: Quiz; onClose: () => void }) {
             rows={3}
             placeholder={noteRequired ? t("reportNotePlaceholderOther") : t("reportNotePlaceholder")}
           />
+          <p className="text-xs text-muted-foreground" data-testid="report-note-privacy">
+            {t("reportNotePrivacy")}
+          </p>
         </Field>
 
         {serverError && (

@@ -2,13 +2,14 @@ import "server-only";
 import { randomBytes } from "node:crypto";
 import { sql } from "./db";
 import {
+  collectMediaClaims,
   collectMediaIds,
   quizTypesForMode,
   slugifyTitle,
   type CustomMode,
   type CustomQuizInput,
 } from "./custom-quiz";
-import { mediaExists } from "./media-repo";
+import { assertMediaOwned, attachMediaToQuiz, mediaExists } from "./media-repo";
 import { mediaPublicPath } from "./media";
 import { QUIZ_COLUMNS, toQuiz } from "./quizzes-repo";
 import type { Quiz } from "./quiz";
@@ -85,7 +86,8 @@ export async function createCustomQuiz(
   input: CustomQuizInput,
   origin: string,
 ): Promise<{ ok: true; quiz: Quiz } | { ok: false; error: "media" }> {
-  if (!(await assertMediaIdsExist(collectMediaIds(input)))) return { ok: false, error: "media" };
+  const claims = collectMediaClaims(input);
+  if (!(await assertMediaOwned(claims))) return { ok: false, error: "media" };
 
   const slug = await uniqueSlug(input.title);
   const publicPath = `/hrat/${slug}`;
@@ -134,6 +136,7 @@ export async function createCustomQuiz(
     ],
   );
   const quiz = toQuiz(quizRows[0]);
+  await attachMediaToQuiz(quiz.id, collectMediaIds(input));
 
   for (let oi = 0; oi < input.outcomes.length; oi++) {
     const outcome = input.outcomes[oi];

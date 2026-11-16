@@ -59,6 +59,67 @@ export const messages = m({
     cs: "Externí kvízy se otevírají na původních webech; vlastní hraješ tady.",
     en: "External quizzes open on their sites; your own play here.",
   },
+  footerPrivacy: { cs: "Soukromí", en: "Privacy" },
+  privacyTitle: { cs: "Soukromí a zpracování údajů", en: "Privacy and data processing" },
+  privacyLead: {
+    cs: "WhichQuiz je veřejný hobby katalog online kvízů bez registrace. Níže je stručný přehled, co se děje s údaji při používání webu.",
+    en: "WhichQuiz is a public hobby catalog of online quizzes with no sign-up. Below is a short overview of what happens with data when you use the site.",
+  },
+  privacyBack: { cs: "Zpět do katalogu", en: "Back to catalog" },
+  privacyNoAccountsTitle: { cs: "Bez účtů", en: "No accounts" },
+  privacyNoAccountsBody: {
+    cs: "Nevytváříme uživatelské účty a nevyžadujeme e-mail ani jméno. Katalog, vlastní kvízy a hlášení fungují anonymně.",
+    en: "We do not create user accounts and we do not ask for an email or name. The catalog, custom quizzes and reports work anonymously.",
+  },
+  privacyLocalTitle: { cs: "Úložiště v prohlížeči (localStorage)", en: "Browser storage (localStorage)" },
+  privacyLocalBody: {
+    cs: "V tomto prohlížeči si WhichQuiz ukládá jen preference: označené hotové kvízy (kvizy:done), jazyk rozhraní CZ/EN (kvizy:locale) a světlý/tmavý režim (kvizy:theme). Data zůstávají u tebe v zařízení a neodesílají se na server jako profil.",
+    en: "In this browser WhichQuiz only stores preferences: quizzes marked done (kvizy:done), CZ/EN interface language (kvizy:locale), and light/dark theme (kvizy:theme). The data stays on your device and is not sent to the server as a profile.",
+  },
+  privacyIpTitle: { cs: "IP adresa a omezení frekvence", en: "IP address and rate limits" },
+  privacyIpBody: {
+    cs: "Při zápisech (přidání kvízu, nahrání obrázku, kliknutí, hlášení) může server krátkodobě použít IP adresu z požadavku jen v paměti běžící instance, aby omezil spam. IP se neukládá do databáze katalogu ani do tabulky hlášení.",
+    en: "On write actions (adding a quiz, uploading an image, clicks, reports) the server may briefly use the request IP in the memory of the running instance to limit spam. The IP is not stored in the catalog database or the reports table.",
+  },
+  privacyReportsTitle: { cs: "Hlášení kvízů", en: "Quiz reports" },
+  privacyReportsBody: {
+    cs: "Když použiješ „Nahlásit kvíz“, uloží se ID kvízu, zvolený důvod, volitelná poznámka (až 500 znaků) a čas. Obsah hlášení vidí jen správce s tajným klíčem. Kvíz se hlášením automaticky neskrývá. Poznámku piš bez osobních údajů. Retence hlášení: [DOPLNÍ ONDRA — návrh 12–24 měsíců; existující záznamy se zatím nemažou]. Provozní logy hostitele: [DOPLNÍ ONDRA].",
+    en: "When you use “Report quiz”, we store the quiz ID, chosen reason, optional note (up to 500 characters) and the time. Only an admin with the secret key can read reports. Reporting does not hide the quiz automatically. Do not put personal data in the note. Report retention: [ONDRA TO FILL — proposed 12–24 months; existing rows are kept for now]. Host operational logs: [ONDRA TO FILL].",
+  },
+  privacyUploadsTitle: { cs: "Nahrané obrázky", en: "Uploaded images" },
+  privacyUploadsBody: {
+    cs: "Při tvorbě vlastního kvízu můžeš nahrát obrázky (JPEG/PNG/WebP/GIF, max. 1 MB). Do zveřejnění jsou dostupné jen s tajným tokenem z nahrání; po zveřejnění kvízu jsou veřejné na adrese média. Nahrávky bez zveřejnění zůstanou neveřejné (osiřelé).",
+    en: "When creating a custom quiz you can upload images (JPEG/PNG/WebP/GIF, max 1 MB). Until publish they are available only with the upload token; after the quiz is published they are public at the media URL. Uploads that never get published stay private (orphans).",
+  },
+  privacyCatalogTitle: { cs: "Veřejný katalog a vlastní kvízy", en: "Public catalog and custom quizzes" },
+  privacyCatalogBody: {
+    cs: "Názvy, odkazy, popisy, štítky, počet otevření a zveřejněné vlastní kvízy (včetně nahraných obrázků) jsou veřejné součásti služby. Externí kvízy se otevírají na původních webech mimo WhichQuiz.",
+    en: "Titles, links, descriptions, tags, open counts and published custom quizzes (including uploaded images) are public parts of the service. External quizzes open on their original sites outside WhichQuiz.",
+  },
+  privacyProcessorsTitle: { cs: "Provozovatelé infrastruktury", en: "Infrastructure processors" },
+  privacyProcessorsBody: {
+    cs: "Web běží na Vercelu (hosting) a data katalogu v Neon Postgres (databáze). Tito poskytovatelé zpracovávají technické provozní údaje podle svých smluv a zásad. Region nasazení je Frankfurt (EU).",
+    en: "The site runs on Vercel (hosting) and the catalog data is in Neon Postgres (database). These providers process technical operational data under their own terms and policies. The deployment region is Frankfurt (EU).",
+  },
+  privacyAdultTitle: { cs: "Obsah 18+", en: "18+ content" },
+  privacyAdultBody: {
+    cs: "Přepínač „Zobrazit kvízy 18+“ jen filtruje položky označené autorem jako 18+. Není to ověření věku. Některé externí odkazy mohou vést na obsah pro dospělé na cizích webech.",
+    en: "The “Show 18+ quizzes” switch only filters items authors marked as 18+. It is not age verification. Some external links may lead to adult content on third-party sites.",
+  },
+  privacyCookiesTitle: { cs: "Cookies", en: "Cookies" },
+  privacyCookiesBody: {
+    cs: "WhichQuiz sama nenastavuje marketingové cookies; preference drží v localStorage. Hosting (Vercel) může používat technické provozní mechanismy nezbytné pro doručení webu. Cookie lištu s „Přijmout vše“ nepřidáváme, dokud nebudou reklamní nebo analytické cookies.",
+    en: "WhichQuiz itself does not set marketing cookies; preferences live in localStorage. Hosting (Vercel) may use technical mechanisms needed to deliver the site. We do not show an “Accept all” cookie banner unless advertising or analytics cookies are added.",
+  },
+  privacyContactTitle: { cs: "Kontakt", en: "Contact" },
+  privacyContactBody: {
+    cs: "Provozovatel: Ondra Soukup. Kontakt: [DOPLNÍ ONDRA — e-mail nebo jiný kanál]. Pro hlášení závad u konkrétního kvízu použij tlačítko Nahlásit kvíz.",
+    en: "Operator: Ondra Soukup. Contact: [ONDRA TO FILL — email or another channel]. To report a problem with a specific quiz, use Report quiz.",
+  },
+  privacyUpdated: {
+    cs: "Tento text odpovídá stavu aplikace po bezpečnostním hardeningu (CI-19). Nejde o právní posudek.",
+    en: "This text matches the app after the security hardening (CI-19). It is not legal advice.",
+  },
   localeCs: { cs: "CZ", en: "CZ" },
   localeEn: { cs: "EN", en: "EN" },
   localeSwitch: { cs: "Jazyk rozhraní", en: "Interface language" },
@@ -140,6 +201,10 @@ export const messages = m({
     en: "What exactly is wrong or mismatched?",
   },
   reportNotePlaceholderOther: { cs: "Stručně popiš, co je špatně", en: "Briefly describe what is wrong" },
+  reportNotePrivacy: {
+    cs: "Do poznámky nedávej osobní údaje (jméno, e-mail, telefon). Stačí popis problému s kvízem.",
+    en: "Do not put personal data in the note (name, email, phone). Describe the quiz problem only.",
+  },
   reportSend: { cs: "Odeslat hlášení", en: "Send report" },
   reportSending: { cs: "Odesílám…", en: "Sending…" },
   reportClose: { cs: "Zavřít", en: "Close" },

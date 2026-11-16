@@ -2,6 +2,14 @@
 import pg from "pg";
 import { applyMigrations, directDatabaseUrl, readMigrations } from "../src/lib/migrate-core.mjs";
 
+// Preview must not migrate against production. Fail before applying SQL when unset.
+if (process.env.VERCEL_ENV === "preview" && process.env.KVIZY_PREVIEW_DB_READY !== "1") {
+  console.error(
+    "migrate: Preview database is not configured. Set a Neon Preview branch + KVIZY_PREVIEW_DB_READY=1 (see docs/preview-database.md).",
+  );
+  process.exit(1);
+}
+
 const url = directDatabaseUrl();
 const migrations = await readMigrations();
 if (url === "" || migrations.length === 0) {

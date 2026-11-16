@@ -3,6 +3,9 @@ import type { PGlite } from "@electric-sql/pglite";
 import { attachDatabasePool } from "@vercel/functions";
 import pg from "pg";
 import { applyMigrations, pooledDatabaseUrl, readMigrations } from "./migrate-core.mjs";
+import { assertPreviewDatabaseReady } from "./preview-db";
+
+assertPreviewDatabaseReady();
 
 const databaseUrl = pooledDatabaseUrl();
 
