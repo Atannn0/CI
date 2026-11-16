@@ -83,8 +83,8 @@ export const messages = m({
   },
   privacyReportsTitle: { cs: "Hlášení kvízů", en: "Quiz reports" },
   privacyReportsBody: {
-    cs: "Když použiješ „Nahlásit kvíz“, uloží se ID kvízu, zvolený důvod, volitelná poznámka (až 500 znaků) a čas. Obsah hlášení vidí jen správce s tajným klíčem. Kvíz se hlášením automaticky neskrývá. Poznámku piš bez osobních údajů. Retence hlášení: [DOPLNÍ ONDRA — návrh 12–24 měsíců; existující záznamy se zatím nemažou]. Provozní logy hostitele: [DOPLNÍ ONDRA].",
-    en: "When you use “Report quiz”, we store the quiz ID, chosen reason, optional note (up to 500 characters) and the time. Only an admin with the secret key can read reports. Reporting does not hide the quiz automatically. Do not put personal data in the note. Report retention: [ONDRA TO FILL — proposed 12–24 months; existing rows are kept for now]. Host operational logs: [ONDRA TO FILL].",
+    cs: "Když použiješ „Nahlásit kvíz“, uloží se ID kvízu, zvolený důvod, volitelná poznámka (až 500 znaků) a čas. Obsah hlášení vidí jen provozovatel služby se správcovským klíčem. Kvíz se hlášením automaticky neskrývá. Poznámku piš bez osobních údajů. Hlášení uchováváme po dobu potřebnou k moderaci, nejdéle 24 měsíců, a pak je mažeme. Provozní logy hostitele (Vercel) řídí poskytovatel podle svých zásad a obvykle je krátkodobé.",
+    en: "When you use “Report quiz”, we store the quiz ID, chosen reason, optional note (up to 500 characters) and the time. Only the service operator with the admin key can read reports. Reporting does not hide the quiz automatically. Do not put personal data in the note. We keep reports as long as needed for moderation, for up to 24 months, then delete them. Host operational logs (Vercel) follow the provider’s policies and are typically short-lived.",
   },
   privacyUploadsTitle: { cs: "Nahrané obrázky", en: "Uploaded images" },
   privacyUploadsBody: {
@@ -113,12 +113,12 @@ export const messages = m({
   },
   privacyContactTitle: { cs: "Kontakt", en: "Contact" },
   privacyContactBody: {
-    cs: "Provozovatel: Ondra Soukup. Kontakt: [DOPLNÍ ONDRA — e-mail nebo jiný kanál]. Pro hlášení závad u konkrétního kvízu použij tlačítko Nahlásit kvíz.",
-    en: "Operator: Ondra Soukup. Contact: [ONDRA TO FILL — email or another channel]. To report a problem with a specific quiz, use Report quiz.",
+    cs: "Službu provozuje provozovatel služby WhichQuiz. Osobní e-mail neuvádíme. Pro hlášení závad, nevhodného obsahu nebo problémů u konkrétního kvízu použij v katalogu tlačítko Nahlásit kvíz — to je hlavní kontaktní cesta.",
+    en: "WhichQuiz is run by the service operator. We do not publish a personal email. To report problems, inappropriate content, or issues with a specific quiz, use Report quiz in the catalog — that is the main contact path.",
   },
   privacyUpdated: {
-    cs: "Tento text odpovídá stavu aplikace po bezpečnostním hardeningu (CI-19). Nejde o právní posudek.",
-    en: "This text matches the app after the security hardening (CI-19). It is not legal advice.",
+    cs: "Tento text odpovídá aktuálnímu stavu aplikace WhichQuiz. Nejde o právní posudek.",
+    en: "This text matches the current WhichQuiz app. It is not legal advice.",
   },
   localeCs: { cs: "CZ", en: "CZ" },
   localeEn: { cs: "EN", en: "EN" },

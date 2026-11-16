@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
-import { cards, filterButton, search, stubExternalSites } from "./helpers";
+import { cards, search, stubExternalSites, toggleCatalogLanguage } from "./helpers";
 
 type Seed = { title: string; url: string; is_collection?: boolean };
 
@@ -60,13 +60,13 @@ test("hub IDRlabs je skrytý; jednotlivé IDRlabs kvízy jdou otevřít", async 
 
 test("filtry Japonština a Čínština vrátí odpovídající kvízy", async ({ page }) => {
   await page.goto("/");
-  await filterButton(page, "Japonština").click();
+  await toggleCatalogLanguage(page, "Japonština");
   const ja = cards(page);
   expect(await ja.count()).toBeGreaterThanOrEqual(1);
   for (const card of await ja.all()) await expect(card).toHaveAttribute("data-language", "ja");
 
   await page.getByRole("button", { name: "Vymazat hledání a filtry" }).first().click();
-  await filterButton(page, "Čínština").click();
+  await toggleCatalogLanguage(page, "Čínština");
   const zh = cards(page);
   expect(await zh.count()).toBeGreaterThanOrEqual(1);
   for (const card of await zh.all()) await expect(card).toHaveAttribute("data-language", "zh");
