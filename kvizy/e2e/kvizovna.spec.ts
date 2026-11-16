@@ -17,7 +17,7 @@ test.beforeEach(async ({ context, baseURL }) => {
 
 test("jeden křížek vymaže hledání a vrátí fokus", async ({ page }) => {
   await page.goto("/");
-  const input = page.getByLabel("Najdi kvíz pro svou partu");
+  const input = page.getByLabel("Najdi kvíz, nebo si vytvoř vlastní");
   await input.fill("filmy");
   await expect(page.getByTestId("clear-search")).toBeVisible();
   await expect(page.getByTestId("clear-search")).toHaveCount(1);

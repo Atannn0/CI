@@ -42,12 +42,17 @@ export function FilterChip({ label, pressed, onToggle, icon: Icon, code }: Props
   );
 }
 
-type GroupProps = { title: string; children: React.ReactNode };
+type GroupProps = { title: string; children: React.ReactNode; className?: string };
 
-export function FilterGroup({ title, children }: GroupProps) {
+export function FilterGroup({ title, children, className }: GroupProps) {
   const id = useId();
   return (
-    <div role="group" aria-labelledby={id} className="flex min-w-0 flex-col gap-2.5" data-testid="filter-group">
+    <div
+      role="group"
+      aria-labelledby={id}
+      className={cn("flex min-w-0 flex-col gap-2.5", className)}
+      data-testid="filter-group"
+    >
       <p id={id} className="text-xs leading-4 font-semibold tracking-wider text-muted-foreground uppercase">
         {title}
       </p>

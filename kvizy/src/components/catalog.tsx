@@ -120,14 +120,14 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
     <>
       <header className="border-b border-violet-200/70 bg-lavender text-violet-950 dark:border-violet-800/60 dark:bg-violet-950 dark:text-violet-50">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 pt-6 pb-8 sm:px-6 sm:pt-8 sm:pb-10">
-          <div className="flex items-center justify-between gap-3">
-            <p className="inline-flex min-w-0 items-center gap-2 text-lg font-extrabold tracking-tight sm:text-xl">
+          <div className="flex items-center justify-between gap-2 sm:gap-3">
+            <p className="inline-flex shrink-0 items-center gap-2 text-lg font-extrabold tracking-tight sm:text-xl">
               <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-violet-600 text-white shadow-sm dark:bg-violet-500">
                 <SparklesIcon className="size-5" aria-hidden />
               </span>
-              <span className="truncate">{t("brand")}</span>
+              <span className="whitespace-nowrap">{t("brand")}</span>
             </p>
-            <div className="flex shrink-0 items-center gap-2">
+            <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
               <ThemeToggle />
               <LocaleSwitch />
               <div className="relative">
@@ -136,11 +136,12 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
                   onClick={() => setMenuOpen((v) => !v)}
                   aria-expanded={menuOpen}
                   aria-haspopup="menu"
+                  aria-label={t("addMenu")}
                   className="h-10 px-3 font-semibold shadow-sm sm:px-4"
                   data-testid="add-menu"
                 >
                   <PlusIcon data-icon="inline-start" aria-hidden />
-                  {t("addMenu")}
+                  <span className="hidden min-[420px]:inline">{t("addMenu")}</span>
                 </Button>
                 {menuOpen && (
                   <div
@@ -244,8 +245,8 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
               </button>
             )}
           </FilterGroup>
-          <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-8">
-            <FilterGroup title={t("format")}>
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-7">
+            <FilterGroup title={t("format")} className="lg:w-max lg:shrink-0">
               {FORMATS.map((format) => (
                 <FilterChip
                   key={format}
@@ -256,7 +257,7 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
                 />
               ))}
             </FilterGroup>
-            <FilterGroup title={t("quizType")}>
+            <FilterGroup title={t("quizType")} className="min-w-0 lg:flex-1">
               {QUIZ_TYPES.map((type) => (
                 <FilterChip
                   key={type}

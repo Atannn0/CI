@@ -14,7 +14,7 @@ export function cards(page: Page) {
 }
 
 export async function search(page: Page, text: string) {
-  await page.getByLabel("Najdi kvíz pro svou partu").fill(text);
+  await page.getByLabel("Najdi kvíz, nebo si vytvoř vlastní").fill(text);
 }
 
 export function filterButton(page: Page, name: string) {

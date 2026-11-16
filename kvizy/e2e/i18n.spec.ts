@@ -26,7 +26,7 @@ test("přepínač CZ/EN přeloží UI a zachová filtry i rozepsaný formulář"
   await page.keyboard.press("Escape");
 
   await expect(page.getByRole("button", { name: "Add to catalog" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Find a quiz for your crew" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Find a quiz, or make your own" })).toBeVisible();
   await expect(page.getByRole("region", { name: "Filters" }).getByRole("button", { name: "Image" })).toHaveAttribute(
     "aria-pressed",
     "true",

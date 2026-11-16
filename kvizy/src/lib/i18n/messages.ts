@@ -9,16 +9,16 @@ type Leaf = Record<UiLocale, string>;
 const m = <T extends Record<string, Leaf>>(tree: T) => tree;
 
 export const messages = m({
-  brand: { cs: "Kvízovna", en: "Kvízovna" },
+  brand: { cs: "WhichQuiz", en: "WhichQuiz" },
   addQuiz: { cs: "Přidat odkaz", en: "Add link" },
   createQuiz: { cs: "Vytvořit kvíz", en: "Create quiz" },
   addMenu: { cs: "Přidat do katalogu", en: "Add to catalog" },
-  searchLabel: { cs: "Najdi kvíz pro svou partu", en: "Find a quiz for your crew" },
+  searchLabel: { cs: "Najdi kvíz, nebo si vytvoř vlastní", en: "Find a quiz, or make your own" },
   searchPlaceholder: { cs: "Filmy, hádanky, jídlo…", en: "Movies, riddles, food…" },
   clearSearch: { cs: "Vymazat hledání", en: "Clear search" },
   heroLead: {
-    cs: "Osobnostní testy, hádanky i poznávačky. Vyber podle nálady a otevři jedním kliknutím.",
-    en: "Personality tests, riddles and trivia. Pick a mood and open it in one click.",
+    cs: "Procházej kvízy z různých webů podle nálady — nebo si rovnou sestav ten svůj.",
+    en: "Browse quizzes from sites across the web — or build your own right here.",
   },
   share: { cs: "Sdílet", en: "Share" },
   copyLink: { cs: "Zkopírovat odkaz", en: "Copy link" },
@@ -56,8 +56,8 @@ export const messages = m({
   showDone: { cs: "Zobrazit hotové", en: "Show completed" },
   hideDone: { cs: "Skrýt hotové", en: "Hide completed" },
   footer: {
-    cs: "Kvízy se otevírají na původních webech v nové záložce.",
-    en: "Quizzes open on the original sites in a new tab.",
+    cs: "Externí kvízy se otevírají na původních webech; vlastní hraješ tady.",
+    en: "External quizzes open on their sites; your own play here.",
   },
   localeCs: { cs: "CZ", en: "CZ" },
   localeEn: { cs: "EN", en: "EN" },
@@ -179,8 +179,8 @@ export const messages = m({
 
   createTitle: { cs: "Vytvořit kvíz", en: "Create a quiz" },
   createLead: {
-    cs: "Znalostní nebo osobnostní kvíz přímo v Kvízovně. Bez registrace.",
-    en: "A knowledge or personality quiz hosted in Kvízovna. No sign-up.",
+    cs: "Znalostní nebo osobnostní kvíz přímo ve WhichQuiz. Bez registrace.",
+    en: "A knowledge or personality quiz hosted in WhichQuiz. No sign-up.",
   },
   quizMode: { cs: "Typ kvízu", en: "Quiz mode" },
   modeKnowledge: { cs: "Znalostní", en: "Knowledge" },

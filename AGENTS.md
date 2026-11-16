@@ -1,7 +1,7 @@
 # AGENTS.md
 
 ## Projekt
-Kořen repozitáře je Obsidian vault s poznámkami z kurzu MAS (synchronizuje ho plugin Obsidian Git). Jediná aplikace ve vaultu je **Kvízovna** ve složce `kvizy/`: katalog online kvízů (CZ/EN rozhraní), ve kterém parta rychle najde kvíz podle nálady. Externí kvízy se otevírají na původních webech; vlastní znalostní kvízy se hrají v aplikaci na `/hrat/[slug]`. Hotovo znamená: hledání bez diakritiky (jeden křížek), tři filtry (formát, typ, jazyk včetně de/ko/sv/es…), **Přidat odkaz** / **Vytvořit kvíz**, bilingvní popisy, sdílení odkazu, popularita (nejvýše 6 v sekci Populární), **Nahlásit kvíz**, **Označit jako hotový** / **Skrýt hotové** a zelené kontroly níže.
+Kořen repozitáře je Obsidian vault s poznámkami z kurzu MAS (synchronizuje ho plugin Obsidian Git). Jediná aplikace ve vaultu je **WhichQuiz** ve složce `kvizy/`: katalog online kvízů (CZ/EN rozhraní), ve kterém rychle najdeš kvíz podle nálady nebo si vytvoříš vlastní. Externí kvízy se otevírají na původních webech; vlastní znalostní kvízy se hrají v aplikaci na `/hrat/[slug]`. Hotovo znamená: hledání bez diakritiky (jeden křížek), tři filtry (formát, typ, jazyk včetně de/ko/sv/es…), **Přidat odkaz** / **Vytvořit kvíz**, bilingvní popisy, sdílení odkazu, popularita (nejvýše 6 v sekci Populární), **Nahlásit kvíz**, **Označit jako hotový** / **Skrýt hotové** a zelené kontroly níže.
 
 ## Instalace, spuštění, testy
 Všechny příkazy se spouštějí ve složce `kvizy/` (Node 22+).

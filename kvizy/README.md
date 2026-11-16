@@ -1,6 +1,6 @@
-# Kvízovna
+# WhichQuiz
 
-Česká webová aplikace: katalog online kvízů, ve kterém parta rychle najde kvíz podle nálady. Next.js 16 + TypeScript + Tailwind + shadcn/ui, sdílená databáze Postgres (na Vercelu Neon, lokálně PGlite v paměti).
+Webová aplikace (CZ/EN): katalog kvízů z různých webů i vlastních kvízů. Next.js 16 + TypeScript + Tailwind + shadcn/ui, sdílená databáze Postgres (na Vercelu Neon, lokálně PGlite v paměti).
 
 ```bash
 npm install
