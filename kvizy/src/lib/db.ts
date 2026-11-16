@@ -5,8 +5,6 @@ import pg from "pg";
 import { applyMigrations, pooledDatabaseUrl, readMigrations } from "./migrate-core.mjs";
 import { assertPreviewDatabaseReady } from "./preview-db";
 
-assertPreviewDatabaseReady();
-
 const databaseUrl = pooledDatabaseUrl();
 
 // Next.js may load this module once per route bundle; keep one pool per process so pages and
@@ -18,6 +16,8 @@ const store = globalThis as typeof globalThis & {
 };
 
 export async function sql<T = Record<string, unknown>>(text: string, params: unknown[] = []): Promise<T[]> {
+  // Never assert at module import — Next collect/build imports route modules without serving.
+  assertPreviewDatabaseReady();
   if (databaseUrl !== "") {
     const pool = getPool();
     store.__kvizyReady ??= migrate(pool).catch((error: unknown) => {

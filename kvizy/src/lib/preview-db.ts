@@ -1,7 +1,10 @@
 /**
  * Preview deployments must use a dedicated Neon branch/database, not production.
  * Set KVIZY_PREVIEW_DB_READY=1 only after Preview env vars point at that branch
- * (see docs/preview-database.md). Until then Preview fails closed before migrations.
+ * (see docs/preview-database.md).
+ *
+ * Call only from connection helpers (`sql`) and the migrate script — never at module
+ * top-level import, or `next build` / collect page data will fail before runtime.
  */
 export function assertPreviewDatabaseReady(
   env: Record<string, string | undefined> = process.env,

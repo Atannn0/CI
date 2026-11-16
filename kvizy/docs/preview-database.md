@@ -4,7 +4,7 @@
 
 Preview nasazení (PR větve) dříve sdílela stejný Neon jako Production. Migrace jsou aditivní, ale zápisy z Preview (testovací kvízy, média) šly do produkčních dat.
 
-Od migrace hardeningu platí: **Preview build selže dřív, než spustí migrace**, dokud není nastavené `KVIZY_PREVIEW_DB_READY=1` (jen pro Preview).
+Od migrace hardeningu platí: **`scripts/migrate.mjs` a runtime DB přístup failnou**, dokud není nastavené `KVIZY_PREVIEW_DB_READY=1` (jen pro Preview). Samotný `next build` / collect page data kontrolu nespouští (nesmí padat na importu `db.ts`).
 
 ## Ruční kroky (Neon + Vercel)
 
@@ -35,7 +35,7 @@ To vyžaduje vytvořit role v Neon SQL Editor a oddělit env. Kód zatím čte s
 
 | Místo | Chování |
 |---|---|
-| `scripts/migrate.mjs` | `VERCEL_ENV=preview` a chybí `KVIZY_PREVIEW_DB_READY=1` → exit 1 před migracemi |
-| `src/lib/db.ts` + `preview-db.ts` | stejná kontrola při prvním DB přístupu na Preview |
+| `scripts/migrate.mjs` | `VERCEL_ENV=preview` a chybí `KVIZY_PREVIEW_DB_READY=1` → exit 1 před migracemi (po `next build`) |
+| `sql()` v `src/lib/db.ts` | stejná kontrola až při skutečném DB přístupu na Preview — **ne** při importu modulu |
 
 Lokální vývoj a Production kontrolu nepřepínají.
