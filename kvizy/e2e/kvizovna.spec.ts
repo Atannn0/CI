@@ -29,7 +29,8 @@ test("jeden křížek vymaže hledání a vrátí fokus", async ({ page }) => {
 
 test("Populární kvízy ukazují nejvýše 6 karet", async ({ page, request }) => {
   const { quizzes: before } = await (await request.get("/api/quizzes")).json();
-  const targets = before.slice(0, 8);
+  const visible = (before as { id: number; isAdult?: boolean }[]).filter((q) => !q.isAdult);
+  const targets = visible.slice(0, 8);
   expect(targets.length).toBeGreaterThanOrEqual(8);
   for (const quiz of targets) {
     const res = await request.post(`/api/quizzes/${quiz.id}/click`);
@@ -38,7 +39,7 @@ test("Populární kvízy ukazují nejvýše 6 karet", async ({ page, request }) 
 
   await page.goto("/");
   await expect(page.getByTestId("popular-list").getByTestId("quiz-card")).toHaveCount(6);
-  await expect(cards(page)).toHaveCount(before.length);
+  await expect(cards(page)).toHaveCount(visible.length);
 });
 
 test("sdílení zkopíruje přímý odkaz externího kvízu", async ({ page, context, request }) => {

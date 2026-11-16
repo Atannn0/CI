@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { LocaleProvider, useLocale } from "@/lib/i18n/locale";
 import { LocaleSwitch } from "@/components/locale-switch";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { localizedDescription } from "@/lib/descriptions";
 import type { GradeResult, PlayPayload } from "@/lib/custom-quizzes-repo";
 
@@ -57,12 +58,15 @@ function PlayQuizInner({ initial }: { initial: PlayPayload }) {
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-6 px-4 py-8 sm:px-6">
       <div className="flex items-start justify-between gap-3">
-        <div>
+        <div className="min-w-0">
           <p className="text-sm font-semibold text-violet-700">{t("brand")}</p>
           <h1 className="text-3xl font-black tracking-tight">{initial.quiz.title}</h1>
           <p className="mt-1 text-muted-foreground">{localizedDescription(initial.quiz, locale)}</p>
         </div>
-        <LocaleSwitch />
+        <div className="flex shrink-0 items-center gap-2">
+          <ThemeToggle />
+          <LocaleSwitch />
+        </div>
       </div>
 
       {!result ? (

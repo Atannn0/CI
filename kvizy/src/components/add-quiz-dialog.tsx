@@ -17,6 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ChoiceGroup, ChoiceOption, Field } from "@/components/form-fields";
 import { LanguageCombobox } from "@/components/language-combobox";
 import { LocaleSwitch } from "@/components/locale-switch";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { useLocale } from "@/lib/i18n/locale";
 import {
   FORMAT_LABEL_KEYS,
@@ -47,6 +48,7 @@ const EMPTY_FORM = {
   format: "",
   language: "",
   types: [] as QuizType[],
+  isAdult: false,
 };
 
 export function AddQuizDialog({ open, onOpenChange, quizzes, onCreated }: Props) {
@@ -123,7 +125,10 @@ export function AddQuizDialog({ open, onOpenChange, quizzes, onCreated }: Props)
         <DialogHeader>
           <div className="flex items-start justify-between gap-3 pr-8">
             <DialogTitle className="text-xl font-bold">{t("addTitle")}</DialogTitle>
-            <LocaleSwitch />
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <LocaleSwitch />
+            </div>
           </div>
           <DialogDescription>{t("addLead")}</DialogDescription>
         </DialogHeader>
@@ -212,6 +217,17 @@ export function AddQuizDialog({ open, onOpenChange, quizzes, onCreated }: Props)
               placeholder={t("descriptionPlaceholder")}
             />
           </Field>
+
+          <label className="inline-flex cursor-pointer items-center gap-2 text-sm font-medium select-none">
+            <input
+              type="checkbox"
+              checked={form.isAdult}
+              onChange={(e) => update("isAdult", e.target.checked)}
+              className="size-4.5 cursor-pointer accent-violet-600 outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
+              data-testid="adult-checkbox"
+            />
+            {t("fieldAdult")}
+          </label>
 
           {serverError && (
             <p role="alert" className="rounded-lg bg-destructive/10 px-3 py-2 text-sm text-destructive">

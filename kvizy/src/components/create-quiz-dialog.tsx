@@ -7,6 +7,7 @@ import { ChoiceGroup, ChoiceOption, Field } from "@/components/form-fields";
 import { ImageField, type ImageDraft } from "@/components/image-field";
 import { LanguageCombobox } from "@/components/language-combobox";
 import { LocaleSwitch } from "@/components/locale-switch";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -95,6 +96,7 @@ export function CreateQuizDialog({ open, onOpenChange, onCreated }: Props) {
   const [title, setTitle] = useState("");
   const [language, setLanguage] = useState("");
   const [description, setDescription] = useState("");
+  const [isAdult, setIsAdult] = useState(false);
   const [outcomes, setOutcomes] = useState<OutcomeDraft[]>([emptyOutcome(), emptyOutcome()]);
   const [questions, setQuestions] = useState<QuestionDraft[]>([emptyQuestion("knowledge", [])]);
   const [preview, setPreview] = useState(false);
@@ -111,6 +113,7 @@ export function CreateQuizDialog({ open, onOpenChange, onCreated }: Props) {
     setTitle("");
     setLanguage("");
     setDescription("");
+    setIsAdult(false);
     setOutcomes([emptyOutcome(), emptyOutcome()]);
     setQuestions([emptyQuestion("knowledge", [])]);
     setPreview(false);
@@ -161,6 +164,7 @@ export function CreateQuizDialog({ open, onOpenChange, onCreated }: Props) {
       format,
       mode,
       description,
+      isAdult,
       outcomes:
         mode === "personality"
           ? outcomes.map((o) => ({
@@ -277,7 +281,10 @@ export function CreateQuizDialog({ open, onOpenChange, onCreated }: Props) {
         <DialogHeader>
           <div className="flex items-start justify-between gap-3 pr-8">
             <DialogTitle className="text-xl font-bold">{t("createTitle")}</DialogTitle>
-            <LocaleSwitch />
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <LocaleSwitch />
+            </div>
           </div>
           <DialogDescription>{t("createLead")}</DialogDescription>
         </DialogHeader>
@@ -329,6 +336,17 @@ export function CreateQuizDialog({ open, onOpenChange, onCreated }: Props) {
                 onChange={(e) => setDescription(e.target.value)}
               />
             </Field>
+
+            <label className="inline-flex cursor-pointer items-center gap-2 text-sm font-medium select-none">
+              <input
+                type="checkbox"
+                checked={isAdult}
+                onChange={(e) => setIsAdult(e.target.checked)}
+                className="size-4.5 cursor-pointer accent-violet-600 outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
+                data-testid="adult-checkbox"
+              />
+              {t("fieldAdult")}
+            </label>
 
             {mode === "personality" && (
               <div className="flex flex-col gap-3" data-testid="outcomes-editor">

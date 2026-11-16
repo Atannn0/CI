@@ -15,11 +15,12 @@ test("domovská stránka má hledání, Přidat do katalogu, Populární kvízy 
   await expect(filterButton(page, "Obrázkový")).toBeVisible();
 
   const { quizzes } = await (await request.get("/api/quizzes")).json();
-  const cs = quizzes.filter((q: { language: string }) => q.language === "cs").length;
-  const en = quizzes.filter((q: { language: string }) => q.language === "en").length;
+  const visible = (quizzes as { language: string; isAdult?: boolean }[]).filter((q) => !q.isAdult);
+  const cs = visible.filter((q) => q.language === "cs").length;
+  const en = visible.filter((q) => q.language === "en").length;
   expect(cs).toBeGreaterThanOrEqual(5);
   expect(en).toBeGreaterThanOrEqual(5);
-  await expect(cards(page)).toHaveCount(quizzes.length);
+  await expect(cards(page)).toHaveCount(visible.length);
 });
 
 test("hledání bez diakritiky a bez ohledu na velikost písmen (název, popis i téma)", async ({ page, request }) => {

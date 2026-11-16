@@ -53,10 +53,13 @@ test.describe("počítač", () => {
     await page.goto("/");
     const groups = await groupBoxes(page);
     expect(groups).toHaveLength(3);
-    // Language is first (full width); format + type share the row below.
+    // Language is first (full width); format + type share the row below with 24–32px horizontal gap.
     expect(groups[1].group.y).toBeGreaterThanOrEqual(groups[0].group.y + groups[0].group.height - 1);
     expect(Math.abs(groups[1].title.y - groups[2].title.y)).toBeLessThanOrEqual(1);
     expect(Math.abs(groups[1].chips[0].y - groups[2].chips[0].y)).toBeLessThanOrEqual(1);
+    const formatTypeGap = groups[2].group.x - (groups[1].group.x + groups[1].group.width);
+    expect(formatTypeGap).toBeGreaterThanOrEqual(24);
+    expect(formatTypeGap).toBeLessThanOrEqual(40);
     const heights = new Set((await boxes(page)).map((b) => Math.round(b.height)));
     expect([...heights]).toHaveLength(1);
 
@@ -92,6 +95,11 @@ test.describe("mobil", () => {
       expect(groups[i].group.y).toBeGreaterThanOrEqual(groups[i - 1].group.y + groups[i - 1].group.height);
       expect(Math.abs(groups[i].group.x - groups[0].group.x)).toBeLessThanOrEqual(1);
     }
+    // Format → Quiz type gap: 24–32px from last chip row of previous group to next heading.
+    const formatLastChipY = Math.max(...groups[1].chips.map((c) => c.y + c.height));
+    const gap = groups[2].title.y - formatLastChipY;
+    expect(gap).toBeGreaterThanOrEqual(24);
+    expect(gap).toBeLessThanOrEqual(40);
     for (const g of groups) {
       expectWrappedRowsStartUnderFirst(g.chips);
       for (const chip of g.chips) expect(chip.x + chip.width).toBeLessThanOrEqual(390);

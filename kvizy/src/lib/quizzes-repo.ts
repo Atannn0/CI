@@ -19,12 +19,13 @@ type QuizRow = {
   source: string | null;
   kind: Quiz["kind"];
   slug: string | null;
+  is_adult: boolean | null;
   clicks: number | string;
   created_at: Date | string;
 };
 
 const COLUMNS =
-  "id, title, url, description, description_cs, description_en, language, format, types, topic, is_collection, hidden, source, kind, slug, clicks, created_at";
+  "id, title, url, description, description_cs, description_en, language, format, types, topic, is_collection, hidden, source, kind, slug, coalesce(is_adult, false) as is_adult, clicks, created_at";
 
 export function toQuiz(row: QuizRow): Quiz {
   return {
@@ -43,6 +44,7 @@ export function toQuiz(row: QuizRow): Quiz {
     source: row.source,
     kind: row.kind === "custom" ? "custom" : "external",
     slug: row.slug,
+    isAdult: Boolean(row.is_adult),
     clicks: Number(row.clicks),
     createdAt: new Date(row.created_at).toISOString(),
   };
@@ -80,8 +82,8 @@ export async function createQuiz(input: QuizInput): Promise<CreateResult> {
   if (existing) return { ok: false, duplicate: existing };
   try {
     const rows = await sql<QuizRow>(
-      `insert into quizzes (title, url, url_key, description, description_cs, description_en, language, format, types, topic)
-       values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+      `insert into quizzes (title, url, url_key, description, description_cs, description_en, language, format, types, topic, is_adult)
+       values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
        returning ${COLUMNS}`,
       [
         input.title,
@@ -94,6 +96,7 @@ export async function createQuiz(input: QuizInput): Promise<CreateResult> {
         input.format,
         input.types,
         input.topic,
+        input.isAdult,
       ],
     );
     return { ok: true, quiz: toQuiz(rows[0]) };

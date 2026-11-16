@@ -62,6 +62,8 @@ export type Quiz = {
   source: string | null;
   kind: QuizKind;
   slug: string | null;
+  /** Marked 18+; hidden from catalog unless the visitor opts in. */
+  isAdult: boolean;
   clicks: number;
   createdAt: string;
 };
@@ -76,6 +78,7 @@ export type QuizInput = {
   format: QuizFormat;
   types: QuizType[];
   topic: string | null;
+  isAdult: boolean;
 };
 
 export type QuizInputErrors = Partial<Record<keyof QuizInput, string>>;
@@ -151,6 +154,8 @@ export function validateQuizInput(
   const topic = topicRaw ? topicRaw.toLowerCase() : null;
   if (topic && topic.length > LIMITS.topic) errors.topic = t("errTopicTooLong", locale, { n: LIMITS.topic });
 
+  const isAdult = data.isAdult === true || data.is_adult === true;
+
   if (Object.keys(errors).length > 0) return { ok: false, errors };
   const blurbs = bilingualDescriptions(title!, description, {
     cs: typeof data.descriptionCs === "string" ? data.descriptionCs : null,
@@ -168,6 +173,7 @@ export function validateQuizInput(
       format: format as QuizFormat,
       types,
       topic,
+      isAdult,
     },
   };
 }

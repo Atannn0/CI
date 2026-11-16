@@ -108,8 +108,8 @@ try {
     const descriptionCs = q.description_cs ?? q.description ?? `Kvíz o: ${q.title}`;
     const descriptionEn = q.description_en ?? `Quiz about: ${q.title}`;
     const result = await client.query(
-      `insert into quizzes (title, url, url_key, description, description_cs, description_en, language, format, types, topic, verified, is_collection, source)
-       values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,true,false,$11)
+      `insert into quizzes (title, url, url_key, description, description_cs, description_en, language, format, types, topic, verified, is_collection, source, is_adult)
+       values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,true,false,$11,$12)
        on conflict (url_key) do nothing
        returning id`,
       [
@@ -124,6 +124,7 @@ try {
         q.types,
         q.topic ?? null,
         q.source ?? null,
+        q.is_adult === true || q.isAdult === true,
       ],
     );
     if (result.rowCount) inserted += 1;
