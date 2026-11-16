@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { EMPTY_FILTERS, filterQuizzes, popularQuizzes, toggleValue, withoutDone } from "./filter";
+import { EMPTY_FILTERS, filterQuizzes, popularQuizzes, toggleValue, withoutAdult, withoutDone } from "./filter";
 import type { Quiz } from "./quiz";
 
 function quiz(partial: Partial<Quiz> & Pick<Quiz, "id" | "title">): Quiz {
@@ -17,6 +17,7 @@ function quiz(partial: Partial<Quiz> & Pick<Quiz, "id" | "title">): Quiz {
     source: null,
     kind: "external",
     slug: null,
+    isAdult: false,
     clicks: 0,
     createdAt: "2026-01-01T00:00:00.000Z",
     ...partial,
@@ -84,6 +85,14 @@ describe("withoutDone", () => {
     const matching = filterQuizzes(catalog, { ...EMPTY_FILTERS, formats: ["image"] });
     expect(ids(withoutDone(matching, new Set([1]), true))).toEqual([4]);
     expect(ids(withoutDone(matching, new Set([1, 4]), true))).toEqual([]);
+  });
+});
+
+describe("withoutAdult", () => {
+  it("hides adult quizzes until the visitor opts in", () => {
+    const withAdult = [...catalog, quiz({ id: 9, title: "Adult quiz", isAdult: true, clicks: 3 })];
+    expect(ids(withoutAdult(withAdult, false))).toEqual([1, 2, 3, 4, 5]);
+    expect(ids(withoutAdult(withAdult, true))).toEqual([1, 2, 3, 4, 5, 9]);
   });
 });
 

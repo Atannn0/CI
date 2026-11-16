@@ -11,6 +11,7 @@ import { OtherLanguagePicker } from "@/components/other-language-picker";
 import { QuizCard } from "@/components/quiz-card";
 import { FORMAT_ICONS, TYPE_ICONS } from "@/components/quiz-meta";
 import { ReportQuizDialog } from "@/components/report-quiz-dialog";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -21,6 +22,7 @@ import {
   hasActiveFilters,
   popularQuizzes,
   toggleValue,
+  withoutAdult,
   withoutDone,
   type Filters,
 } from "@/lib/filter";
@@ -47,6 +49,7 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
   const [quizzes, setQuizzes] = useState(initialQuizzes);
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
   const [hideDone, setHideDone] = useState(false);
+  const [showAdult, setShowAdult] = useState(false);
   const [addOpen, setAddOpen] = useState(false);
   const [createOpen, setCreateOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -57,18 +60,22 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
   const searchRef = useRef<HTMLInputElement>(null);
   const { done, setDone } = useDoneQuizzes();
 
-  const matching = useMemo(() => filterQuizzes(quizzes, filters), [quizzes, filters]);
+  const visibleQuizzes = useMemo(() => withoutAdult(quizzes, showAdult), [quizzes, showAdult]);
+  const matching = useMemo(() => filterQuizzes(visibleQuizzes, filters), [visibleQuizzes, filters]);
   const results = useMemo(() => withoutDone(matching, done, hideDone), [matching, done, hideDone]);
-  const popular = useMemo(() => popularQuizzes(withoutDone(quizzes, done, hideDone), 6), [quizzes, done, hideDone]);
+  const popular = useMemo(
+    () => popularQuizzes(withoutDone(visibleQuizzes, done, hideDone), 6),
+    [visibleQuizzes, done, hideDone],
+  );
   const active = hasActiveFilters(filters);
   const hiddenDone = matching.length - results.length;
   const languageFilterOptions = useMemo(
-    () => catalogLanguages(quizzes.map((q) => q.language), locale),
-    [quizzes, locale],
+    () => catalogLanguages(visibleQuizzes.map((q) => q.language), locale),
+    [visibleQuizzes, locale],
   );
   const languageCounts = useMemo(
-    () => languageCountsFromCodes(quizzes.map((q) => q.language)),
-    [quizzes],
+    () => languageCountsFromCodes(visibleQuizzes.map((q) => q.language)),
+    [visibleQuizzes],
   );
   const showOtherLanguage = shouldShowOtherLanguage(languageCounts.length);
   const primaryLanguageCodes = useMemo(() => {
@@ -111,16 +118,17 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
 
   return (
     <>
-      <header className="border-b border-violet-200/70 bg-lavender text-violet-950">
+      <header className="border-b border-violet-200/70 bg-lavender text-violet-950 dark:border-violet-800/60 dark:bg-violet-950 dark:text-violet-50">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 pt-6 pb-8 sm:px-6 sm:pt-8 sm:pb-10">
           <div className="flex items-center justify-between gap-3">
             <p className="inline-flex min-w-0 items-center gap-2 text-lg font-extrabold tracking-tight sm:text-xl">
-              <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-violet-600 text-white shadow-sm">
+              <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-violet-600 text-white shadow-sm dark:bg-violet-500">
                 <SparklesIcon className="size-5" aria-hidden />
               </span>
               <span className="truncate">{t("brand")}</span>
             </p>
             <div className="flex shrink-0 items-center gap-2">
+              <ThemeToggle />
               <LocaleSwitch />
               <div className="relative">
                 <Button
@@ -174,9 +182,9 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
               <h1 className="text-3xl font-black tracking-tight text-balance sm:text-5xl">
                 <label htmlFor="search">{t("searchLabel")}</label>
               </h1>
-              <p className="max-w-xl text-base text-violet-900/80 sm:text-lg">{t("heroLead")}</p>
+              <p className="max-w-xl text-base text-violet-900/80 sm:text-lg dark:text-violet-100/80">{t("heroLead")}</p>
               <div className="relative max-w-2xl">
-                <SearchIcon className="absolute top-1/2 left-4 size-5 -translate-y-1/2 text-violet-700/70" aria-hidden />
+                <SearchIcon className="absolute top-1/2 left-4 size-5 -translate-y-1/2 text-violet-700/70 dark:text-violet-200/70" aria-hidden />
                 <Input
                   ref={searchRef}
                   id="search"
@@ -184,7 +192,7 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
                   value={filters.query}
                   onChange={(e) => setFilters((f) => ({ ...f, query: e.target.value }))}
                   placeholder={t("searchPlaceholder")}
-                  className="h-14 rounded-2xl border-violet-200 bg-white pr-12 pl-12 text-base text-foreground shadow-sm focus-visible:border-violet-400 md:text-lg"
+                  className="h-14 rounded-2xl border-violet-200 bg-white pr-12 pl-12 text-base text-foreground shadow-sm focus-visible:border-violet-400 md:text-lg dark:border-violet-700 dark:bg-violet-950/50"
                 />
                 {filters.query ? (
                   <button
@@ -236,7 +244,7 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
               </button>
             )}
           </FilterGroup>
-          <div className="grid items-start gap-5 lg:grid-cols-2 lg:gap-8">
+          <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-8">
             <FilterGroup title={t("format")}>
               {FORMATS.map((format) => (
                 <FilterChip
@@ -294,6 +302,12 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
                   {active ? `${t("found")}: ${pluralQuizzes(results.length, locale)}` : pluralQuizzes(results.length, locale)}
                 </span>
               </h2>
+              <CatalogSwitch
+                checked={showAdult}
+                onChange={setShowAdult}
+                label={t("showAdult")}
+                testId="show-adult"
+              />
               <HideDoneSwitch checked={hideDone} onChange={setHideDone} doneCount={done.size} label={t("hideDone")} />
             </div>
             {active && (
@@ -362,16 +376,18 @@ function CatalogInner({ initialQuizzes }: { initialQuizzes: Quiz[] }) {
   );
 }
 
-function HideDoneSwitch({
+function CatalogSwitch({
   checked,
   onChange,
-  doneCount,
   label,
+  testId,
+  trailing,
 }: {
   checked: boolean;
   onChange: (value: boolean) => void;
-  doneCount: number;
   label: string;
+  testId?: string;
+  trailing?: React.ReactNode;
 }) {
   return (
     <button
@@ -379,6 +395,7 @@ function HideDoneSwitch({
       role="switch"
       aria-checked={checked}
       onClick={() => onChange(!checked)}
+      data-testid={testId}
       className="inline-flex h-9 items-center gap-2 rounded-full border border-border bg-card pr-3.5 pl-1.5 text-sm font-medium outline-none hover:border-primary/50 focus-visible:ring-[3px] focus-visible:ring-ring/50"
     >
       <span
@@ -396,9 +413,32 @@ function HideDoneSwitch({
         />
       </span>
       {label}
-      <span className="text-muted-foreground tabular-nums" data-testid="done-count">
-        ({doneCount})
-      </span>
+      {trailing}
     </button>
+  );
+}
+
+function HideDoneSwitch({
+  checked,
+  onChange,
+  doneCount,
+  label,
+}: {
+  checked: boolean;
+  onChange: (value: boolean) => void;
+  doneCount: number;
+  label: string;
+}) {
+  return (
+    <CatalogSwitch
+      checked={checked}
+      onChange={onChange}
+      label={label}
+      trailing={
+        <span className="text-muted-foreground tabular-nums" data-testid="done-count">
+          ({doneCount})
+        </span>
+      }
+    />
   );
 }

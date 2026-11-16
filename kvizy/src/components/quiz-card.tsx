@@ -3,12 +3,12 @@
 import { useState } from "react";
 import {
   CheckIcon,
+  CopyIcon,
   ExternalLinkIcon,
   FlagIcon,
   FlameIcon,
   LayoutGridIcon,
   PlayIcon,
-  Share2Icon,
   TagIcon,
 } from "lucide-react";
 import { toast } from "sonner";
@@ -38,12 +38,15 @@ export function QuizCard({ quiz, onOpen, onReport, done, onDoneChange, highlight
   const isCustom = quiz.kind === "custom";
   const href = isCustom && quiz.slug ? `/hrat/${quiz.slug}` : quiz.url;
   const [manualUrl, setManualUrl] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
 
   async function share() {
     const url = quizShareUrl(quiz, window.location.origin);
     try {
       await navigator.clipboard.writeText(url);
       setManualUrl(null);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
       toast.success(t("linkCopied"));
     } catch {
       setManualUrl(url);
@@ -60,29 +63,38 @@ export function QuizCard({ quiz, onOpen, onReport, done, onDoneChange, highlight
       data-types={quiz.types.join(" ")}
       data-collection={quiz.isCollection}
       data-kind={quiz.kind}
+      data-adult={quiz.isAdult}
       data-done={done}
       className={cn(
         "h-full gap-3 transition-shadow hover:shadow-md",
-        done && "bg-emerald-50/50 ring-emerald-200",
+        done && "bg-emerald-50/50 ring-emerald-200 dark:bg-emerald-950/30 dark:ring-emerald-800",
         highlight && "ring-2 ring-primary",
       )}
     >
       <CardHeader className="gap-2">
         <div className="flex flex-wrap items-center gap-1.5 text-xs font-medium">
           {quiz.isCollection && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-amber-950 ring-1 ring-amber-300">
+            <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-amber-950 ring-1 ring-amber-300 dark:bg-amber-950/50 dark:text-amber-100 dark:ring-amber-700">
               <LayoutGridIcon className="size-3.5" aria-hidden />
               {t("collectionBadge")}
             </span>
           )}
           {isCustom && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-0.5 text-emerald-950 ring-1 ring-emerald-300">
+            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-0.5 text-emerald-950 ring-1 ring-emerald-300 dark:bg-emerald-950/50 dark:text-emerald-100 dark:ring-emerald-700">
               <PlayIcon className="size-3.5" aria-hidden />
               {t("customBadge")}
             </span>
           )}
+          {quiz.isAdult && (
+            <span
+              className="inline-flex items-center gap-1 rounded-full bg-rose-100 px-2 py-0.5 text-rose-950 ring-1 ring-rose-300 dark:bg-rose-950/50 dark:text-rose-100 dark:ring-rose-700"
+              data-testid="adult-badge"
+            >
+              {t("adultBadge")}
+            </span>
+          )}
           <span
-            className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2 py-0.5 text-violet-900 ring-1 ring-violet-200"
+            className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2 py-0.5 text-violet-900 ring-1 ring-violet-200 dark:bg-violet-950/60 dark:text-violet-100 dark:ring-violet-700"
             title={`${t("formatTitle")}: ${t(FORMAT_LABEL_KEYS[quiz.format])}`}
           >
             <FormatIcon className="size-3.5" aria-hidden />
@@ -164,12 +176,12 @@ export function QuizCard({ quiz, onOpen, onReport, done, onDoneChange, highlight
             <button
               type="button"
               onClick={share}
-              title={t("share")}
-              aria-label={t("share")}
+              title={copied ? t("linkCopied") : t("copyLink")}
+              aria-label={copied ? t("linkCopied") : t("copyLink")}
               className="grid size-9 place-items-center rounded-full text-muted-foreground outline-none hover:bg-muted hover:text-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50"
               data-testid="share-quiz"
             >
-              <Share2Icon className="size-4" aria-hidden />
+              <CopyIcon className="size-4" aria-hidden />
             </button>
             <button
               type="button"

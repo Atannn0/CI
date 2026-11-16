@@ -45,6 +45,12 @@ export function withoutDone(quizzes: Quiz[], done: ReadonlySet<number>, hide: bo
   return quizzes.filter((quiz) => !done.has(quiz.id));
 }
 
+/** Adult quizzes stay hidden until the visitor opts in with Show 18+. */
+export function withoutAdult(quizzes: Quiz[], showAdult: boolean): Quiz[] {
+  if (showAdult) return quizzes;
+  return quizzes.filter((quiz) => !quiz.isAdult);
+}
+
 export function popularQuizzes(quizzes: Quiz[], limit = 6): Quiz[] {
   return [...quizzes]
     .filter((q) => q.clicks > 0)

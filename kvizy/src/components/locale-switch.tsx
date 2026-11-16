@@ -9,7 +9,7 @@ export function LocaleSwitch() {
     <div
       role="group"
       aria-label={t("localeSwitch")}
-      className="inline-flex h-9 items-center rounded-full border border-violet-300/80 bg-white/70 p-0.5 text-sm font-semibold shadow-sm"
+      className="inline-flex h-9 items-center rounded-full border border-violet-300/80 bg-white/70 p-0.5 text-sm font-semibold shadow-sm dark:border-violet-700 dark:bg-violet-950/70"
       data-testid="locale-switch"
     >
       {(["cs", "en"] as const).map((code) => {
@@ -22,7 +22,9 @@ export function LocaleSwitch() {
             onClick={() => setLocale(code)}
             className={cn(
               "rounded-full px-2.5 py-1 transition-colors outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50",
-              active ? "bg-violet-600 text-white" : "text-violet-900/80 hover:bg-violet-100",
+              active
+                ? "bg-violet-600 text-white dark:bg-violet-500"
+                : "text-violet-900/80 hover:bg-violet-100 dark:text-violet-100 dark:hover:bg-violet-900",
             )}
           >
             {code === "cs" ? t("localeCs") : t("localeEn")}

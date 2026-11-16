@@ -55,6 +55,7 @@ export type CustomQuizInput = {
   description: string | null;
   descriptionCs: string;
   descriptionEn: string;
+  isAdult: boolean;
   outcomes: CustomOutcomeInput[];
   questions: CustomQuestionInput[];
 };
@@ -253,6 +254,7 @@ export function validateCustomQuizInput(
       description: blurbs.description,
       descriptionCs: blurbs.descriptionCs,
       descriptionEn: blurbs.descriptionEn,
+      isAdult: data.isAdult === true || data.is_adult === true,
       outcomes,
       questions,
     },

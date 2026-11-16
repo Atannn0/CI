@@ -109,13 +109,14 @@ export async function createCustomQuiz(
     source: string | null;
     kind: Quiz["kind"];
     slug: string | null;
+    is_adult: boolean | null;
     clicks: number | string;
     created_at: Date | string;
   }>(
     `insert into quizzes (
        title, url, url_key, description, description_cs, description_en,
-       language, format, types, topic, verified, is_collection, source, kind, slug, custom_mode
-     ) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,null,true,false,'kvizovna','custom',$10,$11)
+       language, format, types, topic, verified, is_collection, source, kind, slug, custom_mode, is_adult
+     ) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,null,true,false,'kvizovna','custom',$10,$11,$12)
      returning ${QUIZ_COLUMNS}`,
     [
       input.title,
@@ -129,6 +130,7 @@ export async function createCustomQuiz(
       types,
       slug,
       input.mode,
+      input.isAdult,
     ],
   );
   const quiz = toQuiz(quizRows[0]);
@@ -198,6 +200,7 @@ export async function loadPlayPayload(slug: string): Promise<PlayPayload | null>
     source: string | null;
     kind: Quiz["kind"];
     slug: string | null;
+    is_adult: boolean | null;
     clicks: number | string;
     created_at: Date | string;
     custom_mode: string | null;

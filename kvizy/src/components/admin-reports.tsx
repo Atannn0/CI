@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { LocaleProvider, useLocale } from "@/lib/i18n/locale";
 import { LocaleSwitch } from "@/components/locale-switch";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { REPORT_REASON_KEYS, type QuizReport } from "@/lib/report";
 
 export function AdminReports() {
@@ -51,7 +52,8 @@ function AdminReportsInner() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex justify-end">
+      <div className="flex justify-end gap-2">
+        <ThemeToggle />
         <LocaleSwitch />
       </div>
       <form onSubmit={load} className="flex flex-col gap-2 sm:max-w-md" aria-label={t("adminLogin")}>
