@@ -15,11 +15,17 @@ test("patička vede na Soukromí; stránka má CZ/EN a klíčové sekce", async 
   await expect(page.getByTestId("privacy-sections")).toContainText("Vercel");
   await expect(page.getByTestId("privacy-sections")).toContainText("Neon");
   await expect(page.getByTestId("privacy-sections")).toContainText("18+");
-  await expect(page.getByTestId("privacy-sections")).toContainText("Ondra Soukup");
+  await expect(page.getByTestId("privacy-sections")).toContainText("provozovatel služby");
+  await expect(page.getByTestId("privacy-sections")).toContainText("24 měsíců");
+  await expect(page.getByTestId("privacy-sections")).not.toContainText("DOPLNÍ");
+  await expect(page.getByTestId("privacy-sections")).not.toContainText("Ondra");
 
   await page.getByTestId("locale-switch").getByRole("button", { name: "EN" }).click();
   await expect(page.getByRole("heading", { name: "Privacy and data processing" })).toBeVisible();
   await expect(page.getByTestId("privacy-sections")).toContainText("No accounts");
+  await expect(page.getByTestId("privacy-sections")).toContainText("service operator");
+  await expect(page.getByTestId("privacy-sections")).toContainText("24 months");
+  await expect(page.getByTestId("privacy-sections")).not.toContainText("ONDRA TO FILL");
 
   await page.getByTestId("privacy-back").click();
   await expect(page).toHaveURL(/\/$/);

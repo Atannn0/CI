@@ -3241,5 +3241,985 @@
       "result": "ověřeno subagentem (Exa)",
       "checked_at": "2026-11-13"
     }
+  },
+  {
+    "title": "Big Five-persoonlijkheidstest",
+    "url": "https://personalitypick.com/nl/big-five",
+    "language": "nl",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Big Five",
+    "description": "Nizozemský Big Five: 40 výroků o pěti osobnostních rysech.",
+    "description_en": "Dutch Big Five quiz: 40 statements across the five traits.",
+    "source": "personalitypick.com",
+    "description_cs": "Nizozemský Big Five: 40 výroků o pěti osobnostních rysech.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "DISC-persoonlijkheidstest",
+    "url": "https://personalitypick.com/nl/disc",
+    "language": "nl",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "DISC",
+    "description": "Nizozemský DISC test: 28 otázek o pracovním stylu D, I, S, C.",
+    "description_en": "Dutch DISC quiz: 28 questions on work styles D, I, S, C.",
+    "source": "personalitypick.com",
+    "description_cs": "Nizozemský DISC test: 28 otázek o pracovním stylu D, I, S, C.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Enneagram-test",
+    "url": "https://personalitypick.com/nl/enneagram",
+    "language": "nl",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Enneagram",
+    "description": "Nizozemský enneagram: 36 výroků o motivacích, typ 1–9.",
+    "description_en": "Dutch Enneagram quiz: 36 motivation statements, types 1–9.",
+    "source": "personalitypick.com",
+    "description_cs": "Nizozemský enneagram: 36 výroků o motivacích, typ 1–9.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "16-typen-persoonlijkheidstest",
+    "url": "https://personalitypick.com/nl/personality-types-test",
+    "language": "nl",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "Nizozemský test 16 typů osobnosti se 32 tvrzeními.",
+    "description_en": "Dutch 16-type personality quiz with 32 statements.",
+    "source": "personalitypick.com",
+    "description_cs": "Nizozemský test 16 typů osobnosti se 32 tvrzeními.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Big Five-persoonlijkheidstest (IPIP)",
+    "url": "https://prismatest.net/nl/tests/big-five-personality-test/",
+    "language": "nl",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Big Five",
+    "description": "Nizozemský Big Five (IPIP-50) na PrismaTest.",
+    "description_en": "Dutch Big Five (IPIP-50) on PrismaTest.",
+    "source": "PrismaTest",
+    "description_cs": "Nizozemský Big Five (IPIP-50) na PrismaTest.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Enneagramtest",
+    "url": "https://prismatest.net/nl/tests/enneagram-test/",
+    "language": "nl",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Enneagram",
+    "description": "Nizozemský enneagram: 54 výroků o motivacích.",
+    "description_en": "Dutch Enneagram quiz: 54 motivation statements.",
+    "source": "PrismaTest",
+    "description_cs": "Nizozemský enneagram: 54 výroků o motivacích.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Test voor de 16 persoonlijkheidstypes",
+    "url": "https://prismatest.net/nl/tests/personality-test/",
+    "language": "nl",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "Nizozemský test 16 typů: 48 výroků podle Jungových dimenzí.",
+    "description_en": "Dutch 16-types quiz: 48 Jungian-dimension statements.",
+    "source": "PrismaTest",
+    "description_cs": "Nizozemský test 16 typů: 48 výroků podle Jungových dimenzí.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Algemene kennisquiz",
+    "url": "https://prismatest.net/nl/trivia/general-knowledge-quiz/",
+    "language": "nl",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "všeobecné znalosti",
+    "description": "Nizozemský vědomostní kvíz: 20 náhodných otázek s vysvětlením.",
+    "description_en": "Dutch general-knowledge quiz: 20 random questions with explanations.",
+    "source": "PrismaTest",
+    "description_cs": "Nizozemský vědomostní kvíz: 20 náhodných otázek s vysvětlením.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Logicatest",
+    "url": "https://prismatest.net/nl/trivia/logic-test/",
+    "language": "nl",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": "logika",
+    "description": "Nizozemský logický test: 12 hádanek s řešením.",
+    "description_en": "Dutch logic quiz: 12 puzzles with solutions.",
+    "source": "PrismaTest",
+    "description_cs": "Nizozemský logický test: 12 hádanek s řešením.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Aardrijkskundequiz",
+    "url": "https://prismatest.net/nl/trivia/geography-quiz/",
+    "language": "nl",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "zeměpis",
+    "description": "Nizozemský zeměpisný kvíz: 15 otázek o světě.",
+    "description_en": "Dutch geography quiz: 15 world questions.",
+    "source": "PrismaTest",
+    "description_cs": "Nizozemský zeměpisný kvíz: 15 otázek o světě.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Gratis persoonlijkheidstest (16Personalities)",
+    "url": "https://www.16personalities.com/nl/persoonlijkheidstest",
+    "language": "nl",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "Nizozemský test 16 osobnostních typů na 16Personalities.",
+    "description_en": "Dutch 16Personalities type quiz.",
+    "source": "16personalities.com",
+    "description_cs": "Nizozemský test 16 osobnostních typů na 16Personalities.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Test osobowości Wielka Piątka (IPIP)",
+    "url": "https://prismatest.net/pl/tests/big-five-personality-test/",
+    "language": "pl",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Big Five",
+    "description": "Polský Big Five (IPIP-50) na PrismaTest.",
+    "description_en": "Polish Big Five (IPIP-50) on PrismaTest.",
+    "source": "PrismaTest",
+    "description_cs": "Polský Big Five (IPIP-50) na PrismaTest.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Test Enneagramu",
+    "url": "https://prismatest.net/pl/tests/enneagram-test/",
+    "language": "pl",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Enneagram",
+    "description": "Polský enneagram: 54 výroky o motivacích.",
+    "description_en": "Polish Enneagram quiz: 54 motivation statements.",
+    "source": "PrismaTest",
+    "description_cs": "Polský enneagram: 54 výroky o motivacích.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Test 16 typów osobowości",
+    "url": "https://prismatest.net/pl/tests/personality-test/",
+    "language": "pl",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "Polský test 16 typů: 48 výroků.",
+    "description_en": "Polish 16-types quiz: 48 statements.",
+    "source": "PrismaTest",
+    "description_cs": "Polský test 16 typů: 48 výroků.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Quiz wiedzy ogólnej",
+    "url": "https://prismatest.net/pl/trivia/general-knowledge-quiz/",
+    "language": "pl",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "všeobecné znalosti",
+    "description": "Polský vědomostní kvíz: 20 náhodných otázek s vysvětlením.",
+    "description_en": "Polish general-knowledge quiz: 20 random questions with explanations.",
+    "source": "PrismaTest",
+    "description_cs": "Polský vědomostní kvíz: 20 náhodných otázek s vysvětlením.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Test logiczny",
+    "url": "https://prismatest.net/pl/trivia/logic-test/",
+    "language": "pl",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": "logika",
+    "description": "Polský logický test: 12 hádanek s řešením.",
+    "description_en": "Polish logic quiz: 12 puzzles with solutions.",
+    "source": "PrismaTest",
+    "description_cs": "Polský logický test: 12 hádanek s řešením.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Quiz geograficzny",
+    "url": "https://prismatest.net/pl/trivia/geography-quiz/",
+    "language": "pl",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "zeměpis",
+    "description": "Polský zeměpisný kvíz: 15 otázek o světě.",
+    "description_en": "Polish geography quiz: 15 world questions.",
+    "source": "PrismaTest",
+    "description_cs": "Polský zeměpisný kvíz: 15 otázek o světě.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Czy jesteś mądrzejszy od ucznia 5. klasy?",
+    "url": "https://prismatest.net/pl/trivia/smarter-than-a-5th-grader-quiz/",
+    "language": "pl",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "školní znalosti",
+    "description": "Polský kvíz: 15 otázek na úrovni 5. třídy.",
+    "description_en": "Polish quiz: 15 fifth-grade level questions.",
+    "source": "PrismaTest",
+    "description_cs": "Polský kvíz: 15 otázek na úrovni 5. třídy.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Test osobowości Wielkiej Piątki (IPIP-BFM-20)",
+    "url": "https://soulmedic.pl/test-osobowosci/",
+    "language": "pl",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Big Five",
+    "description": "Krátký polský Big Five (IPIP-BFM-20), 20 otázek bez e-mailu.",
+    "description_en": "Short Polish Big Five (IPIP-BFM-20), 20 questions, no email.",
+    "source": "soulmedic.pl",
+    "description_cs": "Krátký polský Big Five (IPIP-BFM-20), 20 otázek bez e-mailu.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Test osobowości Big Five (webp.pl)",
+    "url": "https://webp.pl/test-big-five",
+    "language": "pl",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Big Five",
+    "description": "Polský Big Five: 50 výroků IPIP, výsledek v prohlížeči.",
+    "description_en": "Polish Big Five: 50 IPIP statements, scored in-browser.",
+    "source": "webp.pl",
+    "description_cs": "Polský Big Five: 50 výroků IPIP, výsledek v prohlížeči.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Darmowy test osobowości (16Personalities)",
+    "url": "https://www.16personalities.com/pl/darmowy-test-osobowosci",
+    "language": "pl",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "Polský test 16 osobnostních typů na 16Personalities.",
+    "description_en": "Polish 16Personalities type quiz.",
+    "source": "16personalities.com",
+    "description_cs": "Polský test 16 osobnostních typů na 16Personalities.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Teste de personalidade Big Five",
+    "url": "https://personalitypick.com/pt/big-five",
+    "language": "pt",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Big Five",
+    "description": "Portugalský Big Five: 40 výroků o pěti rysech.",
+    "description_en": "Portuguese Big Five quiz: 40 statements across five traits.",
+    "source": "personalitypick.com",
+    "description_cs": "Portugalský Big Five: 40 výroků o pěti rysech.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Teste DISC",
+    "url": "https://personalitypick.com/pt/disc",
+    "language": "pt",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "DISC",
+    "description": "Portugalský DISC test: 28 otázek o pracovním stylu.",
+    "description_en": "Portuguese DISC quiz: 28 work-style questions.",
+    "source": "personalitypick.com",
+    "description_cs": "Portugalský DISC test: 28 otázek o pracovním stylu.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Teste do Eneagrama",
+    "url": "https://personalitypick.com/pt/enneagram",
+    "language": "pt",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Enneagram",
+    "description": "Portugalský enneagram: 36 výroků o motivacích.",
+    "description_en": "Portuguese Enneagram quiz: 36 motivation statements.",
+    "source": "personalitypick.com",
+    "description_cs": "Portugalský enneagram: 36 výroků o motivacích.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Teste dos 16 tipos de personalidade",
+    "url": "https://personalitypick.com/pt/personality-types-test",
+    "language": "pt",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "Portugalský test 16 typů se 32 tvrzeními.",
+    "description_en": "Portuguese 16-type quiz with 32 statements.",
+    "source": "personalitypick.com",
+    "description_cs": "Portugalský test 16 typů se 32 tvrzeními.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Teste Big Five (IPIP)",
+    "url": "https://prismatest.net/pt/tests/big-five-personality-test/",
+    "language": "pt",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Big Five",
+    "description": "Portugalský Big Five (IPIP-50) na PrismaTest.",
+    "description_en": "Portuguese Big Five (IPIP-50) on PrismaTest.",
+    "source": "PrismaTest",
+    "description_cs": "Portugalský Big Five (IPIP-50) na PrismaTest.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Teste do Eneagrama (PrismaTest)",
+    "url": "https://prismatest.net/pt/tests/enneagram-test/",
+    "language": "pt",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Enneagram",
+    "description": "Portugalský enneagram: 54 výroků o motivacích.",
+    "description_en": "Portuguese Enneagram quiz: 54 motivation statements.",
+    "source": "PrismaTest",
+    "description_cs": "Portugalský enneagram: 54 výroků o motivacích.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Teste dos 16 Tipos de Personalidade",
+    "url": "https://prismatest.net/pt/tests/personality-test/",
+    "language": "pt",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "Portugalský test 16 typů: 48 výroků.",
+    "description_en": "Portuguese 16-types quiz: 48 statements.",
+    "source": "PrismaTest",
+    "description_cs": "Portugalský test 16 typů: 48 výroků.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Quiz de Conhecimentos Gerais",
+    "url": "https://prismatest.net/pt/trivia/general-knowledge-quiz/",
+    "language": "pt",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "všeobecné znalosti",
+    "description": "Portugalský vědomostní kvíz: 20 náhodných otázek.",
+    "description_en": "Portuguese general-knowledge quiz: 20 random questions.",
+    "source": "PrismaTest",
+    "description_cs": "Portugalský vědomostní kvíz: 20 náhodných otázek.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Teste de Lógica",
+    "url": "https://prismatest.net/pt/trivia/logic-test/",
+    "language": "pt",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": "logika",
+    "description": "Portugalský logický test: 12 výzev s řešením.",
+    "description_en": "Portuguese logic quiz: 12 challenges with solutions.",
+    "source": "PrismaTest",
+    "description_cs": "Portugalský logický test: 12 výzev s řešením.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Quiz de Geografia",
+    "url": "https://prismatest.net/pt/trivia/geography-quiz/",
+    "language": "pt",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "zeměpis",
+    "description": "Portugalský zeměpisný kvíz: 15 otázek o světě.",
+    "description_en": "Portuguese geography quiz: 15 world questions.",
+    "source": "PrismaTest",
+    "description_cs": "Portugalský zeměpisný kvíz: 15 otázek o světě.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Teste de personalidade gratuito (16Personalities)",
+    "url": "https://www.16personalities.com/br/teste-de-personalidade",
+    "language": "pt",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "Portugalský (BR) test 16 typů na 16Personalities.",
+    "description_en": "Brazilian Portuguese 16Personalities type quiz.",
+    "source": "16personalities.com",
+    "description_cs": "Portugalský (BR) test 16 typů na 16Personalities.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Testul Big Five (IPIP)",
+    "url": "https://prismatest.net/ro/tests/big-five-personality-test/",
+    "language": "ro",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Big Five",
+    "description": "Rumunský Big Five (IPIP-50) na PrismaTest.",
+    "description_en": "Romanian Big Five (IPIP-50) on PrismaTest.",
+    "source": "PrismaTest",
+    "description_cs": "Rumunský Big Five (IPIP-50) na PrismaTest.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Testul Enneagram",
+    "url": "https://prismatest.net/ro/tests/enneagram-test/",
+    "language": "ro",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Enneagram",
+    "description": "Rumunský enneagram: 54 výroků o motivacích.",
+    "description_en": "Romanian Enneagram quiz: 54 motivation statements.",
+    "source": "PrismaTest",
+    "description_cs": "Rumunský enneagram: 54 výroků o motivacích.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Testul celor 16 tipuri de personalitate",
+    "url": "https://prismatest.net/ro/tests/personality-test/",
+    "language": "ro",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "Rumunský test 16 typů: 48 výroků.",
+    "description_en": "Romanian 16-types quiz: 48 statements.",
+    "source": "PrismaTest",
+    "description_cs": "Rumunský test 16 typů: 48 výroků.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Quiz de cultură generală",
+    "url": "https://prismatest.net/ro/trivia/general-knowledge-quiz/",
+    "language": "ro",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "všeobecné znalosti",
+    "description": "Rumunský vědomostní kvíz: 20 náhodných otázek.",
+    "description_en": "Romanian general-knowledge quiz: 20 random questions.",
+    "source": "PrismaTest",
+    "description_cs": "Rumunský vědomostní kvíz: 20 náhodných otázek.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Test de logică",
+    "url": "https://prismatest.net/ro/trivia/logic-test/",
+    "language": "ro",
+    "format": "text",
+    "types": [
+      "logic"
+    ],
+    "topic": "logika",
+    "description": "Rumunský logický test: 12 hádanek s řešením.",
+    "description_en": "Romanian logic quiz: 12 puzzles with solutions.",
+    "source": "PrismaTest",
+    "description_cs": "Rumunský logický test: 12 hádanek s řešením.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Test de personalitate gratuit (16Personalities)",
+    "url": "https://www.16personalities.com/ro/test-de-personalitate-gratuit",
+    "language": "ro",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "Rumunský test 16 typů na 16Personalities.",
+    "description_en": "Romanian 16Personalities type quiz.",
+    "source": "16personalities.com",
+    "description_cs": "Rumunský test 16 typů na 16Personalities.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Bezplatný test osobnosti (16Personalities)",
+    "url": "https://www.16personalities.com/sk/bezplatny-test-osobnosti",
+    "language": "sk",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "Slovenský test 16 osobnostních typů na 16Personalities.",
+    "description_en": "Slovak 16Personalities type quiz.",
+    "source": "16personalities.com",
+    "description_cs": "Slovenský test 16 osobnostních typů na 16Personalities.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Big Five (OCEAN) test osobnosti",
+    "url": "https://skuskaosobnosti.sk/big-five-test",
+    "language": "sk",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Big Five",
+    "description": "Slovenský Big Five (IPIP-50): skóre v pěti dimenzích.",
+    "description_en": "Slovak Big Five (IPIP-50): scores on five dimensions.",
+    "source": "skuskaosobnosti.sk",
+    "description_cs": "Slovenský Big Five (IPIP-50): skóre v pěti dimenzích.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Kvíz: Poznáte Tatranské doliny?",
+    "url": "https://www.restartnisa.sk/poznate-tatranske-doliny-otestujte-sa/",
+    "language": "sk",
+    "format": "mixed",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "geografie",
+    "description": "Slovenský obrazový kvíz o tatranských dolinách.",
+    "description_en": "Slovak image quiz about Tatra valleys.",
+    "source": "restartnisa.sk",
+    "description_cs": "Slovenský obrazový kvíz o tatranských dolinách.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Kvíz: Vrchy a pohoria na Slovensku",
+    "url": "https://www.restartnisa.sk/kviz-vrchy-a-pohoria-na-slovensku/",
+    "language": "sk",
+    "format": "mixed",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "geografie",
+    "description": "Slovenský kvíz o vrších a pohořích Slovenska.",
+    "description_en": "Slovak quiz about mountains and ranges in Slovakia.",
+    "source": "restartnisa.sk",
+    "description_cs": "Slovenský kvíz o vrších a pohořích Slovenska.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Ilmainen persoonallisuustesti (16Personalities)",
+    "url": "https://www.16personalities.com/fi/persoonallisuustesti",
+    "language": "fi",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "Finský test 16 osobnostních typů na 16Personalities.",
+    "description_en": "Finnish 16Personalities type quiz.",
+    "source": "16personalities.com",
+    "description_cs": "Finský test 16 osobnostních typů na 16Personalities.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Gratis Personlighetstest (16Personalities)",
+    "url": "https://www.16personalities.com/no/gratis-personlighetstest",
+    "language": "no",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "Norský test 16 osobnostních typů na 16Personalities.",
+    "description_en": "Norwegian 16Personalities type quiz.",
+    "source": "16personalities.com",
+    "description_cs": "Norský test 16 osobnostních typů na 16Personalities.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Ingyenes személyiségteszt (16Personalities)",
+    "url": "https://www.16personalities.com/hu/ingyenes-személyiségteszt",
+    "language": "hu",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "Maďarský test 16 osobnostních typů na 16Personalities.",
+    "description_en": "Hungarian 16Personalities type quiz.",
+    "source": "16personalities.com",
+    "description_cs": "Maďarský test 16 osobnostních typů na 16Personalities.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Osobnostní test zdarma (16Personalities)",
+    "url": "https://www.16personalities.com/cs/osobnostni-test",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "osobnost",
+    "description": "Český test 16 osobnostních typů na 16Personalities.",
+    "description_en": "Czech 16Personalities type quiz.",
+    "source": "16personalities.com",
+    "description_cs": "Český test 16 osobnostních typů na 16Personalities.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Všeobecný vědomostní kvíz (PrismaTest)",
+    "url": "https://prismatest.net/cs/trivia/general-knowledge-quiz/",
+    "language": "cs",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "všeobecné znalosti",
+    "description": "Český vědomostní kvíz: 20 náhodných otázek s vysvětlením.",
+    "description_en": "Czech general-knowledge quiz: 20 random questions with explanations.",
+    "source": "PrismaTest",
+    "description_cs": "Český vědomostní kvíz: 20 náhodných otázek s vysvětlením.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "Big Five Personality Test (Open Psychometrics)",
+    "url": "https://openpsychometrics.org/tests/IPIP-BFFM/",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "personality"
+    ],
+    "topic": "Big Five",
+    "description": "Anglický akademický Big Five z veřejné IPIP sady.",
+    "description_en": "English academic Big Five from the public IPIP item pool.",
+    "source": "openpsychometrics.org",
+    "description_cs": "Anglický akademický Big Five z veřejné IPIP sady.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
+  },
+  {
+    "title": "European Languages by Text",
+    "url": "https://www.jetpunk.com/user-quizzes/299407/european-languages-by-text",
+    "language": "en",
+    "format": "text",
+    "types": [
+      "knowledge"
+    ],
+    "topic": "jazyky",
+    "description": "Anglický kvíz: poznej evropské jazyky podle textových ukázek.",
+    "description_en": "English quiz: identify European languages from text samples.",
+    "source": "jetpunk.com",
+    "description_cs": "Anglický kvíz: poznej evropské jazyky podle textových ukázek.",
+    "migration": "015_seed_underrepresented_langs",
+    "verification": {
+      "collector": "exa-link-collector",
+      "result": "ověřeno: stránka načtena (Exa fetch), přímý kvíz bez registrace",
+      "checked_at": "2026-11-16"
+    }
   }
 ]
